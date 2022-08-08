@@ -1,0 +1,80 @@
+#businesscard-element-label {
+  top: 18%;
+  right: 25%;
+}
+
+#businesscard-element-label-arrow {
+  width: 25px;
+  bottom: 15%;
+  right: 120%;
+  transform: rotate(-5deg);
+}
+
+#businesscard-element {
+  top: 15%;
+  left: 55%;
+  transform: rotate(2deg);
+}
+
+#businesscard-container {
+  width: 80px;
+  aspect-ratio: 3/2;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+  background: #36313d;
+  color: #cecdcb95;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px #00000050;
+}
+
+#user-icon {
+  width: 25%;
+  aspect-ratio: 1;
+  font-size: 100%;
+}
+
+#user-name {
+  width: 100%;
+  text-align: center;
+  font-size: 80%;
+}
+
+@media screen and (orientation: portrait) {
+  #businesscard-element-label {
+    top: 3%;
+    right: 3%;
+    transform: rotate(-25deg);
+  }
+
+  #businesscard-element-label-arrow {
+    width: 12.5px;
+    bottom: 30%;
+    right: 110%;
+  }
+
+  #businesscard-element {
+    top: 10%;
+    left: 65%;
+  }
+
+  #businesscard-container {
+    width: 40px;
+    padding: 0;
+    border-radius: 2.5px;
+    box-shadow: 2.5px 2.5px 15px #00000050;
+  }
+
+  #user-icon {
+    width: 25%;
+    aspect-ratio: 1;
+    font-size: 75%;
+  }
+
+  #user-name {
+    display: none;
+  }
+}

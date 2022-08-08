@@ -1,0 +1,139 @@
+#letter-element-label {
+  bottom: 10%;
+  left: 5%;
+}
+
+#letter-element-label-arrow {
+  width: 40px;
+  bottom: 50%;
+  left: 120%;
+}
+
+#letter-element-label-text {
+  transform: rotate(10deg);
+}
+
+#letter-element {
+  display: flex;
+  align-items: center;
+  bottom: 35%;
+  left: 10%;
+  transform: rotate(-8deg);
+}
+
+#letter-element > div {
+  box-shadow: 5px 5px 30px #00000050;
+}
+
+/* 📌 LETTER */
+
+#letter-container {
+  width: 120px;
+  aspect-ratio: 2/3;
+  padding: 15% 10%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: center;
+  background: #dddddd;
+}
+
+#letter-logo {
+  width: 20%;
+  aspect-ratio: 1;
+  font-size: 100%;
+}
+
+#letter-title {
+  font-size: 100%;
+}
+
+#letter-title span {
+  font-weight: 600;
+}
+
+/* 📌 ENVELOPE */
+
+#envelope-container {
+  width: 120px;
+  aspect-ratio: 2/1.1;
+  background: #ffdf7c;
+  position: absolute;
+  bottom: 15%;
+  left: -25%;
+  transform: rotate(-15deg);
+}
+
+#envelope-flap {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 60px 0 60px;
+  border-color: #ffd044 transparent transparent transparent;
+}
+
+#envelope-label {
+  width: 30%;
+  aspect-ratio: 2/0.75;
+  background: #ffffff90;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 15%;
+  right: 7%;
+}
+
+@media screen and (orientation: portrait) {
+  #letter-element-label {
+    bottom: 9%;
+    transform: rotate(-5deg);
+  }
+
+  #letter-element-label-arrow {
+    width: 20px;
+    top: -90%;
+    bottom: unset;
+    left: 110%;
+  }
+
+  #letter-element-label-text {
+    transform: rotate(-1deg);
+  }
+
+  #letter-element {
+    bottom: 20%;
+    left: 15%;
+  }
+
+  #letter-element > div {
+    box-shadow: 2.5px 2.5px 15px #00000050;
+  }
+
+  /* 📌 LETTER */
+
+  #letter-container {
+    width: 60px;
+  }
+
+  #letter-logo {
+    display: none;
+  }
+
+  #letter-title {
+    font-size: 80%;
+  }
+
+  /* 📌 ENVELOPE */
+
+  #envelope-container {
+    width: 60px;
+  }
+
+  #envelope-flap {
+    border-width: 15px 30px 0 30px;
+  }
+
+  #envelope-label {
+    border-radius: 1.5px;
+  }
+}
