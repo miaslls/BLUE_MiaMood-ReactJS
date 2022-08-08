@@ -1,0 +1,41 @@
+/* ADOBE FONTS */
+@import url("https://use.typekit.net/afj3hjl.css");
+
+/* REMIX ICONS */
+@import url("https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css");
+
+/* OTHER FONTS */
+
+@font-face {
+  font-family: "pwsmallicons";
+  src: url("./assets/FONT/pwsmallicons-webfont.woff2") format("woff2"),
+    url("./assets/FONT/pwsmallicons-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "whatsapp-emoticons";
+  src: url("./assets/FONT/whatsapp_emoticons-webfont.woff2") format("woff2"),
+    url("./assets/FONT/whatsapp_emoticons-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efe3f8;
+  background: linear-gradient(120deg, #bca9cb 0%, #ac96be 35%, #6b5180 100%);
+  font-family: six-hands-marker, sans-serif;
+  font-weight: 700;
+  color: #00000090;
+}
