@@ -1,0 +1,43 @@
+header {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: lighter;
+  column-gap: 5%;
+}
+
+#page-title {
+  font-family: audrielle-no1, sans-serif;
+  font-size: 8rem;
+  transform: rotate(-5deg);
+}
+
+#page-title span {
+  font-family: audrielle-no2, sans-serif;
+}
+
+nav {
+  display: flex;
+}
+
+.nav-icon {
+  font-family: pwsmallicons;
+  font-size: 4rem;
+}
+
+@media screen and (orientation: portrait) {
+  header {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  #page-title {
+    font-size: 7rem;
+  }
+
+  .nav-icon {
+    font-size: 3rem;
+  }
+}

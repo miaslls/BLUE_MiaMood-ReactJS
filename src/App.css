@@ -27,6 +27,11 @@
   outline: none;
 }
 
+body * {
+  /* 🐞 */
+  /* border: 1px dotted #00000050; */
+}
+
 body {
   width: 100vw;
   min-height: 100vh;
@@ -37,5 +42,19 @@ body {
   background: linear-gradient(120deg, #bca9cb 0%, #ac96be 35%, #6b5180 100%);
   font-family: six-hands-marker, sans-serif;
   font-weight: 700;
-  color: #00000090;
+  color: #000000;
+}
+
+@media screen and (orientation: landscape) {
+  #outer-container {
+    width: 1000px;
+    height: 500px;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #outer-container {
+    width: 350px;
+    height: 600px;
+  }
 }
