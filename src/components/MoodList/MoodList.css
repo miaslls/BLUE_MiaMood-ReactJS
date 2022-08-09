@@ -1,5 +1,5 @@
 #moodlist {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -22,7 +22,6 @@
 .mood-icon {
   font-family: whatsapp-emoticons;
   font-size: 2rem;
-  font-weight: bolder;
 }
 
 .mood-title {
@@ -32,12 +31,6 @@
 .mood-date-time {
   font-family: six-hands-condensed, sans-serif;
   font-size: 1.2rem;
-}
-
-@media screen and (orientation: landscape) {
-  #moodlist {
-    width: 50%;
-  }
 }
 
 @media screen and (orientation: portrait) {

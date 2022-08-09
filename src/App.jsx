@@ -2,6 +2,7 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import MoodList from "./components/MoodList/MoodList";
+import Statistics from "./components/Statistics/Statistics";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Header />
       <main>
         <MoodList />
-        <section id="statistics"></section>
+        <Statistics />
       </main>
     </div>
   );

@@ -26,22 +26,24 @@ nav {
   font-size: 4rem;
 }
 
-.nav-icon:hover {
-  transform: scale(1.2);
-}
-
 @media screen and (orientation: portrait) {
   header {
     width: 100%;
     flex-direction: column;
-    align-items: center;
+    padding: 0 10%;
   }
 
   #page-title {
     font-size: 7rem;
+    align-self: flex-start;
+  }
+
+  nav {
+    margin-top: -10%;
   }
 
   .nav-icon {
     font-size: 3rem;
+    align-self: flex-end;
   }
 }

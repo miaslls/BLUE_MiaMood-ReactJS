@@ -46,6 +46,11 @@ body {
   color: #000000;
 }
 
+.clickable:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
 #outer-container {
   display: flex;
   flex-wrap: wrap;
@@ -77,5 +82,9 @@ main {
 
   main {
     flex-direction: column-reverse;
+  }
+
+  .clickable:hover {
+    transform: none;
   }
 }
