@@ -1,0 +1,59 @@
+#moodlist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#moodlist-title {
+  margin-bottom: 3%;
+  font-size: 2rem;
+  text-align: right;
+}
+
+.moodlist-item {
+  width: 100%;
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3%;
+}
+
+.mood-icon {
+  font-family: whatsapp-emoticons;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.mood-title {
+  font-size: 1.1rem;
+}
+
+.mood-date-time {
+  font-family: six-hands-condensed, sans-serif;
+  font-size: 1.2rem;
+}
+
+@media screen and (orientation: landscape) {
+  #moodlist {
+    width: 50%;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #moodlist {
+    width: 100%;
+  }
+
+  #moodlist-title {
+    font-size: 1.5rem;
+  }
+
+  .mood-title {
+    font-size: 0.9rem;
+  }
+
+  .mood-date-time {
+    font-size: 1.1rem;
+  }
+}

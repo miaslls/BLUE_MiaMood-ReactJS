@@ -7,11 +7,11 @@ function Header() {
         Mia<span>Mood</span>
       </div>
       <nav>
-        <div className="nav-icon">F</div>
-        <div className="nav-icon">D</div>
-        <div className="nav-icon">(</div>
-        <div className="nav-icon">¯</div>
         <div className="nav-icon">2</div>
+        <div className="nav-icon">F</div>
+        {/* <div className="nav-icon">D</div>
+        <div className="nav-icon">(</div> */}
+        <div className="nav-icon">¯</div>
       </nav>
     </header>
   );

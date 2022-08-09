@@ -36,25 +36,46 @@ body {
   width: 100vw;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 5% 0;
   background: #efe3f8;
-  background: linear-gradient(120deg, #bca9cb 0%, #ac96be 35%, #6b5180 100%);
+  background: linear-gradient(120deg, #efe3f8 0%, #d3b5e9 35%, #9975b4 100%);
   font-family: six-hands-marker, sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   color: #000000;
+}
+
+#outer-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  padding: 5% 0;
 }
 
 @media screen and (orientation: landscape) {
   #outer-container {
     width: 1000px;
-    height: 500px;
+  }
+
+  main {
+    flex-direction: row;
+    column-gap: 5%;
   }
 }
 
 @media screen and (orientation: portrait) {
   #outer-container {
     width: 350px;
-    height: 600px;
+    flex-direction: column;
+  }
+
+  main {
+    flex-direction: column-reverse;
   }
 }

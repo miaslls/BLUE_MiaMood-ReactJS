@@ -1,13 +1,14 @@
 import "./App.css";
 
 import Header from "./components/Header/Header";
+import MoodList from "./components/MoodList/MoodList";
 
 function App() {
   return (
     <div id="outer-container">
       <Header />
       <main>
-        <section id="mood-list"></section>
+        <MoodList />
         <section id="statistics"></section>
       </main>
     </div>
