@@ -4,17 +4,15 @@ const MoodContext = {
   moodEndpoint: () => `${Api.baseUrl}/moods`,
   allMoods: () => `${MoodContext.moodEndpoint()}/`,
   createMood: () => `${MoodContext.moodEndpoint()}/`,
-  moodsByDate: () => `${MoodContext.moodEndpoint()}/date?${query}`,
+  moodsByDate: (query) => `${MoodContext.moodEndpoint()}/date?${query}`,
   moodsToday: () => `${MoodContext.moodEndpoint()}/date/today`,
-  searchMoods: () => `${MoodContext.moodEndpoint()}/search?${query}`,
-  moodById: () => `${MoodContext.moodEndpoint()}/id/${id}`,
-  updateMood: () => `${MoodContext.moodEndpoint()}/update/${id}`,
-  deleteMood: () => `${MoodContext.moodEndpoint()}/delete/${id}`,
+  searchMoods: (query) => `${MoodContext.moodEndpoint()}/search?${query}`,
+  moodById: (id) => `${MoodContext.moodEndpoint()}/id/${id}`,
+  updateMood: (id) => `${MoodContext.moodEndpoint()}/update/${id}`,
+  deleteMood: (id) => `${MoodContext.moodEndpoint()}/delete/${id}`,
 };
 
-const Api = {
-  baseUrl: "http://localhost:3001",
+export const Api = {
+  baseUrl: "https://mialog-api.herokuapp.com",
   ...MoodContext,
 };
-
-export default Api;

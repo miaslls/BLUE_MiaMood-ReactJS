@@ -1,27 +1,34 @@
+import { useState, useEffect } from "react";
+import { MoodService } from "../../services/MoodService";
+
 import "./MoodList.css";
+import MoodListItem from "./MoodListItem";
 
 function MoodList() {
+  const [moodlist, setMoodlist] = useState({});
+
+  const getMoodList = async () => {
+    const response = await MoodService.getAllMoods();
+    setMoodlist(response);
+  };
+
+  useEffect(() => {
+    getMoodList();
+  }, []);
+
+  const moodlistArray = Array.from(moodlist);
+
   return (
     <section id="moodlist">
       <div id="moodlist-title">moods/ TODAY</div>
-
-      <div className="moodlist-item">
-        <div className="mood-icon">*</div>
-        <div className="mood-text-container">
-          <div className="mood-title">
-            Lorem ipsum dolor sit amet, consectetur adipisicing.
-          </div>
-          <div className="mood-date-time">08/08/22 @ 09:51 pm</div>
-        </div>
-      </div>
-
-      <div className="moodlist-item">
-        <div className="mood-icon">"</div>
-        <div className="mood-text-container">
-          <div className="mood-title"></div>
-          <div className="mood-date-time">08/08/22 @ 09:51 pm</div>
-        </div>
-      </div>
+      {moodlistArray.map((mood, index) => (
+        <MoodListItem
+          key={index}
+          type={mood.type}
+          text={mood.text}
+          dateTime={mood.dateTime}
+        />
+      ))}
     </section>
   );
 }

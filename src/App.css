@@ -27,11 +27,6 @@
   outline: none;
 }
 
-body * {
-  /* 🐞 */
-  /* border: 1px dotted #00000050; */
-}
-
 body {
   width: 100vw;
   min-height: 100vh;
