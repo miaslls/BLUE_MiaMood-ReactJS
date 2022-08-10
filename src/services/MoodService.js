@@ -2,17 +2,9 @@ import { Api } from "helpers/Api";
 
 const parseResponse = (response) => response.json();
 
-const transformMood = (moods) => {
-  return {
-    ...moods,
-  };
-};
-
-const parseList = (response) =>
-  parseResponse(response).then((moods) => moods.map(transformMood));
-
 export const MoodService = {
-  getAllMoods: () => fetch(Api.allMoods(), { method: "GET" }).then(parseList),
+  getAllMoods: () =>
+    fetch(Api.allMoods(), { method: "GET" }).then(parseResponse),
   // createMood: () =>
   //   fetch(Api.allMoods(), { method: "POST" }).then(parseResponse),
   // moodsByDate: () =>

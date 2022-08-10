@@ -1,5 +1,7 @@
 import "./Header.css";
 
+// 🚨🚨🚨 TODO: add LINK TO HOME + fix HOME
+
 function Header() {
   return (
     <header>

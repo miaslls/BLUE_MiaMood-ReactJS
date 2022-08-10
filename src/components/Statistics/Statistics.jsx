@@ -1,29 +1,34 @@
+import { useState } from "react";
+
 import "./Statistics.css";
 import arrowTip from "./arrow-tip.svg";
 
-function MoodTypeCounter({ icon, index }) {
+function MoodTypeCounter({ icon, index, moodCount, onAdd }) {
   return (
     <div className="statistics-mood">
       <div
         className="statistics-mood-icon clickable"
-        //   onClick={() => addOne(index)}
+        onClick={() => onAdd(index)}
       >
         {icon}
       </div>
-      <div className="statistics-mood-counter"> {/* {moodCount[index]} */}</div>
+      <div className="statistics-mood-counter">{moodCount}</div>
     </div>
   );
 }
 
-//   const [moodCount, setMoodCount] = useState({});
-
-//   const addOne = (index) => {
-//     const mood = { [index]: Number(selectedMoodType[index] || 0) + 1 };
-//     setSelectedMoodType({ ...selectedMoodType, ...mood });
-//   };
+// 🚨🚨🚨 TODO: add UNDER COSTRUCTION
+// 🚨🚨🚨 TODO: getAllMoods - countMoods
 
 function Statistics() {
   const moodIconList = ["<", "*", "2", ".", '"', "A"];
+
+  const [moodCount, setMoodCount] = useState({});
+
+  const addOne = (index) => {
+    const mood = { [index]: Number(moodCount[index] || 0) + 1 };
+    setMoodCount({ ...moodCount, ...mood });
+  };
 
   return (
     <section id="statistics">
@@ -37,6 +42,8 @@ function Statistics() {
             key={`moodIcon-${index}`}
             icon={icon}
             index={index}
+            moodCount={moodCount[index]}
+            onAdd={(index) => addOne(index)}
           />
         ))}
       </div>
