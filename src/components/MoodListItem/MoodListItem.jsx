@@ -1,3 +1,5 @@
+import "./MoodListItem.css";
+
 function MoodListItem({ type, text, dateTime }) {
   const moodIcons = ["A", "<", "*", "2", ".", '"'];
 

@@ -1,8 +1,9 @@
-import "./App.css";
+import "App.css";
 
-import Header from "./components/Header/Header";
-import MoodList from "./components/MoodList/MoodList";
-import Statistics from "./components/Statistics/Statistics";
+import Header from "components/Header/Header";
+import MoodList from "components/MoodList/MoodList";
+import Statistics from "components/Statistics/Statistics";
+// import Home from "components/Home-test/Home";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Statistics />
       </main>
     </div>
+
+    // <Home />
   );
 }
 

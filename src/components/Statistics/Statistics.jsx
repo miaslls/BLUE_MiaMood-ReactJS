@@ -1,7 +1,30 @@
 import "./Statistics.css";
 import arrowTip from "./arrow-tip.svg";
 
+function MoodTypeCounter({ icon, index }) {
+  return (
+    <div className="statistics-mood">
+      <div
+        className="statistics-mood-icon clickable"
+        //   onClick={() => addOne(index)}
+      >
+        {icon}
+      </div>
+      <div className="statistics-mood-counter"> {/* {moodCount[index]} */}</div>
+    </div>
+  );
+}
+
+//   const [moodCount, setMoodCount] = useState({});
+
+//   const addOne = (index) => {
+//     const mood = { [index]: Number(selectedMoodType[index] || 0) + 1 };
+//     setSelectedMoodType({ ...selectedMoodType, ...mood });
+//   };
+
 function Statistics() {
+  const moodIconList = ["<", "*", "2", ".", '"', "A"];
+
   return (
     <section id="statistics">
       <div id="statistics-title-container">
@@ -9,63 +32,17 @@ function Statistics() {
         <div id="statistics-icon">"</div>
       </div>
       <div id="statistics-moods-container">
-        <div className="statistics-mood" id="mood-1">
-          <div className="statistics-mood-icon clickable" id="mood-1-icon">
-            &#60;
-          </div>
-          <div className="statistics-mood-counter" id="mood-1-counter">
-            0
-          </div>
-        </div>
-
-        <div className="statistics-mood" id="mood-2">
-          <div className="statistics-mood-icon clickable" id="mood-2-icon">
-            *
-          </div>
-          <div className="statistics-mood-counter" id="mood-2-counter">
-            0
-          </div>
-        </div>
-
-        <div className="statistics-mood" id="mood-3">
-          <div className="statistics-mood-icon clickable" id="mood-3-icon">
-            2
-          </div>
-          <div className="statistics-mood-counter" id="mood-3-counter">
-            2
-          </div>
-        </div>
-
-        <div className="statistics-mood" id="mood-4">
-          <div className="statistics-mood-icon clickable" id="mood-4-icon">
-            .
-          </div>
-          <div className="statistics-mood-counter" id="mood-4-counter">
-            0
-          </div>
-        </div>
-
-        <div className="statistics-mood" id="mood-5">
-          <div className="statistics-mood-icon clickable" id="mood-5-icon">
-            "
-          </div>
-          <div className="statistics-mood-counter" id="mood-5-counter">
-            10
-          </div>
-        </div>
-
-        <div className="statistics-mood" id="mood-6">
-          <div className="statistics-mood-icon clickable" id="mood-6-icon">
-            A
-          </div>
-          <div className="statistics-mood-counter" id="mood-6-counter">
-            3
-          </div>
-        </div>
+        {moodIconList.map((icon, index) => (
+          <MoodTypeCounter
+            key={`moodIcon-${index}`}
+            icon={icon}
+            index={index}
+          />
+        ))}
       </div>
       <div id="statistics-tip-container">
         <div id="tip-arrow">
-          <img src={arrowTip} />
+          <img src={arrowTip} alt="" />
         </div>
         <div id="tip-text">
           click to

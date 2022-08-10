@@ -1,5 +1,3 @@
-"use strict";
-
 const MoodContext = {
   moodEndpoint: () => `${Api.baseUrl}/moods`,
   allMoods: () => `${MoodContext.moodEndpoint()}/`,
