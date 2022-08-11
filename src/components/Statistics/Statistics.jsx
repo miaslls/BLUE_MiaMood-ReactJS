@@ -8,7 +8,10 @@ function MoodTypeCounter({ icon, index, moodCount, onAdd }) {
     <div className="statistics-mood">
       <div
         className="statistics-mood-icon clickable"
-        onClick={() => onAdd(index)}
+        onClick={(e) => {
+          e.stopPropagation();
+          onAdd(index);
+        }}
       >
         {icon}
       </div>

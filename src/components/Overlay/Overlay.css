@@ -1,0 +1,17 @@
+.Overlay {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    120deg,
+    #9975b490 0%,
+    #9569b790 35%,
+    #76449c90 100%
+  );
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
