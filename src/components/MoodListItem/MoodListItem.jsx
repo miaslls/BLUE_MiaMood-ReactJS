@@ -1,15 +1,12 @@
 import "./MoodListItem.css";
 
-function MoodListItem({ id, type, text, dateTime, clickItem }) {
+function MoodListItem({ type, text, dateTime }) {
   const moodIcons = ["A", "<", "*", "2", ".", '"'];
 
   const formattedDateTime = formatDateTime(dateTime);
 
   return (
-    <div
-      className="moodlist-item"
-      onClick={clickItem("62d30ea53a1c7bbfd0ee91f4")}
-    >
+    <div className="moodlist-item">
       <div className="mood-icon">{moodIcons[type]}</div>
       <div className="mood-text-container">
         <div className="mood-title">{text}</div>

@@ -4,7 +4,6 @@
   flex-direction: row;
   align-items: center;
   gap: 3%;
-  cursor: pointer;
 }
 
 .mood-icon {
@@ -14,10 +13,6 @@
 
 .mood-title {
   font-size: 1.1rem;
-}
-
-.mood-title:hover {
-  transform: scale(1.15);
 }
 
 .mood-date-time {

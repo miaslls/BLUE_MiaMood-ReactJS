@@ -1,5 +1,5 @@
 import "./Modal.css";
-import Overlay from "components/Overlay/Overlay";
+import Overlay from "components/TRASH/Overlay/Overlay";
 
 import closeIcon from "./close-icon.svg";
 
