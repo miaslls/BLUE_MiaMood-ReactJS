@@ -9,20 +9,22 @@ function MoodList() {
 
   const getMoodList = async () => {
     const response = await MoodService.getAllMoods();
-    setMoodList(response);
+    setMoodList(response.moods);
   };
 
   useEffect(() => {
     getMoodList();
   }, []);
 
-  const moodListArray = Array.from(moodList);
+  console.log(moodList); // 🐞
+
+  // const moodListArray = Array.from(moodList);
 
   return (
     <>
       <section id="moodlist">
         <div id="moodlist-title">moods/ ALL</div>
-        {moodListArray.map((mood, index) => (
+        {moodList.map((mood, index) => (
           <MoodListItem
             key={`moodlistItem-${index}`}
             type={mood.type}
