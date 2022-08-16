@@ -1,12 +1,15 @@
 import "./MoodListItem.css";
 
-function MoodListItem({ type, text, dateTime }) {
+import formatDateTime from "util/formatDateTime";
+
+function MoodListItem({ mood, clickItem }) {
   const moodIcons = ["A", "<", "*", "2", ".", '"'];
 
+  const { type, text, dateTime } = mood;
   const formattedDateTime = formatDateTime(dateTime);
 
   return (
-    <div className="moodlist-item">
+    <div className="moodlist-item" onClick={() => clickItem()}>
       <div className="mood-icon">{moodIcons[type]}</div>
       <div className="mood-text-container">
         <div className="mood-title">{text}</div>
@@ -15,30 +18,5 @@ function MoodListItem({ type, text, dateTime }) {
     </div>
   );
 }
-
-// 📌 AUX FUNCTIONS
-
-const formatDateTime = (dateTime) => {
-  const [dateRaw, timeRaw] = dateTime.split("T");
-
-  const formattedDate = formatDate(dateRaw);
-  const formattedTime = formatTime(timeRaw);
-
-  return `${formattedDate} @ ${formattedTime}`;
-};
-
-const formatDate = (dateRaw) => {
-  const [year, month, day] = dateRaw.split("-");
-  return `${day}.${month}.${year.slice(-2)}`;
-};
-
-const formatTime = (timeRaw) => {
-  let [hours, minutes] = timeRaw.split(":");
-  const amPm = hours < 12 ? "am" : "pm";
-
-  if (hours > 12) hours -= 12;
-
-  return `${hours}:${minutes + amPm}`;
-};
 
 export default MoodListItem;
