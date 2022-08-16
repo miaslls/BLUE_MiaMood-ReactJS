@@ -3,7 +3,7 @@ import "App.css";
 
 import Header from "components/Header/Header";
 import MoodList from "components/MoodList/MoodList";
-import Statistics from "components/Statistics/Statistics";
+// import Statistics from "components/Statistics/Statistics";
 import CreateMoodModal from "components/CreateMoodModal/CreateMoodModal";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Header createMood={() => setShowCreateMoodModal(true)} />
       <main>
         <MoodList moodCreated={moodToAdd} />
-        <Statistics />
+        {/* <Statistics /> */}
 
         {showCreateMoodModal && (
           <CreateMoodModal
