@@ -4,7 +4,7 @@ import { MoodService } from "services/MoodService";
 
 import Modal from "components/Modal/Modal";
 
-function CreateMoodModal({ closeModal }) {
+function CreateMoodModal({ closeModal, onCreateMood }) {
   const moodIcons = ["<", "*", "2", ".", '"', "A"];
 
   const form = {
@@ -32,7 +32,7 @@ function CreateMoodModal({ closeModal }) {
     const { type, text, date, time } = formState;
     const mood = { type, text, date, time };
     const response = await MoodService.createMood(mood);
-    console.log(mood, response); // 🐞
+    onCreateMood(response.mood);
     closeModal();
   };
 

@@ -5,7 +5,7 @@ import { MoodService } from "services/MoodService";
 import MoodListItem from "components/MoodListItem/MoodListItem";
 import MoodDetailsModal from "components/MoodDetailsModal/MoodDetailsModal";
 
-function MoodList() {
+function MoodList({ moodCreated }) {
   // 📌
 
   const [moodList, setMoodList] = useState([]);
@@ -27,6 +27,20 @@ function MoodList() {
     const response = await MoodService.getMoodById(id);
     setMoodModal(response.mood);
   };
+
+  // 📌
+
+  const addMoodToList = (mood) => {
+    const list = [mood, ...moodList];
+    setMoodList(list);
+  };
+
+  useEffect(() => {
+    if (moodCreated) {
+      addMoodToList(moodCreated);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [moodCreated]);
 
   return (
     <>

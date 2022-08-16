@@ -30,10 +30,11 @@
 body {
   width: 100vw;
   min-height: 100vh;
+  padding-top: 5%;
+  overflow-x: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 5% 0;
   background: #efe3f8;
   background: linear-gradient(120deg, #efe3f8 0%, #d3b5e9 35%, #9975b4 100%);
   font-family: six-hands-marker, sans-serif;
