@@ -19,8 +19,6 @@ function MoodList() {
     getMoodList();
   }, []);
 
-  console.log("moodlist", moodList); // 🐞
-
   // 📌
 
   const [moodModal, setMoodModal] = useState(false);
@@ -28,15 +26,12 @@ function MoodList() {
   const getMoodById = async (id) => {
     const response = await MoodService.getMoodById(id);
     setMoodModal(response.mood);
-    console.log("id in fetch", id, "response", response); // 🐞
   };
-
-  console.log("moodModal", moodModal); // 🐞
 
   return (
     <>
       <section id="moodlist">
-        <div id="moodlist-title">moods/ ALL</div>
+        <h2 id="moodlist-title">moods/ ALL</h2>
         {moodList.map((mood, index) => (
           <MoodListItem
             key={`moodlistItem-${index}`}

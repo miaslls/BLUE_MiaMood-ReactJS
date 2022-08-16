@@ -10,7 +10,7 @@
 @media screen and (orientation: landscape) {
   .moodlist-item:hover {
     cursor: pointer;
-    opacity: 0.5;
+    text-shadow: #00000030 1px 1px 5px;
   }
 }
 

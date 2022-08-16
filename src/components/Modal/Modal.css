@@ -1,5 +1,5 @@
 .modal-container {
-  min-width: 30%;
+  width: 30%;
   padding: 20px 30px;
   position: relative;
   background: linear-gradient(120deg, #d1d1d1 0%, #c3c3c3 35%, #bfbfbf 100%);
