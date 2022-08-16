@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./CreateMoodModal.css";
+import { useState } from "react";
+import { MoodService } from "services/MoodService";
 
 import Modal from "components/Modal/Modal";
 
@@ -23,6 +24,16 @@ function CreateMoodModal({ closeModal }) {
   const setMoodType = (moodType) => {
     setFormState({ ...formState, type: moodType });
     setActiveMood({ [moodType]: true, activeType: moodType });
+  };
+
+  // 📌
+
+  const createMood = async () => {
+    const { type, text, date, time } = formState;
+    const mood = { type, text, date, time };
+    const response = await MoodService.createMood(mood);
+    console.log(mood, response); // 🐞
+    closeModal();
   };
 
   return (
@@ -115,10 +126,15 @@ function CreateMoodModal({ closeModal }) {
             type="text"
             name="text"
             placeholder="optional! this is example text..."
+            onChange={(e) => handleChange(e, "text")}
           />
         </div>
 
-        <button className="send-button clickable" type="button">
+        <button
+          className="send-button clickable"
+          type="button"
+          onClick={createMood}
+        >
           add mood{" "}
           <span id="button-icon">{moodIcons[activeMood.activeType - 1]}</span>
         </button>

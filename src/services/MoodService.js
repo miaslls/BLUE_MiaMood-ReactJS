@@ -7,8 +7,15 @@ export const MoodService = {
     fetch(Api.allMoods(), { method: "GET" }).then(parseResponse),
   getMoodById: (id) =>
     fetch(Api.moodById(id), { method: "GET" }).then(parseResponse),
-  // createMood: () =>
-  //   fetch(Api.allMoods(), { method: "POST" }).then(parseResponse),
+  createMood: (mood) =>
+    fetch(Api.createMood(), {
+      method: "POST",
+      body: JSON.stringify(mood),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(parseResponse),
   // moodsByDate: () =>
   //   fetch(Api.moodsByDate(), { method: "GET" }).then(parseResponse),
   // moodsToday: () =>
