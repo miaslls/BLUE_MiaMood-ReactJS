@@ -7,12 +7,12 @@
   gap: 3%;
 }
 
-@media screen and (orientation: landscape) {
+/* @media screen and (orientation: landscape) {
   .moodlist-item:hover {
     cursor: pointer;
     text-shadow: #00000030 1px 1px 5px;
   }
-}
+} */
 
 .mood-icon {
   font-family: whatsapp-emoticons;

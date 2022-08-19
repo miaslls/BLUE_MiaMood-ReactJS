@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { MoodService } from "services/MoodService";
 
 import MoodListItem from "components/MoodListItem/MoodListItem";
-import MoodDetailsModal from "components/MoodDetailsModal/MoodDetailsModal";
+// import MoodDetailsModal from "components/MoodDetailsModal/MoodDetailsModal";
 
 function MoodList({ moodCreated }) {
   // 📌
@@ -21,12 +21,12 @@ function MoodList({ moodCreated }) {
 
   // 📌
 
-  const [moodModal, setMoodModal] = useState(false);
-
-  const getMoodById = async (id) => {
-    const response = await MoodService.getMoodById(id);
-    setMoodModal(response.mood);
-  };
+  //   const [moodModal, setMoodModal] = useState(false);
+  //
+  //   const getMoodById = async (id) => {
+  //     const response = await MoodService.getMoodById(id);
+  //     setMoodModal(response.mood);
+  //   };
 
   // 📌
 
@@ -50,16 +50,16 @@ function MoodList({ moodCreated }) {
           <MoodListItem
             key={`moodlistItem-${index}`}
             mood={mood}
-            clickItem={() => getMoodById(mood._id)}
+            // clickItem={() => getMoodById(mood._id)}
           />
         ))}
       </section>
-      {moodModal && (
+      {/* {moodModal && (
         <MoodDetailsModal
           mood={moodModal}
           closeModal={() => setMoodModal(false)}
         />
-      )}
+      )} */}
     </>
   );
 }
