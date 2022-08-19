@@ -42,9 +42,9 @@ function MoodForm({ closeModal, saving, setSaving, moodBody }) {
       ? await MoodService.updateMood(_id, moodBody)
       : await MoodService.createMood(moodBody);
 
-    setSaving(false);
-
     console.log(response); // 🐞
+
+    setSaving(false);
     closeModal();
   };
 
@@ -69,7 +69,7 @@ function MoodForm({ closeModal, saving, setSaving, moodBody }) {
   return (
     <Modal closeModal={closeModal}>
       <form autoComplete="off">
-        <h2 id="form-title">mood/ADD</h2>
+        <h2 id="form-title">mood form</h2>
 
         <div id="mood-type-container">
           <input
@@ -160,10 +160,8 @@ function MoodForm({ closeModal, saving, setSaving, moodBody }) {
           />
         </div>
 
-        {!moodBody && <SubmitButton buttonText={"add mood"} moodId={false} />}
-        {moodBody && (
-          <SubmitButton buttonText={"edit mood"} moodId={moodBody._id} />
-        )}
+        {!moodBody && <SubmitButton buttonText={"add mood"} />}
+        {moodBody && <SubmitButton buttonText={"edit mood"} />}
       </form>
     </Modal>
   );

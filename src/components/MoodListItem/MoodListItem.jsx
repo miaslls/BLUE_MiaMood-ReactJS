@@ -3,7 +3,7 @@ import formatDateTime from "util/formatDateTime";
 import iconPencil from "./icon-pencil.svg";
 import iconScissors from "./icon-scissors.svg";
 
-function MoodListItem({ mood }) {
+function MoodListItem({ mood, getMoodToEdit }) {
   const moodIcons = ["<", "*", "2", ".", '"', "A"];
 
   const { type, text, date, time } = mood;
@@ -18,7 +18,14 @@ function MoodListItem({ mood }) {
           <div className="mood-date-time">{formattedDateTime}</div>
           <div className="mood-options-container">
             <div className="mood-options-button clickable">
-              <img src={iconPencil} alt="edit button" />
+              <img
+                src={iconPencil}
+                alt="edit button"
+                onClick={() => {
+                  getMoodToEdit(mood);
+                  console.log("in item", mood); // 🐞
+                }}
+              />
             </div>
             <div className="mood-options-button clickable">
               <img src={iconScissors} alt="delete button" />
