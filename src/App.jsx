@@ -1,26 +1,28 @@
-import { useState } from "react";
 import "App.css";
-
+import { useState } from "react";
 import Header from "components/Header/Header";
 import MoodList from "components/MoodList/MoodList";
+import MoodForm from "components/MoodForm/MoodForm";
 // import Statistics from "components/Statistics/Statistics";
-import CreateMoodModal from "components/CreateMoodModal/CreateMoodModal";
 
 function App() {
-  const [showCreateMoodModal, setShowCreateMoodModal] = useState(false);
-  const [moodToAdd, setMoodToAdd] = useState();
+  const [showCreateMoodForm, setShowCreateMoodForm] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   return (
     <div id="outer-container">
-      <Header createMood={() => setShowCreateMoodModal(true)} />
+      <Header openCreateMoodForm={() => setShowCreateMoodForm(true)} />
+
       <main>
-        <MoodList moodCreated={moodToAdd} />
+        <MoodList saving={saving} />
         {/* <Statistics /> */}
 
-        {showCreateMoodModal && (
-          <CreateMoodModal
-            closeModal={() => setShowCreateMoodModal(false)}
-            onCreateMood={(mood) => setMoodToAdd(mood)}
+        {showCreateMoodForm && (
+          <MoodForm
+            closeModal={() => setShowCreateMoodForm(false)}
+            moodBody={false}
+            saving={saving}
+            setSaving={setSaving}
           />
         )}
       </main>

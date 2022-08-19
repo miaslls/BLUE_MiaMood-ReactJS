@@ -53,6 +53,7 @@ h2 {
 }
 
 .clickable:hover {
+  transition: 0.25s all;
   transform: scale(1.2);
   cursor: pointer;
 }

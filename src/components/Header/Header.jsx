@@ -1,8 +1,6 @@
 import "./Header.css";
 
-// 🚨 TODO: add LINK TO HOME + fix HOME
-
-function Header({ createMood }) {
+function Header({ openCreateMoodForm }) {
   return (
     <header>
       <div id="page-title">
@@ -10,14 +8,15 @@ function Header({ createMood }) {
       </div>
 
       <nav>
-        <div className="nav-icon clickable">2</div>
-
+        {/* <div className="nav-icon clickable">2</div>
         <div className="nav-icon clickable">F</div>
-
-        {/* <div className="nav-icon">D</div>
+        <div className="nav-icon">D</div>
         <div className="nav-icon">(</div> */}
 
-        <div className="nav-icon clickable" onClick={() => createMood()}>
+        <div
+          className="nav-icon clickable"
+          onClick={() => openCreateMoodForm()}
+        >
           ¯
         </div>
       </nav>

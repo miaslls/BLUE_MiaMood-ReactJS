@@ -56,5 +56,6 @@ form {
 }
 
 #button-icon {
+  margin-left: 1rem;
   font-family: whatsapp-emoticons;
 }

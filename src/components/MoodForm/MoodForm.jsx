@@ -1,41 +1,70 @@
-import "./CreateMoodModal.css";
+import "./MoodForm.css";
 import { useState } from "react";
 import { MoodService } from "services/MoodService";
 import { getDateToday, getTimeNow } from "util/getDateTimeNow";
 
 import Modal from "components/Modal/Modal";
 
-function CreateMoodModal({ closeModal, onCreateMood }) {
+function MoodForm({ closeModal, saving, setSaving, moodBody }) {
   const moodIcons = ["<", "*", "2", ".", '"', "A"];
 
-  const form = {
+  const emptyForm = {
     type: "",
     text: "",
     date: getDateToday(),
     time: getTimeNow(),
   };
 
-  const [formState, setFormState] = useState(form);
+  const [form, setForm] = useState(emptyForm);
+
   const [activeMood, setActiveMood] = useState({});
 
+  if (moodBody) setForm(moodBody);
+
   const handleChange = (e, name) => {
-    setFormState({ ...formState, [name]: e.target.value });
+    setForm({ ...form, [name]: e.target.value });
   };
 
   const setMoodType = (moodType) => {
-    setFormState({ ...formState, type: moodType });
+    setForm({ ...form, type: moodType });
     setActiveMood({ [moodType]: true, activeType: moodType });
   };
 
   // 📌
 
-  const createMood = async () => {
-    const { type, text, date, time } = formState;
-    const mood = { type, text, date, time };
-    const response = await MoodService.createMood(mood);
-    onCreateMood(response.mood);
+  const submitForm = async () => {
+    setSaving(true);
+
+    const { type, text, date, time, _id } = form;
+    const moodBody = { type, text, date, time };
+
+    const response = _id
+      ? await MoodService.updateMood(_id, moodBody)
+      : await MoodService.createMood(moodBody);
+
+    setSaving(false);
+
+    console.log(response); // 🐞
     closeModal();
   };
+
+  // 📌
+
+  function SubmitButton({ buttonText }) {
+    return (
+      <button
+        className="send-button clickable"
+        type="button"
+        onClick={() => submitForm()}
+        disabled={saving}
+      >
+        {buttonText}
+        <span id="button-icon">{moodIcons[activeMood.activeType - 1]}</span>
+      </button>
+    );
+  }
+
+  // 📌
 
   return (
     <Modal closeModal={closeModal}>
@@ -131,17 +160,13 @@ function CreateMoodModal({ closeModal, onCreateMood }) {
           />
         </div>
 
-        <button
-          className="send-button clickable"
-          type="button"
-          onClick={createMood}
-        >
-          add mood{" "}
-          <span id="button-icon">{moodIcons[activeMood.activeType - 1]}</span>
-        </button>
+        {!moodBody && <SubmitButton buttonText={"add mood"} moodId={false} />}
+        {moodBody && (
+          <SubmitButton buttonText={"edit mood"} moodId={moodBody._id} />
+        )}
       </form>
     </Modal>
   );
 }
 
-export default CreateMoodModal;
+export default MoodForm;

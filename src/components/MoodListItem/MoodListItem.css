@@ -7,25 +7,44 @@
   gap: 3%;
 }
 
-/* @media screen and (orientation: landscape) {
-  .moodlist-item:hover {
-    cursor: pointer;
-    text-shadow: #00000030 1px 1px 5px;
-  }
-} */
-
 .mood-icon {
   font-family: whatsapp-emoticons;
   font-size: 2rem;
 }
 
-.mood-title {
+.mood-text-container {
+  width: 100%;
+}
+
+.mood-text-top-row {
   font-size: 1.1rem;
+}
+
+.mood-text--bottom-row {
+  display: flex;
+  gap: 1rem;
 }
 
 .mood-date-time {
   font-family: six-hands-condensed, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+}
+
+.mood-options-container {
+  display: flex;
+  gap: 0.15rem;
+}
+
+.mood-options-button {
+  height: 1.25rem;
+}
+
+.mood-options-button img {
+  height: 100%;
+}
+
+.mood-options-button:hover {
+  transform: scale(1.5);
 }
 
 @media screen and (orientation: portrait) {
@@ -35,5 +54,9 @@
 
   .mood-date-time {
     font-size: 1.1rem;
+  }
+
+  .mood-options-button:hover {
+    transform: none;
   }
 }
