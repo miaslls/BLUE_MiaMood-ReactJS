@@ -5,6 +5,7 @@ const parseResponse = (response) => response.json();
 export const MoodService = {
   getAllMoods: () =>
     fetch(Api.allMoods(), { method: "GET" }).then(parseResponse),
+
   getMoodById: (id) =>
     fetch(Api.moodById(id), { method: "GET" }).then(parseResponse),
 
@@ -27,6 +28,6 @@ export const MoodService = {
       },
     }).then(parseResponse),
 
-  // deleteMood: () =>
-  //   fetch(Api.deleteMood(), { method: "GET" }).then(parseResponse),
+  deleteMood: (id) =>
+    fetch(Api.deleteMood(id), { method: "DELETE" }).then(parseResponse),
 };

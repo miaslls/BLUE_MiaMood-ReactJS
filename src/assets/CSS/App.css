@@ -49,6 +49,8 @@ main {
 .section-title {
   margin-bottom: 3%;
   align-self: flex-end;
+  font-size: 2rem;
+  text-align: right;
 }
 
 .section-title-underline {
@@ -89,10 +91,5 @@ main {
 
   .section-title {
     font-size: 1.5rem;
-    text-align: center;
-  }
-
-  .section-title-underline {
-    align-self: center;
   }
 }

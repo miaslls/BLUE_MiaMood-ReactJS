@@ -4,18 +4,6 @@
   flex-direction: column;
 }
 
-.section-title {
-  margin-bottom: 3%;
-  text-align: right;
-}
-
-.section-title-underline {
-  width: 30%;
-  position: relative;
-  bottom: 0.75rem;
-  align-self: flex-end;
-}
-
 @media screen and (orientation: portrait) {
   #moodlist {
     width: 100%;

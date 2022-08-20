@@ -4,7 +4,7 @@ const MoodContext = {
   moodById: (id) => `${MoodContext.moodEndpoint()}/id/${id}`,
   createMood: () => `${MoodContext.moodEndpoint()}/`,
   updateMood: (id) => `${MoodContext.moodEndpoint()}/update/${id}`,
-  // deleteMood: (id) => `${MoodContext.moodEndpoint()}/delete/${id}`,
+  deleteMood: (id) => `${MoodContext.moodEndpoint()}/delete/${id}`,
 };
 
 export const Api = {
