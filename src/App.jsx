@@ -30,13 +30,13 @@ function App() {
 
   const [moodToDelete, setMoodToDelete] = useState(undefined);
 
-  useEffect(() => {
-    if (moodToDelete) {
-      MoodService.deleteMood(moodToDelete._id);
-      setMoodToDelete(undefined);
-      getMoodList();
-    }
-  }, [moodToDelete]);
+  // useEffect(() => {
+  //   if (moodToDelete) {
+  //     MoodService.deleteMood(moodToDelete._id);
+  //     setMoodToDelete(undefined);
+  //     getMoodList();
+  //   }
+  // }, [moodToDelete]);
 
   const deleteMood = async (id) => {
     const response = await MoodService.deleteMood(id);
@@ -59,41 +59,53 @@ function App() {
 
   // ----- 📌📌 ITEM
 
-  function MoodListItem({ mood }) {
+  function MoodListItem({ mood, index, deleteMood }) {
+    const moodDate = new Date(mood.date);
+    const titleDate = new Intl.DateTimeFormat("en-US", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      timeZone: "America/Sao_Paulo",
+    }).format(moodDate);
+
     return (
-      <div className="moodlist-item" key={mood._id}>
-        <div className="mood-icon">{moodIcons[mood.type - 1]}</div>
-        <div className="mood-text-container">
-          <div className="mood-text-top-row">{mood.text}</div>
-          <div className="mood-text--bottom-row">
-            <div className="mood-date-time">
-              {formatDateTime(mood.date, mood.time)}
-            </div>
-            <div className="mood-options-container">
-              <div className="mood-options-button clickable">
-                <img
-                  src={iconPencil}
-                  alt="edit button"
-                  onClick={() => {
-                    setFormState(mood);
-                    setFormOpen(true);
-                  }}
-                />
+      <>
+        {(index === 0 || mood.date !== moodList[index - 1].date) && (
+          <div className="moodlist-date-title">{titleDate}</div>
+        )}
+        <div className="moodlist-item" key={mood._id}>
+          <div className="mood-icon">{moodIcons[mood.type - 1]}</div>
+          <div className="mood-text-container">
+            <div className="mood-text-top-row">{mood.text}</div>
+            <div className="mood-text--bottom-row">
+              <div className="mood-date-time">
+                {formatDateTime(mood.date, mood.time)}
               </div>
-              <div className="mood-options-button clickable">
-                <img
-                  src={iconScissors}
-                  alt="delete button"
-                  onClick={() => {
-                    MoodService.deleteMood(mood._id);
-                    getMoodList();
-                  }}
-                />
+              <div className="mood-options-container">
+                <div className="mood-options-button clickable">
+                  <img
+                    src={iconPencil}
+                    alt="edit button"
+                    onClick={() => {
+                      setFormState(mood);
+                      setFormOpen(true);
+                    }}
+                  />
+                </div>
+                <div className="mood-options-button clickable">
+                  <img
+                    src={iconScissors}
+                    alt="delete button"
+                    onClick={() => {
+                      deleteMood(mood._id);
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -126,10 +138,12 @@ function App() {
 
           {/* ----- 📌 ITEM */}
 
-          {moodList.map((mood) => (
+          {moodList.map((mood, index) => (
             <MoodListItem
               key={mood._id}
               mood={mood}
+              index={index}
+              deleteMood={deleteMood}
               // setMoodToDelete={setMoodToDelete}
             />
           ))}
