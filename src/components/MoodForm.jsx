@@ -4,6 +4,7 @@ import markerStroke from "assets/IMG/marker-stroke.svg";
 import closeIcon from "assets/ICON/icon-close.svg";
 
 function MoodForm({
+  moodIcons,
   emptyForm,
   formState,
   setFormState,
@@ -13,9 +14,7 @@ function MoodForm({
   setFormOpen,
   closeForm,
 }) {
-  const moodIcons = ["<", "*", "2", ".", '"', "A"];
-
-  // ----- 📌 date/time/text input default value
+  // ----- 📌 input default value
 
   const [defaultInputValues, setDefaultInputValues] = useState({});
 
@@ -102,55 +101,17 @@ function MoodForm({
             defaultValue={getTypeInput()}
             onChange={(e) => handleChange(e, "type")}
           />
-          {/* 🚨 --- TODO: refactor this shit 🔻 */}
-          <div
-            className={`form-mood-icon clickable ${
-              activeMood[1] ? "active-mood" : null
-            }`}
-            onClick={() => setMoodType(1)}
-          >
-            &#60;
-          </div>
-          <div
-            className={`form-mood-icon clickable ${
-              activeMood[2] ? "active-mood" : null
-            }`}
-            onClick={() => setMoodType(2)}
-          >
-            *
-          </div>
-          <div
-            className={`form-mood-icon clickable ${
-              activeMood[3] ? "active-mood" : null
-            }`}
-            onClick={() => setMoodType(3)}
-          >
-            2
-          </div>
-          <div
-            className={`form-mood-icon clickable ${
-              activeMood[4] ? "active-mood" : null
-            }`}
-            onClick={() => setMoodType(4)}
-          >
-            .
-          </div>
-          <div
-            className={`form-mood-icon clickable ${
-              activeMood[5] ? "active-mood" : null
-            }`}
-            onClick={() => setMoodType(5)}
-          >
-            "
-          </div>
-          <div
-            className={`form-mood-icon clickable ${
-              activeMood[6] ? "active-mood" : null
-            }`}
-            onClick={() => setMoodType(6)}
-          >
-            A
-          </div>
+
+          {moodIcons.map((icon, index) => (
+            <div
+              className={`form-mood-icon clickable ${
+                activeMood[index + 1] ? "active-mood" : null
+              }`}
+              onClick={() => setMoodType(index + 1)}
+            >
+              {icon}
+            </div>
+          ))}
         </div>
 
         <div id="date-time-container">

@@ -180,6 +180,7 @@ function App() {
 
         {formOpen && (
           <MoodForm
+            moodIcons={moodIcons}
             emptyForm={emptyForm}
             formState={formState}
             setFormState={setFormState}
