@@ -155,18 +155,25 @@ function App() {
 
           {/* ----- 📌 ITEM */}
 
-          <div id="moodlist-items-container">
-            {moodList.map((mood, index, array) => (
-              <MoodListItem
-                key={mood._id}
-                mood={mood}
-                index={index}
-                moodList={array}
-                openEditForm={openEditForm}
-                closeForm={closeForm}
-              />
-            ))}
-          </div>
+          {moodList.length > 0 ? (
+            <div id="moodlist-items-container">
+              {moodList.map((mood, index, array) => (
+                <MoodListItem
+                  key={mood._id}
+                  mood={mood}
+                  index={index}
+                  moodList={array}
+                  openEditForm={openEditForm}
+                  closeForm={closeForm}
+                />
+              ))}
+            </div>
+          ) : (
+            <div id="no-moods">
+              <p>this list is empty!</p>
+              <p></p>add new by clicking the <b>+</b> button above
+            </div>
+          )}
         </section>
 
         {/* ----- 📌 FORM */}
