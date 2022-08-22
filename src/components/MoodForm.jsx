@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { MoodService } from "services/MoodService";
 import markerStroke from "assets/IMG/marker-stroke.svg";
 import closeIcon from "assets/ICON/icon-close.svg";
@@ -13,6 +14,24 @@ function MoodForm({
   closeForm,
 }) {
   const moodIcons = ["<", "*", "2", ".", '"', "A"];
+
+  // ----- 📌 date/time/text input default value
+
+  const [defaultInputValues, setDefaultInputValues] = useState({});
+
+  useEffect(() => {
+    setDefaultInputValues({
+      type: formState.type,
+      date: formState.date,
+      time: formState.time,
+      text: formState.text,
+    });
+  }, [formState]);
+
+  const getTypeInput = () => defaultInputValues.type;
+  const getDateInput = () => defaultInputValues.date;
+  const getTimeInput = () => defaultInputValues.time;
+  const getTextInput = () => defaultInputValues.text;
 
   //----- 📌 handleChange
 
@@ -80,7 +99,7 @@ function MoodForm({
             type="hidden"
             name="type"
             required
-            defaultValue={formState.type}
+            defaultValue={getTypeInput()}
             onChange={(e) => handleChange(e, "type")}
           />
           {/* 🚨 --- TODO: refactor this shit 🔻 */}
@@ -140,7 +159,7 @@ function MoodForm({
             type="date"
             name="date"
             required
-            defaultValue={formState.date}
+            defaultValue={getDateInput()}
             onChange={(e) => handleChange(e, "date")}
           />
           <input
@@ -149,7 +168,7 @@ function MoodForm({
             step="60"
             name="time"
             required
-            defaultValue={formState.time}
+            defaultValue={getTimeInput()}
             onChange={(e) => handleChange(e, "time")}
           />
         </div>
@@ -161,7 +180,7 @@ function MoodForm({
             type="text"
             name="text"
             placeholder="optional! this is example text..."
-            defaultValue={formState.text}
+            defaultValue={getTextInput()}
             onChange={(e) => handleChange(e, "text")}
           />
         </div>

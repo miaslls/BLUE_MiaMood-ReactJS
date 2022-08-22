@@ -26,14 +26,6 @@ function App() {
     getMoodList();
   }, []);
 
-  // ----- 📌 delete
-
-  const deleteMood = async (id) => {
-    const response = await MoodService.deleteMood(id);
-
-    if (response.message === "deleted") getMoodList();
-  };
-
   // ----- 📌📌 FORM
 
   const emptyForm = {
@@ -48,8 +40,19 @@ function App() {
   const [activeMood, setActiveMood] = useState({});
   const [formOpen, setFormOpen] = useState(false);
 
+  const openCreateForm = () => {
+    setFormState(emptyForm);
+    setActiveMood({});
+    setFormOpen(true);
+  };
+
+  const openEditForm = (mood) => {
+    setFormState(mood);
+    setActiveMood({ [mood.type]: true, activeType: mood.type });
+    setFormOpen(true);
+  };
+
   const closeForm = () => {
-    console.log("fuckity fuck"); // 🦋
     setFormState(emptyForm);
     setActiveMood({});
     setFormOpen(false);
@@ -57,13 +60,25 @@ function App() {
 
   // ----- 📌📌 ITEM
 
-  function MoodListItem({ mood, index, moodList, deleteMood }) {
+  function MoodListItem({ mood, index, moodList, openEditForm, closeForm }) {
     const moodDate = new Date(`${mood.date}T${mood.time}`);
     const titleDate = new Intl.DateTimeFormat("en-US", {
       weekday: "long",
       day: "2-digit",
       month: "long",
     }).format(moodDate);
+
+    // ----- 📌 delete
+
+    const deleteMood = async (id) => {
+      const response = await MoodService.deleteMood(id);
+      if (response.message === "deleted") {
+        closeForm();
+        getMoodList();
+      }
+    };
+
+    // 📌📌📌 ITEM RETURN
 
     return (
       <>
@@ -84,8 +99,8 @@ function App() {
                     src={pencilIcon}
                     alt="edit button"
                     onClick={() => {
-                      setFormState(mood);
-                      setFormOpen(true);
+                      closeForm();
+                      openEditForm(mood);
                     }}
                   />
                 </div>
@@ -118,7 +133,12 @@ function App() {
         </div>
 
         <nav>
-          <div className="nav-icon clickable" onClick={() => setFormOpen(true)}>
+          <div
+            className="nav-icon clickable"
+            onClick={() => {
+              openCreateForm();
+            }}
+          >
             ¯
           </div>
         </nav>
@@ -142,8 +162,8 @@ function App() {
                 mood={mood}
                 index={index}
                 moodList={array}
-                deleteMood={deleteMood}
-                // setMoodToDelete={setMoodToDelete}
+                openEditForm={openEditForm}
+                closeForm={closeForm}
               />
             ))}
           </div>
