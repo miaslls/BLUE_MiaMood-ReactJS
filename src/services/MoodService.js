@@ -13,7 +13,6 @@ export const MoodService = {
     fetch(Api.createMood(), {
       method: "POST",
       body: JSON.stringify(body),
-      // mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },

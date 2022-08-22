@@ -1,5 +1,6 @@
 import { MoodService } from "services/MoodService";
 import markerStroke from "assets/IMG/marker-stroke.svg";
+import closeIcon from "assets/ICON/icon-close.svg";
 
 function MoodForm({
   emptyForm,
@@ -9,6 +10,7 @@ function MoodForm({
   setActiveMood,
   getMoodlist,
   setFormOpen,
+  closeForm,
 }) {
   const moodIcons = ["<", "*", "2", ".", '"', "A"];
 
@@ -29,13 +31,17 @@ function MoodForm({
     const { _id, type, text, date, time } = formState;
     const moodBody = { type, text, date, time };
 
-    const response = _id
-      ? await MoodService.updateMood(_id, moodBody)
-      : await MoodService.createMood(moodBody);
+    if (type && date && time) {
+      const response = _id
+        ? await MoodService.updateMood(_id, moodBody)
+        : await MoodService.createMood(moodBody);
 
-    setFormState(emptyForm);
-    setFormOpen(false);
-    getMoodlist();
+      if (response.mood) {
+        setFormState(emptyForm);
+        setFormOpen(false);
+        getMoodlist();
+      }
+    }
   };
 
   //  📌📌 ----- SubmitButton
@@ -43,12 +49,13 @@ function MoodForm({
   function SubmitButton({ buttonText, editType = undefined }) {
     return (
       <button
-        className="send-button clickable"
+        className="clickable"
+        id="send-button"
         type="button"
         onClick={() => submitForm()}
       >
         {buttonText}
-        <span id="button-icon">
+        <span id="send-button-icon">
           {editType
             ? moodIcons[editType - 1]
             : moodIcons[activeMood.activeType - 1]}
@@ -127,8 +134,6 @@ function MoodForm({
           </div>
         </div>
 
-        {/* 🚨🚨🚨 ----- FIXME: */}
-
         <div id="date-time-container">
           <input
             className="input"
@@ -161,10 +166,21 @@ function MoodForm({
           />
         </div>
 
-        {!formState._id && <SubmitButton buttonText={"add mood"} />}
-        {formState._id && (
-          <SubmitButton buttonText={"edit mood"} editType={formState.type} />
-        )}
+        <div id="form-buttons-container">
+          <div
+            className="form-button clickable"
+            id="close-button"
+            onClick={() => closeForm(false)}
+          >
+            <img src={closeIcon} alt="" />
+          </div>
+          <div className="form-button" id="submit-button-container">
+            {!formState._id && <SubmitButton buttonText={"add"} />}
+            {formState._id && (
+              <SubmitButton buttonText={"edit"} editType={formState.type} />
+            )}
+          </div>
+        </div>
       </form>
     </section>
   );

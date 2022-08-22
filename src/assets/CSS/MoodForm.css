@@ -49,18 +49,37 @@ form {
   font-family: six-hands-marker, sans-serif;
 }
 
-.send-button {
-  width: fit-content;
+#form-buttons-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#close-button {
+  width: 1.5rem;
+}
+
+#close-button img {
+  width: 100%;
+}
+
+#send-button {
+  min-width: 4.75rem;
   border: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   background: transparent;
   font-family: six-hands-condensed, sans-serif;
   font-size: 3rem;
   text-transform: uppercase;
 }
 
-#button-icon {
-  margin-left: 1rem;
+#send-button-icon {
   font-family: whatsapp-emoticons;
+  font-size: 1.5rem;
 }
 
 @media screen and (orientation: portrait) {
@@ -74,7 +93,11 @@ form {
     width: 80%;
   }
 
-  .send-button {
+  #close-button {
+    width: 1rem;
+  }
+
+  #send-button {
     font-size: 2rem;
   }
 }

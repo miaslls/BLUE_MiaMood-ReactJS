@@ -5,8 +5,8 @@ import formatDateTime from "util/formatDateTime";
 import MoodForm from "components/MoodForm";
 
 import markerStroke from "assets/IMG/marker-stroke.svg";
-import iconPencil from "assets/ICON/icon-pencil.svg";
-import iconScissors from "assets/ICON/icon-scissors.svg";
+import pencilIcon from "assets/ICON/icon-pencil.svg";
+import scissorsIcon from "assets/ICON/icon-scissors.svg";
 
 const moodIcons = ["<", "*", "2", ".", '"', "A"];
 
@@ -26,21 +26,12 @@ function App() {
     getMoodList();
   }, []);
 
-  // ----- 📌 delete // 🐞 FIXME: useContext?
-
-  const [moodToDelete, setMoodToDelete] = useState(undefined);
-
-  // useEffect(() => {
-  //   if (moodToDelete) {
-  //     MoodService.deleteMood(moodToDelete._id);
-  //     setMoodToDelete(undefined);
-  //     getMoodList();
-  //   }
-  // }, [moodToDelete]);
+  // ----- 📌 delete
 
   const deleteMood = async (id) => {
     const response = await MoodService.deleteMood(id);
-    getMoodList();
+
+    if (response.message === "deleted") getMoodList();
   };
 
   // ----- 📌📌 FORM
@@ -57,15 +48,21 @@ function App() {
   const [activeMood, setActiveMood] = useState({});
   const [formOpen, setFormOpen] = useState(false);
 
+  const closeForm = () => {
+    console.log("fuckity fuck"); // 🦋
+    setFormState(emptyForm);
+    setActiveMood({});
+    setFormOpen(false);
+  };
+
   // ----- 📌📌 ITEM
 
-  function MoodListItem({ mood, index, deleteMood }) {
-    const moodDate = new Date(mood.date);
+  function MoodListItem({ mood, index, moodList, deleteMood }) {
+    const moodDate = new Date(`${mood.date}T${mood.time}`);
     const titleDate = new Intl.DateTimeFormat("en-US", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-      timeZone: "America/Sao_Paulo",
+      weekday: "long",
+      day: "2-digit",
+      month: "long",
     }).format(moodDate);
 
     return (
@@ -84,7 +81,7 @@ function App() {
               <div className="mood-options-container">
                 <div className="mood-options-button clickable">
                   <img
-                    src={iconPencil}
+                    src={pencilIcon}
                     alt="edit button"
                     onClick={() => {
                       setFormState(mood);
@@ -94,7 +91,7 @@ function App() {
                 </div>
                 <div className="mood-options-button clickable">
                   <img
-                    src={iconScissors}
+                    src={scissorsIcon}
                     alt="delete button"
                     onClick={() => {
                       deleteMood(mood._id);
@@ -138,15 +135,18 @@ function App() {
 
           {/* ----- 📌 ITEM */}
 
-          {moodList.map((mood, index) => (
-            <MoodListItem
-              key={mood._id}
-              mood={mood}
-              index={index}
-              deleteMood={deleteMood}
-              // setMoodToDelete={setMoodToDelete}
-            />
-          ))}
+          <div id="moodlist-items-container">
+            {moodList.map((mood, index, array) => (
+              <MoodListItem
+                key={mood._id}
+                mood={mood}
+                index={index}
+                moodList={array}
+                deleteMood={deleteMood}
+                // setMoodToDelete={setMoodToDelete}
+              />
+            ))}
+          </div>
         </section>
 
         {/* ----- 📌 FORM */}
@@ -160,6 +160,7 @@ function App() {
             setActiveMood={setActiveMood}
             getMoodlist={getMoodList}
             setFormOpen={setFormOpen}
+            closeForm={closeForm}
           />
         )}
       </main>
