@@ -25,6 +25,8 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
     }
   };
 
+  // ----- 📌📌🚨 COUNTER RETURN
+
   return (
     <div className="statistics-mood">
       <div
@@ -44,6 +46,7 @@ function Statistics({ moodIcons, list, getMoodList }) {
   const [moodCount, setMoodCount] = useState({});
 
   // 🚨 this 🔻 is CRAP and should be refactored
+
   const countMoodsByType = (list) => {
     const count1 = list.filter((mood) => {
       if (mood.type === 1) {
@@ -123,6 +126,7 @@ function Statistics({ moodIcons, list, getMoodList }) {
             />
           ))}
         </div>
+
         <div id="statistics-tip-container">
           <div id="statistics-tip-arrow">
             <img src={arrow} alt="" />

@@ -92,6 +92,8 @@ function MoodForm({
         <img src={markerStroke} alt="" />
       </div>
 
+      {/* ----- 📌 TYPE input */}
+
       <form autoComplete="off">
         <div id="mood-type-container">
           <input
@@ -115,6 +117,8 @@ function MoodForm({
           ))}
         </div>
 
+        {/* ----- 📌 DATE/TIME input */}
+
         <div id="date-time-container">
           <input
             className="input"
@@ -124,6 +128,7 @@ function MoodForm({
             defaultValue={getDateInput()}
             onChange={(e) => handleChange(e, "date")}
           />
+
           <input
             className="input"
             type="time"
@@ -134,6 +139,8 @@ function MoodForm({
             onChange={(e) => handleChange(e, "time")}
           />
         </div>
+
+        {/* ----- 📌 TEXT input */}
 
         <div id="text-container">
           <input
@@ -147,6 +154,8 @@ function MoodForm({
           />
         </div>
 
+        {/* ----- 📌📌 BUTTONS */}
+
         <div id="form-buttons-container">
           <div
             className="form-button clickable"
@@ -155,6 +164,9 @@ function MoodForm({
           >
             <img src={closeIcon} alt="" />
           </div>
+
+          {/* ----- 📌 submit */}
+
           <div className="form-button" id="submit-button-container">
             {!formState._id && <SubmitButton buttonText={"add"} />}
             {formState._id && (
