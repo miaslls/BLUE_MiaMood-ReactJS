@@ -178,8 +178,15 @@ function App() {
             </div>
           ) : (
             <div id="no-moods">
-              <p>this list is empty!</p>
-              <p></p>add new by clicking the <b>+</b> button above
+              <p>this list is empty (or loading!)</p>
+              <div
+                id="no-moods-add"
+                className="clickable"
+                onClick={() => openCreateForm()}
+              >
+                ADD
+                <div id="no-moods-add-icon">¯</div>
+              </div>
             </div>
           )}
         </section>
