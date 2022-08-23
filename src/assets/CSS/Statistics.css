@@ -2,7 +2,7 @@
   width: 45%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 }
 
 #statistics-moods-container {
@@ -28,6 +28,7 @@
 }
 
 #statistics-tip-container {
+  align-self: center;
   position: relative;
   top: 1rem;
   right: 2rem;
@@ -53,6 +54,7 @@
   #statistics {
     width: 100%;
     margin-bottom: 4rem;
+    align-items: center;
   }
 
   #statistics-mood-container {
