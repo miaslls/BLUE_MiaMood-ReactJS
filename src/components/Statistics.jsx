@@ -35,7 +35,9 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
       >
         {icon}
       </div>
-      <div className="statistics-mood-counter">{moodCount[index + 1]}</div>
+      {moodCount[index + 1] > 0 && (
+        <div className="statistics-mood-counter">{moodCount[index + 1]}</div>
+      )}
     </div>
   );
 }
@@ -45,6 +47,7 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
 function Statistics({ moodIcons, list, getMoodList }) {
   const [moodCount, setMoodCount] = useState({});
 
+  // ----- 📌 count
   // 🚨 this 🔻 is CRAP and should be refactored
 
   const countMoodsByType = (list) => {
@@ -90,6 +93,22 @@ function Statistics({ moodIcons, list, getMoodList }) {
       return false;
     }).length;
 
+    // ----- 📌 average
+
+    const moodSum =
+      count1 * 1 + count2 * 2 + count3 * 3 + count4 * 4 + count5 * 5;
+
+    let moodAverage = moodSum / list.length;
+
+    // add ❤
+    moodAverage += count6 * 0.1;
+
+    moodAverage > 5
+      ? (moodAverage = 5)
+      : (moodAverage = Math.round(moodAverage));
+
+    // ----- 📌 set
+
     setMoodCount({
       1: count1,
       2: count2,
@@ -98,8 +117,11 @@ function Statistics({ moodIcons, list, getMoodList }) {
       5: count5,
       6: count6,
       total: list.length,
+      average: moodAverage,
     });
   };
+
+  // ----- 📌 update
 
   useEffect(() => {
     countMoodsByType(list);
@@ -115,6 +137,24 @@ function Statistics({ moodIcons, list, getMoodList }) {
           <img src={markerStroke} alt="" />
         </div>
 
+        {/* ----- 📌 text */}
+
+        {moodCount.total > 0 && (
+          <div id="statistics-text-container">
+            <div id="statistics-text-total">TOTAL MOODS: {moodCount.total}</div>
+            {moodCount.average > 0 && (
+              <div id="statistics-text-average">
+                MOOD AVERAGE:{" "}
+                <span id="statistics-average-icon">
+                  {moodIcons[moodCount.average - 1]}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ----- 📌 moods + counter */}
+
         <div id="statistics-moods-container">
           {moodIcons.map((icon, index) => (
             <MoodTypeCounter
@@ -126,6 +166,8 @@ function Statistics({ moodIcons, list, getMoodList }) {
             />
           ))}
         </div>
+
+        {/* ----- 📌 tip */}
 
         <div id="statistics-tip-container">
           <div id="statistics-tip-arrow">

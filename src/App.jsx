@@ -99,6 +99,8 @@ function App() {
           <div className="moodlist-date-title">{titleDate}</div>
         )}
 
+        {/* ----- 📌 mood */}
+
         <div className="moodlist-item">
           <div className="mood-icon">{moodIcons[mood.type - 1]}</div>
           <div className="mood-text-container">
@@ -107,6 +109,8 @@ function App() {
               <div className="mood-date-time">
                 {postDate} @ {postTime}
               </div>
+
+              {/* ----- 📌 edit/delete */}
 
               <div className="mood-options-container">
                 <div className="mood-options-button clickable">
