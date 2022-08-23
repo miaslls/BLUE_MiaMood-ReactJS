@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { MoodService } from "services/MoodService";
 import { getDateToday, getTimeNow } from "util/getDateTimeNow";
-import formatDateTime from "util/formatDateTime";
 import MoodForm from "components/MoodForm";
 
 import markerStroke from "assets/IMG/marker-stroke.svg";
@@ -67,6 +66,14 @@ function App() {
       day: "2-digit",
       month: "long",
     }).format(moodDate);
+    const postDate = new Intl.DateTimeFormat("en-US", {
+      day: "2-digit",
+      month: "numeric",
+    }).format(moodDate);
+    const postTime = new Intl.DateTimeFormat("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(moodDate);
 
     // ----- 📌 delete
 
@@ -91,7 +98,7 @@ function App() {
             <div className="mood-text-top-row">{mood.text}</div>
             <div className="mood-text--bottom-row">
               <div className="mood-date-time">
-                {formatDateTime(mood.date, mood.time)}
+                {postDate} @ {postTime}
               </div>
               <div className="mood-options-container">
                 <div className="mood-options-button clickable">
