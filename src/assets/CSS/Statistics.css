@@ -5,27 +5,8 @@
   align-items: center;
 }
 
-#statistics-title-container {
-  width: 100%;
-  margin-bottom: 5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-}
-
-#statistics-date {
-  font-family: six-hands-condensed, sans-serif;
-  font-size: 3rem;
-  text-transform: uppercase;
-}
-
-#statistics-icon {
-  font-family: whatsapp-emoticons;
-  font-size: 3rem;
-}
-
 #statistics-moods-container {
+  margin-top: 3rem;
   display: flex;
   gap: 1rem;
 }
@@ -52,14 +33,14 @@
   right: 2rem;
 }
 
-#tip-arrow {
+#statistics-tip-arrow {
   width: 4rem;
   position: absolute;
   top: 2.5rem;
   transform: rotate(-100deg);
 }
 
-#tip-text {
+#statistics-tip-text {
   width: 5rem;
   position: absolute;
   top: 6rem;
@@ -75,23 +56,19 @@
 @media screen and (orientation: portrait) {
   #statistics {
     width: 100%;
-    margin-bottom: 10%;
+    margin-bottom: 4rem;
   }
 
-  #statistics-date {
-    font-size: 2.5rem;
-  }
-
-  #statistics-icon {
-    font-size: 2.5rem;
+  #statistics-mood-container {
+    margin-top: 1rem;
   }
 
   .statistics-mood-icon {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .statistics-mood-counter {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   #statistics-tip-container {

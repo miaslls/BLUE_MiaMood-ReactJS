@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MoodService } from "services/MoodService";
 import { getDateToday, getTimeNow } from "util/getDateTimeNow";
 import MoodForm from "components/MoodForm";
+import Statistics from "components/Statistics";
 
 import markerStroke from "assets/IMG/marker-stroke.svg";
 import pencilIcon from "assets/ICON/icon-pencil.svg";
@@ -57,7 +58,7 @@ function App() {
     setFormOpen(false);
   };
 
-  // ----- 📌📌 ITEM
+  // ----- 📌📌📌🚨 function ITEM
 
   function MoodListItem({ mood, index, moodList, openEditForm, closeForm }) {
     const moodDate = new Date(`${mood.date}T${mood.time}`);
@@ -85,7 +86,7 @@ function App() {
       }
     };
 
-    // 📌📌📌 ITEM RETURN
+    // 📌📌🚨 ITEM RETURN
 
     return (
       <>
@@ -128,7 +129,7 @@ function App() {
     );
   }
 
-  // 📌📌📌 APP RETURN
+  // 📌📌🚨 APP RETURN
 
   return (
     <div id="outer-container">
@@ -197,6 +198,13 @@ function App() {
             setFormOpen={setFormOpen}
             closeForm={closeForm}
           />
+        )}
+
+        {/* ----- 📌 STATISTICS */}
+
+        {!formOpen && (
+          // <Statistics moodIcons={moodIcons} moodCount={moodCount} />
+          <Statistics moodIcons={moodIcons} list={moodList} />
         )}
       </main>
     </div>

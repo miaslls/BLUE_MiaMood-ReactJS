@@ -93,7 +93,6 @@ function MoodForm({
 
       <form autoComplete="off">
         <div id="mood-type-container">
-          {/* ----- 📌 */}
           <input
             type="hidden"
             name="type"
@@ -104,6 +103,7 @@ function MoodForm({
 
           {moodIcons.map((icon, index) => (
             <div
+              key={`form-mood-type-${index + 1}`}
               className={`form-mood-icon clickable ${
                 activeMood[index + 1] ? "active-mood" : null
               }`}
