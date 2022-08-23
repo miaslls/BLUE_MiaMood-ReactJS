@@ -19,6 +19,13 @@ form {
   border: 0;
   border-bottom: #000 1px dashed;
   background: transparent;
+  color: #000;
+  /* 🚨 */
+}
+
+.input::placeholder {
+  color: #00000060;
+  /* 🚨 */
 }
 
 #mood-type-container {
@@ -75,6 +82,8 @@ form {
   font-family: six-hands-condensed, sans-serif;
   font-size: 3rem;
   text-transform: uppercase;
+  color: #000;
+  /* 🚨 */
 }
 
 #send-button-icon {
