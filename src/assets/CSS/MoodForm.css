@@ -54,6 +54,7 @@ form {
 #text-input {
   width: 100%;
   font-family: six-hands-marker, sans-serif;
+  font-size: 1rem;
 }
 
 #form-buttons-container {
