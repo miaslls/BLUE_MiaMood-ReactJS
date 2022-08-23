@@ -141,7 +141,9 @@ function Statistics({ moodIcons, list, getMoodList }) {
 
         {moodCount.total > 0 && (
           <div id="statistics-text-container">
-            <div id="statistics-text-total">TOTAL MOODS: {moodCount.total}</div>
+            <div id="statistics-text-total">
+              TOTAL MOODS: [ <b>{moodCount.total}</b> ]
+            </div>
             {moodCount.average > 0 && (
               <div id="statistics-text-average">
                 MOOD AVERAGE:{" "}
