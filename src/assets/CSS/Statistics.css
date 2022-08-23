@@ -34,23 +34,19 @@
 }
 
 #statistics-tip-arrow {
-  width: 4rem;
-  position: absolute;
+  width: 3rem;
+  position: relative;
   top: 2.5rem;
+  left: 1rem;
   transform: rotate(-100deg);
 }
 
 #statistics-tip-text {
-  width: 5rem;
+  width: 7rem;
   position: absolute;
   top: 6rem;
   transform: rotate(-15deg);
-}
-
-@media screen and (orientation: landscape) {
-  #statistics {
-    margin-top: -5%;
-  }
+  text-align: center;
 }
 
 @media screen and (orientation: portrait) {
@@ -72,6 +68,23 @@
   }
 
   #statistics-tip-container {
-    display: none;
+    align-self: flex-start;
+    right: unset;
+    top: 0.5rem;
+    left: 4rem;
+  }
+
+  #statistics-tip-arrow {
+    width: 2rem;
+    top: 1.5rem;
+    left: 1.5rem;
+    transform: rotate(-100deg);
+  }
+
+  #statistics-tip-text {
+    position: relative;
+    top: 3rem;
+    transform: rotate(-15deg);
+    font-size: 0.8rem;
   }
 }

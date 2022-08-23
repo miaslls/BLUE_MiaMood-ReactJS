@@ -1,14 +1,38 @@
 import { useState, useEffect } from "react";
+import { MoodService } from "services/MoodService";
+import { getDateToday, getTimeNow } from "util/getDateTimeNow";
 
 import markerStroke from "assets/IMG/marker-stroke.svg";
 import arrow from "assets/IMG/statistics-arrow.svg";
 
 // ----- 📌📌📌🚨 function COUNTER
 
-function MoodTypeCounter({ moodCount, icon, index }) {
+function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
+  // ----- 📌 quickAdd
+
+  const quickAdd = async (moodType) => {
+    const moodBody = {
+      type: moodType,
+      text: "",
+      date: getDateToday(),
+      time: getTimeNow(),
+    };
+
+    const response = await MoodService.createMood(moodBody);
+
+    if (response.mood) {
+      getMoodList();
+    }
+  };
+
   return (
     <div className="statistics-mood">
-      <div className="statistics-mood-icon clickable">{icon}</div>
+      <div
+        className="statistics-mood-icon clickable"
+        onClick={() => quickAdd(index + 1)}
+      >
+        {icon}
+      </div>
       <div className="statistics-mood-counter">{moodCount[index + 1]}</div>
     </div>
   );
@@ -16,7 +40,7 @@ function MoodTypeCounter({ moodCount, icon, index }) {
 
 // ----- 📌📌📌🚨 function STATISTICS
 
-function Statistics({ moodIcons, list }) {
+function Statistics({ moodIcons, list, getMoodList }) {
   const [moodCount, setMoodCount] = useState({});
 
   // 🚨 this 🔻 is CRAP and should be refactored
@@ -95,19 +119,16 @@ function Statistics({ moodIcons, list }) {
               moodCount={moodCount}
               icon={icon}
               index={index}
+              getMoodList={getMoodList}
             />
           ))}
         </div>
-        {/* <div id="statistics-tip-container">
+        <div id="statistics-tip-container">
           <div id="statistics-tip-arrow">
             <img src={arrow} alt="" />
           </div>
-          <div id="statistics-tip-text">
-            click to
-            <br />
-            quick add
-          </div>
-        </div> */}
+          <div id="statistics-tip-text">click icon to quick add</div>
+        </div>
       </section>
     </>
   );

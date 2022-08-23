@@ -204,7 +204,11 @@ function App() {
 
         {!formOpen && (
           // <Statistics moodIcons={moodIcons} moodCount={moodCount} />
-          <Statistics moodIcons={moodIcons} list={moodList} />
+          <Statistics
+            moodIcons={moodIcons}
+            list={moodList}
+            getMoodList={getMoodList}
+          />
         )}
       </main>
     </div>

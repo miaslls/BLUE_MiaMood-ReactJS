@@ -18,7 +18,7 @@
 
 /* 📌 STYLES */
 
-@import url("assets/CSS/reset.css");
+@import url("assets/CSS/_reset.css");
 @import url("assets/CSS/App.css");
 @import url("assets/CSS/Header.css");
 @import url("assets/CSS/MoodList.css");
