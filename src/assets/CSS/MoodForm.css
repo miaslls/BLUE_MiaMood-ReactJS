@@ -102,6 +102,11 @@ form {
     width: 80%;
   }
 
+  #date-time-container {
+    justify-content: center;
+    gap: 2rem;
+  }
+
   #close-button {
     width: 1rem;
   }
