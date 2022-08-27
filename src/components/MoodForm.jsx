@@ -65,7 +65,7 @@ function MoodForm({
 
   //  📌📌 ----- SubmitButton
 
-  function SubmitButton({ buttonText, editType = undefined }) {
+  function SubmitButton({ children, editType = undefined }) {
     return (
       <button
         className="clickable"
@@ -73,7 +73,7 @@ function MoodForm({
         type="button"
         onClick={() => submitForm()}
       >
-        {buttonText}
+        {children}
         <span id="send-button-icon">
           {editType
             ? moodIcons[editType - 1]
@@ -168,10 +168,9 @@ function MoodForm({
           {/* ----- 📌 submit */}
 
           <div className="form-button" id="submit-button-container">
-            {!formState._id && <SubmitButton buttonText={"add"} />}
-            {formState._id && (
-              <SubmitButton buttonText={"edit"} editType={formState.type} />
-            )}
+            <SubmitButton editType={formState.type}>
+              {formState._id ? "edit" : "add"}
+            </SubmitButton>
           </div>
         </div>
       </form>
