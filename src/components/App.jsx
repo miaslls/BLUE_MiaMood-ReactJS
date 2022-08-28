@@ -11,7 +11,7 @@ import Statistics from "components/Statistics";
 
 const moodIcons = ["<", "*", "2", ".", '"', "A"];
 
-// 📌📌📌🚨 function APP
+// 📌📌📌 function APP
 
 function App() {
   // ----- 📌📌 LIST
@@ -59,7 +59,7 @@ function App() {
     setFormOpen(false);
   };
 
-  // 📌📌🚨 APP RETURN
+  // 📌📌 APP RETURN
 
   return (
     <div id="outer-container">

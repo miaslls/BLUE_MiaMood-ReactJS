@@ -6,6 +6,34 @@ import { MoodService } from "services/MoodService";
 import markerStroke from "assets/IMG/marker-stroke.svg";
 import closeIcon from "assets/ICON/icon-close.svg";
 
+//  📌📌 ----- SubmitButton
+
+function SubmitButton({
+  children,
+  moodIcons,
+  activeMood,
+  submitForm,
+  editType = undefined,
+}) {
+  return (
+    <button
+      className="clickable"
+      id="send-button"
+      type="button"
+      onClick={() => submitForm()}
+    >
+      {children}
+      <span id="send-button-icon">
+        {editType
+          ? moodIcons[editType - 1]
+          : moodIcons[activeMood.activeType - 1]}
+      </span>
+    </button>
+  );
+}
+
+//  📌📌📌 ----- FORM
+
 function MoodForm({
   moodIcons,
   emptyForm,
@@ -64,26 +92,6 @@ function MoodForm({
       }
     }
   };
-
-  //  📌📌 ----- SubmitButton
-
-  function SubmitButton({ children, editType = undefined }) {
-    return (
-      <button
-        className="clickable"
-        id="send-button"
-        type="button"
-        onClick={() => submitForm()}
-      >
-        {children}
-        <span id="send-button-icon">
-          {editType
-            ? moodIcons[editType - 1]
-            : moodIcons[activeMood.activeType - 1]}
-        </span>
-      </button>
-    );
-  }
 
   // 📌📌📌 RETURN
 
@@ -170,7 +178,12 @@ function MoodForm({
           {/* ----- 📌 submit */}
 
           <div className="form-button" id="submit-button-container">
-            <SubmitButton editType={formState.type}>
+            <SubmitButton
+              moodIcons={moodIcons}
+              activeMood={activeMood}
+              submitForm={submitForm}
+              editType={formState.type}
+            >
               {formState._id ? "edit" : "add"}
             </SubmitButton>
           </div>
