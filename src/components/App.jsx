@@ -5,6 +5,7 @@ import { MoodService } from 'services/MoodService';
 import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 
 import Header from 'components/Header';
+import Loading from 'components/Loading';
 import MoodList from 'components/MoodList';
 import MoodForm from 'components/MoodForm';
 import Statistics from 'components/Statistics';
@@ -17,9 +18,12 @@ function App() {
   // ----- 📌📌 LIST
 
   const [selectedMoodList, setSelectedMoodList] = useState('today');
+  const [moodListLoading, setMoodListLoading] = useState(true);
   const [moodList, setMoodList] = useState([]);
 
   const getMoodList = async () => {
+    setMoodListLoading(true);
+
     let response;
 
     selectedMoodList === 'today'
@@ -27,6 +31,7 @@ function App() {
       : (response = await MoodService.getAllMoods());
 
     setMoodList(response.moods);
+    setMoodListLoading(false);
   };
 
   useEffect(() => {
@@ -82,19 +87,23 @@ function App() {
       <main>
         {/* ----- 📌 MOODLIST */}
 
-        <MoodList
-          selectedMoodList={selectedMoodList}
-          moodList={moodList}
-          moodIcons={moodIcons}
-          getMoodList={getMoodList}
-          openCreateForm={openCreateForm}
-          openEditForm={openEditForm}
-          closeForm={closeForm}
-        />
+        {moodListLoading && <Loading />}
+
+        {!moodListLoading && (
+          <MoodList
+            selectedMoodList={selectedMoodList}
+            moodList={moodList}
+            moodIcons={moodIcons}
+            getMoodList={getMoodList}
+            openCreateForm={openCreateForm}
+            openEditForm={openEditForm}
+            closeForm={closeForm}
+          />
+        )}
 
         {/* ----- 📌 FORM */}
 
-        {formOpen && (
+        {formOpen && !moodListLoading && (
           <MoodForm
             moodIcons={moodIcons}
             emptyForm={emptyForm}
@@ -110,7 +119,7 @@ function App() {
 
         {/* ----- 📌 STATISTICS */}
 
-        {!formOpen && (
+        {!formOpen && !moodListLoading && (
           <Statistics moodIcons={moodIcons} list={moodList} getMoodList={getMoodList} />
         )}
       </main>

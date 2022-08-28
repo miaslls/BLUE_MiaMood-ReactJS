@@ -53,7 +53,7 @@ function MoodList({
         //  ----- 📌 NO MOODS
 
         <div id="no-moods">
-          <p>this list is empty (or loading!)</p>
+          <p>this list is empty!</p>
           <div id="no-moods-add" className="clickable" onClick={() => openCreateForm()}>
             ADD
             <div id="no-moods-add-icon">¯</div>
