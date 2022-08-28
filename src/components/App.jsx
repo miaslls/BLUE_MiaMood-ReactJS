@@ -20,13 +20,24 @@ function App() {
   const [moodList, setMoodList] = useState([]);
 
   const getMoodList = async () => {
-    const response = await MoodService.getAllMoods();
+    let response;
+
+    selectedMoodList === 'today'
+      ? (response = await MoodService.getTodayMoods())
+      : (response = await MoodService.getAllMoods());
+
     setMoodList(response.moods);
   };
 
   useEffect(() => {
     getMoodList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    getMoodList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedMoodList]);
 
   // ----- 📌📌 FORM
 
@@ -66,14 +77,15 @@ function App() {
     <div id="outer-container">
       {/* ----- 📌 HEADER */}
 
-      <Header openCreateForm={openCreateForm} />
+      <Header setSelectedMoodList={setSelectedMoodList} openCreateForm={openCreateForm} />
 
       <main>
         {/* ----- 📌 MOODLIST */}
 
         <MoodList
-          moodIcons={moodIcons}
+          selectedMoodList={selectedMoodList}
           moodList={moodList}
+          moodIcons={moodIcons}
           getMoodList={getMoodList}
           openCreateForm={openCreateForm}
           openEditForm={openEditForm}

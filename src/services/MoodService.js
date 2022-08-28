@@ -5,6 +5,8 @@ const parseResponse = (response) => response.json();
 export const MoodService = {
   getAllMoods: () => fetch(Api.allMoods(), { method: 'GET' }).then(parseResponse),
 
+  getTodayMoods: () => fetch(Api.todayMoods(), { method: 'GET' }).then(parseResponse),
+
   getMoodById: (id) => fetch(Api.moodById(id), { method: 'GET' }).then(parseResponse),
 
   createMood: (body) =>

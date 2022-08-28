@@ -5,7 +5,16 @@ import { MoodService } from 'services/MoodService';
 import pencilIcon from 'assets/ICON/icon-pencil.svg';
 import scissorsIcon from 'assets/ICON/icon-scissors.svg';
 
-function MoodListItem({ mood, index, moodList, moodIcons, getMoodList, openEditForm, closeForm }) {
+function MoodListItem({
+  mood,
+  index,
+  moodList,
+  selectedMoodList,
+  moodIcons,
+  getMoodList,
+  openEditForm,
+  closeForm,
+}) {
   const moodDate = new Date(`${mood.date}T${mood.time}`);
 
   const titleDate = new Intl.DateTimeFormat('en-US', {
@@ -39,7 +48,7 @@ function MoodListItem({ mood, index, moodList, moodIcons, getMoodList, openEditF
 
   return (
     <>
-      {(index === 0 || mood.date !== moodList[index - 1].date) && (
+      {selectedMoodList === 'all' && (index === 0 || mood.date !== moodList[index - 1].date) && (
         <div className="moodlist-date-title">{titleDate}</div>
       )}
 
