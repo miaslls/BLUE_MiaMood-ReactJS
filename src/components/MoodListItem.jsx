@@ -1,35 +1,27 @@
-import "assets/CSS/MoodListItem.css";
+import 'assets/CSS/MoodListItem.css';
 
-import { MoodService } from "services/MoodService";
+import { MoodService } from 'services/MoodService';
 
-import pencilIcon from "assets/ICON/icon-pencil.svg";
-import scissorsIcon from "assets/ICON/icon-scissors.svg";
+import pencilIcon from 'assets/ICON/icon-pencil.svg';
+import scissorsIcon from 'assets/ICON/icon-scissors.svg';
 
-function MoodListItem({
-  mood,
-  index,
-  moodList,
-  moodIcons,
-  getMoodList,
-  openEditForm,
-  closeForm,
-}) {
+function MoodListItem({ mood, index, moodList, moodIcons, getMoodList, openEditForm, closeForm }) {
   const moodDate = new Date(`${mood.date}T${mood.time}`);
 
-  const titleDate = new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
+  const titleDate = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    day: '2-digit',
+    month: 'long',
   }).format(moodDate);
 
-  const postDate = new Intl.DateTimeFormat("en-US", {
-    day: "2-digit",
-    month: "numeric",
+  const postDate = new Intl.DateTimeFormat('en-US', {
+    day: '2-digit',
+    month: 'numeric',
   }).format(moodDate);
 
-  const postTime = new Intl.DateTimeFormat("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
+  const postTime = new Intl.DateTimeFormat('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
   }).format(moodDate);
 
   // ----- 📌 delete
@@ -37,7 +29,7 @@ function MoodListItem({
   const deleteMood = async (id) => {
     const response = await MoodService.deleteMood(id);
 
-    if (response.message === "deleted") {
+    if (response.message === 'deleted') {
       closeForm();
       getMoodList();
     }

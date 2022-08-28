@@ -1,11 +1,11 @@
-import "assets/CSS/Statistics.css";
+import 'assets/CSS/Statistics.css';
 
-import { useState, useEffect } from "react";
-import { MoodService } from "services/MoodService";
-import { getDateToday, getTimeNow } from "util/getDateTimeNow";
+import { useState, useEffect } from 'react';
+import { MoodService } from 'services/MoodService';
+import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 
-import markerStroke from "assets/IMG/marker-stroke.svg";
-import arrow from "assets/IMG/statistics-arrow.svg";
+import markerStroke from 'assets/IMG/marker-stroke.svg';
+import arrow from 'assets/IMG/statistics-arrow.svg';
 
 // ----- 📌📌📌🚨 function COUNTER
 
@@ -15,7 +15,7 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
   const quickAdd = async (moodType) => {
     const moodBody = {
       type: moodType,
-      text: "",
+      text: '',
       date: getDateToday(),
       time: getTimeNow(),
     };
@@ -31,10 +31,7 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
 
   return (
     <div className="statistics-mood">
-      <div
-        className="statistics-mood-icon clickable"
-        onClick={() => quickAdd(index + 1)}
-      >
+      <div className="statistics-mood-icon clickable" onClick={() => quickAdd(index + 1)}>
         {icon}
       </div>
       {moodCount[index + 1] > 0 && (
@@ -97,17 +94,14 @@ function Statistics({ moodIcons, list, getMoodList }) {
 
     // ----- 📌 average
 
-    const moodSum =
-      count1 * 1 + count2 * 2 + count3 * 3 + count4 * 4 + count5 * 5;
+    const moodSum = count1 * 1 + count2 * 2 + count3 * 3 + count4 * 4 + count5 * 5;
 
     let moodAverage = moodSum / list.length;
 
     // add ❤
     moodAverage += count6 * 0.1;
 
-    moodAverage > 5
-      ? (moodAverage = 5)
-      : (moodAverage = Math.round(moodAverage));
+    moodAverage > 5 ? (moodAverage = 5) : (moodAverage = Math.round(moodAverage));
 
     // ----- 📌 set
 
@@ -148,10 +142,8 @@ function Statistics({ moodIcons, list, getMoodList }) {
             </div>
             {moodCount.average > 0 && (
               <div id="statistics-text-average">
-                MOOD AVERAGE:{" "}
-                <span id="statistics-average-icon">
-                  {moodIcons[moodCount.average - 1]}
-                </span>
+                MOOD AVERAGE:{' '}
+                <span id="statistics-average-icon">{moodIcons[moodCount.average - 1]}</span>
               </div>
             )}
           </div>

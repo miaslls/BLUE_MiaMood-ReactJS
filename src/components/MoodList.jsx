@@ -1,16 +1,9 @@
-import "assets/CSS/MoodList.css";
-import MoodListItem from "components/MoodListItem";
+import 'assets/CSS/MoodList.css';
+import MoodListItem from 'components/MoodListItem';
 
-import markerStroke from "assets/IMG/marker-stroke.svg";
+import markerStroke from 'assets/IMG/marker-stroke.svg';
 
-function MoodList({
-  moodIcons,
-  moodList,
-  getMoodList,
-  openCreateForm,
-  openEditForm,
-  closeForm,
-}) {
+function MoodList({ moodIcons, moodList, getMoodList, openCreateForm, openEditForm, closeForm }) {
   return (
     <section id="moodlist">
       <h2 className="section-title">AllMoods</h2>
@@ -40,11 +33,7 @@ function MoodList({
 
         <div id="no-moods">
           <p>this list is empty (or loading!)</p>
-          <div
-            id="no-moods-add"
-            className="clickable"
-            onClick={() => openCreateForm()}
-          >
+          <div id="no-moods-add" className="clickable" onClick={() => openCreateForm()}>
             ADD
             <div id="no-moods-add-icon">¯</div>
           </div>

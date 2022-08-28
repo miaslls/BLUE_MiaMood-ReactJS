@@ -1,21 +1,21 @@
 /* 📌 FONTS */
 
 /* ADOBE FONTS */
-@import url("https://use.typekit.net/afj3hjl.css");
+@import url('https://use.typekit.net/afj3hjl.css');
 
 /* OTHER */
 @font-face {
-  font-family: "pwsmallicons";
-  src: url("assets/FONT/pwsmallicons-webfont.woff2") format("woff2"),
-    url("assets/FONT/pwsmallicons-webfont.woff") format("woff");
+  font-family: 'pwsmallicons';
+  src: url('assets/FONT/pwsmallicons-webfont.woff2') format('woff2'),
+    url('assets/FONT/pwsmallicons-webfont.woff') format('woff');
 }
 
 @font-face {
-  font-family: "whatsapp-emoticons";
-  src: url("assets/FONT/whatsapp_emoticons-webfont.woff2") format("woff2"),
-    url("assets/FONT/whatsapp_emoticons-webfont.woff") format("woff");
+  font-family: 'whatsapp-emoticons';
+  src: url('assets/FONT/whatsapp_emoticons-webfont.woff2') format('woff2'),
+    url('assets/FONT/whatsapp_emoticons-webfont.woff') format('woff');
 }
 
 /* 📌 RESET */
 
-@import url("assets/CSS/_reset.css");
+@import url('assets/CSS/_reset.css');

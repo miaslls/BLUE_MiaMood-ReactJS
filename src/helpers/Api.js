@@ -8,6 +8,6 @@ const MoodContext = {
 };
 
 export const Api = {
-  baseUrl: "https://mialog-api.herokuapp.com",
+  baseUrl: 'https://mialog-api.herokuapp.com',
   ...MoodContext,
 };

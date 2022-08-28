@@ -1,21 +1,22 @@
-import "assets/CSS/App.css";
+import 'assets/CSS/App.css';
 
-import { useState, useEffect } from "react";
-import { MoodService } from "services/MoodService";
-import { getDateToday, getTimeNow } from "util/getDateTimeNow";
+import { useState, useEffect } from 'react';
+import { MoodService } from 'services/MoodService';
+import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 
-import Header from "components/Header";
-import MoodList from "components/MoodList";
-import MoodForm from "components/MoodForm";
-import Statistics from "components/Statistics";
+import Header from 'components/Header';
+import MoodList from 'components/MoodList';
+import MoodForm from 'components/MoodForm';
+import Statistics from 'components/Statistics';
 
-const moodIcons = ["<", "*", "2", ".", '"', "A"];
+const moodIcons = ['<', '*', '2', '.', '"', 'A'];
 
 // 📌📌📌 function APP
 
 function App() {
   // ----- 📌📌 LIST
 
+  const [selectedMoodList, setSelectedMoodList] = useState('today');
   const [moodList, setMoodList] = useState([]);
 
   const getMoodList = async () => {
@@ -98,11 +99,7 @@ function App() {
         {/* ----- 📌 STATISTICS */}
 
         {!formOpen && (
-          <Statistics
-            moodIcons={moodIcons}
-            list={moodList}
-            getMoodList={getMoodList}
-          />
+          <Statistics moodIcons={moodIcons} list={moodList} getMoodList={getMoodList} />
         )}
       </main>
     </div>

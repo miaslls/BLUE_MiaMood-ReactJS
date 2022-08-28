@@ -1,32 +1,19 @@
-import "assets/CSS/MoodForm.css";
+import 'assets/CSS/MoodForm.css';
 
-import { useState, useEffect } from "react";
-import { MoodService } from "services/MoodService";
+import { useState, useEffect } from 'react';
+import { MoodService } from 'services/MoodService';
 
-import markerStroke from "assets/IMG/marker-stroke.svg";
-import closeIcon from "assets/ICON/icon-close.svg";
+import markerStroke from 'assets/IMG/marker-stroke.svg';
+import closeIcon from 'assets/ICON/icon-close.svg';
 
 //  📌📌 ----- SubmitButton
 
-function SubmitButton({
-  children,
-  moodIcons,
-  activeMood,
-  submitForm,
-  editType = undefined,
-}) {
+function SubmitButton({ children, moodIcons, activeMood, submitForm, editType = undefined }) {
   return (
-    <button
-      className="clickable"
-      id="send-button"
-      type="button"
-      onClick={() => submitForm()}
-    >
+    <button className="clickable" id="send-button" type="button" onClick={() => submitForm()}>
       {children}
       <span id="send-button-icon">
-        {editType
-          ? moodIcons[editType - 1]
-          : moodIcons[activeMood.activeType - 1]}
+        {editType ? moodIcons[editType - 1] : moodIcons[activeMood.activeType - 1]}
       </span>
     </button>
   );
@@ -111,15 +98,13 @@ function MoodForm({
             name="type"
             required
             defaultValue={getTypeInput()}
-            onChange={(e) => handleChange(e, "type")}
+            onChange={(e) => handleChange(e, 'type')}
           />
 
           {moodIcons.map((icon, index) => (
             <div
               key={`form-mood-type-${index + 1}`}
-              className={`form-mood-icon clickable ${
-                activeMood[index + 1] ? "active-mood" : null
-              }`}
+              className={`form-mood-icon clickable ${activeMood[index + 1] ? 'active-mood' : null}`}
               onClick={() => setMoodType(index + 1)}
             >
               {icon}
@@ -136,7 +121,7 @@ function MoodForm({
             name="date"
             required
             defaultValue={getDateInput()}
-            onChange={(e) => handleChange(e, "date")}
+            onChange={(e) => handleChange(e, 'date')}
           />
 
           <input
@@ -146,7 +131,7 @@ function MoodForm({
             name="time"
             required
             defaultValue={getTimeInput()}
-            onChange={(e) => handleChange(e, "time")}
+            onChange={(e) => handleChange(e, 'time')}
           />
         </div>
 
@@ -160,18 +145,14 @@ function MoodForm({
             name="text"
             placeholder="optional! this is example text..."
             defaultValue={getTextInput()}
-            onChange={(e) => handleChange(e, "text")}
+            onChange={(e) => handleChange(e, 'text')}
           />
         </div>
 
         {/* ----- 📌📌 BUTTONS */}
 
         <div id="form-buttons-container">
-          <div
-            className="form-button clickable"
-            id="close-button"
-            onClick={() => closeForm(false)}
-          >
+          <div className="form-button clickable" id="close-button" onClick={() => closeForm(false)}>
             <img src={closeIcon} alt="" />
           </div>
 
@@ -184,7 +165,7 @@ function MoodForm({
               submitForm={submitForm}
               editType={formState.type}
             >
-              {formState._id ? "edit" : "add"}
+              {formState._id ? 'edit' : 'add'}
             </SubmitButton>
           </div>
         </div>
