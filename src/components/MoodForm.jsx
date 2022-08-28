@@ -1,3 +1,5 @@
+import "assets/CSS/MoodForm.css";
+
 import { useState, useEffect } from "react";
 import { MoodService } from "services/MoodService";
 

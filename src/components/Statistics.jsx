@@ -1,3 +1,5 @@
+import "assets/CSS/Statistics.css";
+
 import { useState, useEffect } from "react";
 import { MoodService } from "services/MoodService";
 import { getDateToday, getTimeNow } from "util/getDateTimeNow";
