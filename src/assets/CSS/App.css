@@ -72,6 +72,10 @@ main {
 }
 
 @media screen and (orientation: portrait) {
+  body {
+    padding-top: 3rem;
+  }
+
   h2 {
     font-size: 1.5rem;
   }

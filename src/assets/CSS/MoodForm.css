@@ -94,7 +94,6 @@ form {
 @media screen and (orientation: portrait) {
   #mood-form {
     width: 100%;
-    margin-bottom: 10%;
     align-items: center;
   }
 
