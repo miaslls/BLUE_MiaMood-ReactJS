@@ -48,10 +48,15 @@ function Header({
               }}
             />
 
+            {/* ----- 📌 close search */}
+
             <div
               className="clickable"
               id="close-search-button"
-              onClick={() => setShowSearch(false)}
+              onClick={() => {
+                setShowSearch(false);
+                setSelectedMoodList('today');
+              }}
             >
               <img src={closeIcon} alt="" />
             </div>
