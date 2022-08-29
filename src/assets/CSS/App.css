@@ -80,10 +80,6 @@ main {
     font-size: 1.5rem;
   }
 
-  .clickable:hover {
-    transform: none;
-  }
-
   #outer-container {
     width: 350px;
     flex-direction: column;
