@@ -1,15 +1,9 @@
 /* 📌 FONTS */
 
 /* ADOBE FONTS */
-@import url('https://use.typekit.net/afj3hjl.css');
+@import url('https://use.typekit.net/wqa7jgj.css');
 
-/* OTHER */
-@font-face {
-  font-family: 'pwsmallicons';
-  src: url('assets/FONT/pwsmallicons-webfont.woff2') format('woff2'),
-    url('assets/FONT/pwsmallicons-webfont.woff') format('woff');
-}
-
+/* EMOJI ICONS */
 @font-face {
   font-family: 'whatsapp-emoticons';
   src: url('assets/FONT/whatsapp_emoticons-webfont.woff2') format('woff2'),

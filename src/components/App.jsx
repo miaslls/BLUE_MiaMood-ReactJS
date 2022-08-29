@@ -124,11 +124,9 @@ function App() {
         {!moodListLoading && (
           <MoodList
             selectedMoodList={selectedMoodList}
-            setSelectedMoodList={setSelectedMoodList}
             moodList={moodList}
             moodIcons={moodIcons}
             getMoodList={getMoodList}
-            openCreateForm={openCreateForm}
             openEditForm={openEditForm}
             closeForm={closeForm}
             searchDate={searchDate}

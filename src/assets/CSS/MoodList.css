@@ -13,22 +13,6 @@
 #no-moods {
   margin: 3rem 0;
   font-size: 1.25rem;
-  text-align: center;
-}
-
-#no-moods-add {
-  margin-top: 2rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.5rem;
-  font-family: six-hands-condensed, sans-serif;
-  font-size: 2.5rem;
-}
-
-#no-moods-add-icon {
-  font-family: pwsmallicons;
-  font-size: 2.75rem;
 }
 
 @media screen and (orientation: portrait) {

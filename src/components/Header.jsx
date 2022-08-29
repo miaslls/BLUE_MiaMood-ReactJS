@@ -3,6 +3,11 @@ import { getDateToday } from 'util/getDateTimeNow';
 
 import closeIcon from 'assets/ICON/icon-close.svg';
 
+import calendar from 'assets/ICON/nav-icon-calendar.svg';
+import add from 'assets/ICON/nav-icon-add.svg';
+import list from 'assets/ICON/nav-icon-list.svg';
+import home from 'assets/ICON/nav-icon-home.svg';
+
 // 📌📌📌 function HEADER
 
 function Header({
@@ -63,61 +68,63 @@ function Header({
           </div>
         )}
 
-        {/* ----- 📌 icon HOME */}
+        <div id="nav-icon-container">
+          {/* ----- 📌 icon HOME */}
 
-        <div
-          className="nav-icon clickable"
-          id="nav-icon-home"
-          onClick={() => {
-            closeForm();
-            setShowSearch(false);
-            setSelectedMoodList('today');
-          }}
-        >
-          2
-        </div>
+          <div
+            className="nav-icon clickable"
+            id="nav-icon-home"
+            onClick={() => {
+              closeForm();
+              setShowSearch(false);
+              setSelectedMoodList('today');
+            }}
+          >
+            <img src={home} alt="" />
+          </div>
 
-        {/* ----- 📌 icon ALL */}
+          {/* ----- 📌 icon SEARCH */}
 
-        <div
-          className="nav-icon clickable"
-          id="nav-icon-all"
-          onClick={() => {
-            closeForm();
-            setShowSearch(false);
-            setSelectedMoodList('all');
-          }}
-        >
-          F
-        </div>
+          <div
+            className="nav-icon clickable"
+            id="nav-icon-search"
+            onClick={() => {
+              closeForm();
+              setSelectedMoodList('date');
+              setShowSearch(true);
+              setSearchDate(getDateToday());
+            }}
+          >
+            <img src={calendar} alt="" />
+          </div>
 
-        {/* ----- 📌 icon SEARCH */}
+          {/* ----- 📌 icon ALL */}
 
-        <div
-          className="nav-icon clickable"
-          id="nav-icon-search"
-          onClick={() => {
-            closeForm();
-            setSelectedMoodList('date');
-            setShowSearch(true);
-            setSearchDate(getDateToday());
-          }}
-        >
-          D
-        </div>
+          <div
+            className="nav-icon clickable"
+            id="nav-icon-all"
+            onClick={() => {
+              closeForm();
+              setShowSearch(false);
+              setSelectedMoodList('all');
+            }}
+          >
+            <img src={list} alt="" />
+          </div>
 
-        {/* ----- 📌 icon ADD */}
+          {/* ----- 📌 icon ADD */}
 
-        <div
-          className="nav-icon clickable"
-          id="nav-icon-add"
-          onClick={() => {
-            setShowSearch(false);
-            setSelectedMoodList('today');
-            openCreateForm();
-          }}
-        >
-          ¯
+          <div
+            className="nav-icon clickable"
+            id="nav-icon-add"
+            onClick={() => {
+              setShowSearch(false);
+              setSelectedMoodList('today');
+              openCreateForm();
+            }}
+          >
+            <img src={add} alt="" />
+          </div>
         </div>
       </nav>
     </header>

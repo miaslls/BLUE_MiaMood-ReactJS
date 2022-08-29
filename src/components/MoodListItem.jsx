@@ -2,8 +2,8 @@ import 'assets/CSS/MoodListItem.css';
 
 import { MoodService } from 'services/MoodService';
 
-import pencilIcon from 'assets/ICON/icon-pencil.svg';
-import scissorsIcon from 'assets/ICON/icon-scissors.svg';
+import pencilIcon from 'assets/ICON/options-icon-edit.svg';
+import binIcon from 'assets/ICON/options-icon-delete.svg';
 
 function MoodListItem({
   mood,
@@ -79,7 +79,7 @@ function MoodListItem({
 
               <div className="mood-options-button clickable">
                 <img
-                  src={scissorsIcon}
+                  src={binIcon}
                   alt="delete button"
                   onClick={() => {
                     deleteMood(mood._id);

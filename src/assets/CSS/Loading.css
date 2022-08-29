@@ -8,9 +8,12 @@
 }
 
 #loading-icon {
-  font-family: pwsmallicons;
-  font-size: 4rem;
+  width: 5rem;
   animation: rotate 1.5s infinite linear;
+}
+
+#loading-icon img {
+  width: 100%;
 }
 
 @keyframes rotate {
@@ -18,7 +21,7 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(-359deg);
+    transform: rotate(359deg);
   }
 }
 

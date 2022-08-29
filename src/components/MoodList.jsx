@@ -6,11 +6,9 @@ import markerStroke from 'assets/IMG/marker-stroke.svg';
 
 function MoodList({
   selectedMoodList,
-  setSelectedMoodList,
   moodList,
   moodIcons,
   getMoodList,
-  openCreateForm,
   openEditForm,
   closeForm,
   searchDate,
@@ -66,17 +64,6 @@ function MoodList({
 
         <div id="no-moods">
           <p>this list is empty!</p>
-          <div
-            id="no-moods-add"
-            className="clickable"
-            onClick={() => {
-              setSelectedMoodList('today');
-              openCreateForm();
-            }}
-          >
-            ADD
-            <div id="no-moods-add-icon">¯</div>
-          </div>
         </div>
       )}
     </section>
