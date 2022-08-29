@@ -1,31 +1,43 @@
 import 'assets/CSS/MoodList.css';
-
 import MoodListItem from 'components/MoodListItem';
-
 import markerStroke from 'assets/IMG/marker-stroke.svg';
+
+// 📌📌📌 function LIST
 
 function MoodList({
   selectedMoodList,
+  setSelectedMoodList,
   moodList,
   moodIcons,
   getMoodList,
   openCreateForm,
   openEditForm,
   closeForm,
+  searchDate,
 }) {
-  const getMoodsTodayTitle = () => {
-    const today = new Date();
+  // ----- 📌 date TITLE
+
+  const getMoodsDateTitle = () => {
+    let date;
+
+    if (selectedMoodList === 'date' && searchDate) {
+      date = new Date(`${searchDate}T00:00:00`);
+    } else {
+      date = new Date();
+    }
 
     return new Intl.DateTimeFormat('en-US', {
       day: '2-digit',
       month: 'long',
-    }).format(today);
+    }).format(date);
   };
+
+  // 📌📌 LIST RETURN
 
   return (
     <section id="moodlist">
       <h2 className="section-title">
-        {selectedMoodList === 'today' ? getMoodsTodayTitle() : 'AllMoods'}
+        {selectedMoodList === 'all' ? 'AllMoods' : getMoodsDateTitle()}
       </h2>
       <div className="section-title-underline">
         <img src={markerStroke} alt="" />
@@ -54,7 +66,14 @@ function MoodList({
 
         <div id="no-moods">
           <p>this list is empty!</p>
-          <div id="no-moods-add" className="clickable" onClick={() => openCreateForm()}>
+          <div
+            id="no-moods-add"
+            className="clickable"
+            onClick={() => {
+              setSelectedMoodList('today');
+              openCreateForm();
+            }}
+          >
             ADD
             <div id="no-moods-add-icon">¯</div>
           </div>

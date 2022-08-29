@@ -31,6 +31,7 @@ function MoodForm({
   getMoodlist,
   setFormOpen,
   closeForm,
+  setShowSearch,
 }) {
   // ----- 📌 input default value
 
@@ -75,6 +76,7 @@ function MoodForm({
       if (response.mood) {
         setFormState(emptyForm);
         setFormOpen(false);
+        setShowSearch(false);
         getMoodlist();
       }
     }

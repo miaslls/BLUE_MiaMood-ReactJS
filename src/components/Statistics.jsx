@@ -9,7 +9,7 @@ import arrow from 'assets/IMG/statistics-arrow.svg';
 
 // ----- 📌📌📌🚨 function COUNTER
 
-function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
+function MoodTypeCounter({ moodCount, icon, index, getMoodList, setSelectedMoodList }) {
   // ----- 📌 quickAdd
 
   const quickAdd = async (moodType) => {
@@ -31,7 +31,13 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
 
   return (
     <div className="statistics-mood">
-      <div className="statistics-mood-icon clickable" onClick={() => quickAdd(index + 1)}>
+      <div
+        className="statistics-mood-icon clickable"
+        onClick={() => {
+          setSelectedMoodList('today');
+          quickAdd(index + 1);
+        }}
+      >
         {icon}
       </div>
       {moodCount[index + 1] > 0 && (
@@ -43,11 +49,11 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList }) {
 
 // ----- 📌📌📌🚨 function STATISTICS
 
-function Statistics({ moodIcons, list, getMoodList }) {
+function Statistics({ moodIcons, list, getMoodList, setSelectedMoodList }) {
   const [moodCount, setMoodCount] = useState({});
 
   // ----- 📌 count
-  // 🚨 this 🔻 is CRAP and should be refactored
+  // ----- 🚨 this 🔻 is CRAP and should be refactored
 
   const countMoodsByType = (list) => {
     const count1 = list.filter((mood) => {
@@ -159,6 +165,7 @@ function Statistics({ moodIcons, list, getMoodList }) {
               icon={icon}
               index={index}
               getMoodList={getMoodList}
+              setSelectedMoodList={setSelectedMoodList}
             />
           ))}
         </div>

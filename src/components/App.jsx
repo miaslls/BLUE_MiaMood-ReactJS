@@ -15,20 +15,42 @@ const moodIcons = ['<', '*', '2', '.', '"', 'A'];
 // 📌📌📌 function APP
 
 function App() {
+  // ----- 📌📌 SEARCH
+
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchDate, setSearchDate] = useState();
+
   // ----- 📌📌 LIST
 
   const [selectedMoodList, setSelectedMoodList] = useState('today');
   const [moodListLoading, setMoodListLoading] = useState(true);
   const [moodList, setMoodList] = useState([]);
 
-  const getMoodList = async () => {
+  const getMoodList = async (year, month, day) => {
     setMoodListLoading(true);
 
     let response;
 
-    selectedMoodList === 'today'
-      ? (response = await MoodService.getTodayMoods())
-      : (response = await MoodService.getAllMoods());
+    switch (selectedMoodList) {
+      case 'all':
+        response = await MoodService.getAllMoods();
+        break;
+
+      case 'today':
+        response = await MoodService.getTodayMoods();
+        break;
+
+      // 🚨 DISGRACEFUL 🔻
+      case 'date':
+        year && month && day
+          ? (response = await MoodService.getMoodsByDate(year, month, day))
+          : (response = await MoodService.getTodayMoods());
+        break;
+
+      default:
+        response = await MoodService.getTodayMoods();
+        break;
+    }
 
     setMoodList(response.moods);
     setMoodListLoading(false);
@@ -40,7 +62,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getMoodList();
+    if (selectedMoodList !== 'date') {
+      getMoodList();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMoodList]);
 
@@ -82,7 +106,15 @@ function App() {
     <div id="outer-container">
       {/* ----- 📌 HEADER */}
 
-      <Header setSelectedMoodList={setSelectedMoodList} openCreateForm={openCreateForm} />
+      <Header
+        getMoodList={getMoodList}
+        setSelectedMoodList={setSelectedMoodList}
+        openCreateForm={openCreateForm}
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
+        setSearchDate={setSearchDate}
+        closeForm={closeForm}
+      />
 
       <main>
         {/* ----- 📌 MOODLIST */}
@@ -92,12 +124,14 @@ function App() {
         {!moodListLoading && (
           <MoodList
             selectedMoodList={selectedMoodList}
+            setSelectedMoodList={setSelectedMoodList}
             moodList={moodList}
             moodIcons={moodIcons}
             getMoodList={getMoodList}
             openCreateForm={openCreateForm}
             openEditForm={openEditForm}
             closeForm={closeForm}
+            searchDate={searchDate}
           />
         )}
 
@@ -114,13 +148,19 @@ function App() {
             getMoodlist={getMoodList}
             setFormOpen={setFormOpen}
             closeForm={closeForm}
+            setShowSearch={setShowSearch}
           />
         )}
 
         {/* ----- 📌 STATISTICS */}
 
         {!formOpen && !moodListLoading && (
-          <Statistics moodIcons={moodIcons} list={moodList} getMoodList={getMoodList} />
+          <Statistics
+            moodIcons={moodIcons}
+            list={moodList}
+            getMoodList={getMoodList}
+            setSelectedMoodList={setSelectedMoodList}
+          />
         )}
       </main>
     </div>

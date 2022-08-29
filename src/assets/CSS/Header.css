@@ -8,8 +8,10 @@ header {
 }
 
 #page-title {
+  width: 60%;
   font-family: audrielle-no1, sans-serif;
   font-size: 8rem;
+  text-align: end;
   transform: rotate(-5deg);
 }
 
@@ -18,7 +20,37 @@ header {
 }
 
 nav {
+  width: 40%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 1rem;
+}
+
+#search-date-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+}
+
+#search-date-input {
+  padding: 0.25rem;
+  border: 0;
+  background: transparent;
+  font-family: six-hands-condensed, sans-serif;
+  font-size: 1.25rem;
+  color: #000;
+}
+
+#close-search-button {
+  width: 1rem;
+}
+
+#close-search-button img {
+  width: 100%;
 }
 
 .nav-icon {
@@ -29,6 +61,7 @@ nav {
 @media screen and (orientation: portrait) {
   header {
     width: 100%;
+    margin-bottom: 1.5rem;
     flex-direction: column;
     padding: 0 10%;
   }
@@ -39,11 +72,18 @@ nav {
   }
 
   nav {
-    margin-top: -10%;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  #search-date-container {
+    width: unset;
+    margin-right: 1rem;
+    column-gap: 0.5rem;
+    justify-content: flex-end;
   }
 
   .nav-icon {
     font-size: 3rem;
-    align-self: flex-end;
   }
 }

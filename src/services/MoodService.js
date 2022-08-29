@@ -7,6 +7,9 @@ export const MoodService = {
 
   getTodayMoods: () => fetch(Api.todayMoods(), { method: 'GET' }).then(parseResponse),
 
+  getMoodsByDate: (year, month, day) =>
+    fetch(Api.moodsByDate(year, month, day), { method: 'GET' }).then(parseResponse),
+
   getMoodById: (id) => fetch(Api.moodById(id), { method: 'GET' }).then(parseResponse),
 
   createMood: (body) =>
