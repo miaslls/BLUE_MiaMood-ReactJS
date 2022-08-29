@@ -1,6 +1,8 @@
 import 'assets/CSS/MoodList.css';
 import MoodListItem from 'components/MoodListItem';
+
 import markerStroke from 'assets/IMG/marker-stroke.svg';
+import separator from 'assets/IMG/separator.svg';
 
 // 📌📌📌 function LIST
 
@@ -34,6 +36,10 @@ function MoodList({
 
   return (
     <section id="moodlist">
+      <div id="moodlist-separator">
+        <img src={separator} alt="" />
+      </div>
+
       <h2 className="section-title">
         {selectedMoodList === 'all' ? 'AllMoods' : getMoodsDateTitle()}
       </h2>

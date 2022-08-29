@@ -5,9 +5,12 @@
   position: relative;
 }
 
+#moodlist-separator {
+  display: none;
+}
+
 #moodlist-items-container {
   position: relative;
-  top: -2rem;
 }
 
 #no-moods {
@@ -18,5 +21,13 @@
 @media screen and (orientation: portrait) {
   #moodlist {
     width: 100%;
+    padding: 0 1rem;
+  }
+
+  #moodlist-separator {
+    display: flex;
+    width: 50%;
+    margin: 3rem 0;
+    align-self: center;
   }
 }

@@ -40,34 +40,30 @@
 }
 
 #statistics-tip-container {
-  align-self: center;
-  position: relative;
-  top: 3rem;
-  left: 2rem;
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
 }
 
 #statistics-tip-arrow {
   width: 3rem;
-  position: relative;
-  left: 1rem;
-  transform: rotate(-100deg);
 }
 
 #statistics-tip-text {
-  width: 7rem;
-  position: relative;
-  top: 2rem;
-  transform: rotate(-15deg);
-  font-size: 1.25rem;
-  text-align: center;
+  font-family: six-hands-condensed, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 @media screen and (orientation: portrait) {
   #statistics {
     width: 100%;
-    margin-bottom: 4rem;
     padding: 0 1rem;
     align-items: center;
+  }
+
+  #statistics-text-container {
+    font-size: smaller;
   }
 
   #statistics-mood-container {
@@ -75,7 +71,7 @@
   }
 
   .statistics-mood-icon {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .statistics-mood-counter {
@@ -83,21 +79,10 @@
   }
 
   #statistics-tip-container {
-    top: 0.5rem;
-    right: 3rem;
-    left: unset;
-  }
-
-  #statistics-tip-arrow {
-    width: 2.5rem;
-    top: 1.5rem;
-    left: 1.5rem;
-    transform: rotate(-100deg);
+    align-self: flex-end;
   }
 
   #statistics-tip-text {
-    top: 3rem;
-    transform: rotate(-15deg);
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 }

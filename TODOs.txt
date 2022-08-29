@@ -1,0 +1,17 @@
+
+
+TODO: confirmation/error messages:
+    - confirm delete
+    - validate form (create, no mood selected)
+
+-----
+
+📌 MOBILE
+
+FIXME: edit input ✔
+
+FIXME: CSS - spacing: ✔
+    - separator (between statistics/moodlist/...) ✔
+    - spacing after moodlist name ✔
+
+FIXME: STATISTICS - quick add ✔

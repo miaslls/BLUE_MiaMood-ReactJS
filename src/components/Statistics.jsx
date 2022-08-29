@@ -176,7 +176,7 @@ function Statistics({ moodIcons, list, getMoodList, setSelectedMoodList }) {
           <div id="statistics-tip-arrow">
             <img src={arrow} alt="" />
           </div>
-          <div id="statistics-tip-text">quick add</div>
+          <div id="statistics-tip-text">click mood to quick add</div>
         </div>
       </section>
     </>

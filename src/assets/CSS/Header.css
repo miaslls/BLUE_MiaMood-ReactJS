@@ -85,7 +85,6 @@ nav {
   }
 
   #search-date-container {
-    width: unset;
     margin-right: 1rem;
     column-gap: 0.5rem;
     justify-content: flex-end;
