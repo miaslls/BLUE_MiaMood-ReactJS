@@ -7,7 +7,7 @@ import separator from 'assets/IMG/separator.svg';
 
 // 📌📌📌 function LIST
 
-function MoodList({ moodIcons, moodList }) {
+function MoodList({ moodIcons, moodList, selectedMoodList }) {
   // 📌📌 LIST RETURN
 
   return (
@@ -17,7 +17,7 @@ function MoodList({ moodIcons, moodList }) {
       </div>
 
       {/* 🚨🔻 */}
-      <h2 className="section-title">TITLE</h2>
+      <h2 className="section-title">{selectedMoodList === 'all' ? 'AllMoods' : 'DATE ❗❗❗'}</h2>
 
       <div className="section-title-underline">
         <img src={markerStroke} alt="" />
@@ -27,8 +27,15 @@ function MoodList({ moodIcons, moodList }) {
 
       {moodList.length > 0 ? (
         <div id="moodlist-items-container">
-          {moodList.map((mood) => (
-            <MoodListItem key={mood._id} mood={mood} moodIcons={moodIcons} />
+          {moodList.map((mood, index, array) => (
+            <MoodListItem
+              key={mood._id}
+              mood={mood}
+              index={index}
+              moodList={array}
+              selectedMoodList={selectedMoodList}
+              moodIcons={moodIcons}
+            />
           ))}
         </div>
       ) : (

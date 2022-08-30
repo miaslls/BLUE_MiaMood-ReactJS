@@ -3,16 +3,16 @@ import 'assets/CSS/MoodListItem.css';
 import pencilIcon from 'assets/ICON/options-icon-edit.svg';
 import binIcon from 'assets/ICON/options-icon-delete.svg';
 
-function MoodListItem({ mood, moodIcons }) {
+function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
   // ----- 📌 date/time formatting
 
   const moodDate = new Date(`${mood.date}T${mood.time}`);
 
-  // const titleDate = new Intl.DateTimeFormat('en-US', {
-  //   weekday: 'long',
-  //   day: '2-digit',
-  //   month: 'long',
-  // }).format(moodDate);
+  const titleDate = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    day: '2-digit',
+    month: 'long',
+  }).format(moodDate);
 
   const postDate = new Intl.DateTimeFormat('en-US', {
     day: '2-digit',
@@ -28,6 +28,10 @@ function MoodListItem({ mood, moodIcons }) {
 
   return (
     <>
+      {selectedMoodList === 'all' && (index === 0 || mood.date !== moodList[index - 1].date) && (
+        <div className="moodlist-date-title">{titleDate}</div>
+      )}
+
       {/* ----- 📌 mood */}
 
       <div className="moodlist-item">

@@ -9,7 +9,7 @@ import home from 'assets/ICON/nav-icon-home.svg';
 
 // 📌📌📌 function HEADER
 
-function Header() {
+function Header({ setSelectedMoodList }) {
   const [selectedNavIcon, setSelectedNavIcon] = useState();
 
   // 📌📌 HEADER RETURN
@@ -28,6 +28,7 @@ function Header() {
             id="nav-icon-home"
             onClick={() => {
               setSelectedNavIcon('home');
+              setSelectedMoodList('date');
             }}
           >
             <img src={home} alt="" />
@@ -40,6 +41,7 @@ function Header() {
             id="nav-icon-search"
             onClick={() => {
               setSelectedNavIcon('search');
+              setSelectedMoodList('date');
             }}
           >
             <img src={calendar} alt="" />
@@ -52,6 +54,7 @@ function Header() {
             id="nav-icon-all"
             onClick={() => {
               setSelectedNavIcon('list');
+              setSelectedMoodList('all');
             }}
           >
             <img src={list} alt="" />

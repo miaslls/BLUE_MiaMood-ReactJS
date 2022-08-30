@@ -38,23 +38,25 @@ const mockMoodList = [
 
 function App() {
   const [moodList, setMoodList] = useState([]);
+  const [selectedMoodList, setSelectedMoodList] = useState();
 
   useEffect(() => {
     setMoodList(mockMoodList);
+    setSelectedMoodList('date');
   }, []);
 
-  console.log(moodList); // 🦋
+  console.log(moodList, selectedMoodList); // 🦋
 
   return (
     <div id="outer-container">
       {/* ----- 📌 HEADER */}
 
-      <Header />
+      <Header setSelectedMoodList={setSelectedMoodList} />
 
       <main>
         {/* ----- 📌 MOODLIST */}
 
-        <MoodList moodIcons={moodIcons} moodList={moodList} />
+        <MoodList moodIcons={moodIcons} moodList={moodList} selectedMoodList={selectedMoodList} />
       </main>
     </div>
   );
