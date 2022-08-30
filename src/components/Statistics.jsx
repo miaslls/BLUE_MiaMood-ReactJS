@@ -7,7 +7,7 @@ import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 import markerStroke from 'assets/IMG/marker-stroke.svg';
 import arrow from 'assets/IMG/statistics-arrow.svg';
 
-// ----- 📌📌📌🚨 function COUNTER
+// ----- 📌📌📌🚨 component COUNTER
 
 function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
   // ----- 📌 quickAdd
@@ -41,7 +41,7 @@ function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
   );
 }
 
-// ----- 📌📌📌🚨 function STATISTICS
+// ----- 📌📌📌🚨 component STATISTICS
 
 function Statistics({ moodIcons, moodList, getMoodList }) {
   const initialCount = [

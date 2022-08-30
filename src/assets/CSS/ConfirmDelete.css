@@ -1,0 +1,33 @@
+#delete-modal-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#confirm-delete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#confirm-delete-text {
+  font-family: six-hands-condensed, sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+#confirm-delete-icon-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.confirm-delete-icon {
+  width: 1.75rem;
+}
+
+.confirm-delete-icon img {
+  width: 100%;
+}

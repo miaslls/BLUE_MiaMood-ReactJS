@@ -1,15 +1,15 @@
 import 'assets/CSS/MoodListItem.css';
 
 import { useState } from 'react';
-import { MoodService } from 'services/MoodService';
 
 import Modal from 'components/Modal';
 import EditMoodForm from 'components/MoodForm';
+import ConfirmDelete from 'components/ConfirmDelete';
 
 import pencilIcon from 'assets/ICON/options-icon-edit.svg';
 import binIcon from 'assets/ICON/options-icon-delete.svg';
 
-// ----- 📌📌📌🚨 function ITEM
+// ----- 📌📌📌🚨 component ITEM
 
 function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, moodIcons }) {
   // ----- 📌 date/time formatting
@@ -32,22 +32,12 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
     minute: '2-digit',
   }).format(moodDate);
 
-  // ----- 📌 delete
-
-  const deleteMood = async (id) => {
-    const response = await MoodService.deleteMood(id);
-
-    if (response.message === 'deleted') {
-      getMoodList();
-    }
-  };
-
   // ----- 📌📌 FORM
 
   const [editFormState, setEditFormState] = useState({});
   const [activeEditMood, setActiveEditMood] = useState({});
 
-  // ----- 📌 MODAL
+  // ----- 📌 EDIT MODAL
 
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -57,11 +47,15 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
     setActiveEditMood({});
   };
 
+  // ----- 📌 DELETE MODAL
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   // 📌📌🚨 ITEM RETURN
 
   return (
     <>
-      {/* ----- 📌 MODAL / FORM */}
+      {/* ----- 📌 EDIT MODAL */}
 
       {showEditModal && (
         <Modal
@@ -78,6 +72,21 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
             setActiveMood={setActiveEditMood}
             getMoodlist={getMoodList}
             closeModal={closeEditModal}
+          />
+        </Modal>
+      )}
+
+      {/* ----- 📌 DELETE MODAL */}
+
+      {showDeleteModal && (
+        <Modal closeModal={() => setShowDeleteModal(false)}>
+          <ConfirmDelete
+            moodIcons={moodIcons}
+            getMoodList={getMoodList}
+            mood={mood}
+            postDate={postDate}
+            postTime={postTime}
+            closeModal={() => setShowDeleteModal(false)}
           />
         </Modal>
       )}
@@ -114,7 +123,7 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
               </div>
 
               <div className="mood-options-button clickable">
-                <img src={binIcon} alt="delete button" onClick={() => deleteMood(mood._id)} />
+                <img src={binIcon} alt="delete button" onClick={() => setShowDeleteModal(true)} />
               </div>
             </div>
           </div>

@@ -19,7 +19,7 @@ function SubmitButton({ children, moodIcons, activeMood, submitForm, editType = 
   );
 }
 
-//  ----- 📌📌📌🚨 function FORM
+//  ----- 📌📌📌🚨 component FORM
 
 function MoodForm({
   moodIcons,

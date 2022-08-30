@@ -5,7 +5,7 @@ import MoodListItem from 'components/MoodListItem';
 import markerStroke from 'assets/IMG/marker-stroke.svg';
 import separator from 'assets/IMG/separator.svg';
 
-// 📌📌📌🚨 function LIST
+// 📌📌📌🚨 component LIST
 
 function MoodList({ moodIcons, moodList, getMoodList, selectedMoodList, searchDate }) {
   const getMoodListDateTitle = () => {

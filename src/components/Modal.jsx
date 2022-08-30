@@ -4,7 +4,7 @@ import Overlay from 'components/Overlay';
 
 import closeIcon from 'assets/ICON/icon-close.svg';
 
-// 📌📌📌🚨 function MODAL
+// 📌📌📌🚨 component MODAL
 
 function Modal({ children, closeModal }) {
   // ----- 📌 handleClick

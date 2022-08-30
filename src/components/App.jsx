@@ -11,7 +11,7 @@ import Statistics from 'components/Statistics';
 
 const moodIcons = ['<', '*', '2', '.', '"', 'A'];
 
-// 📌📌📌🚨 function APP
+// 📌📌📌🚨 component APP
 
 function App() {
   // ----- 📌📌 LIST
