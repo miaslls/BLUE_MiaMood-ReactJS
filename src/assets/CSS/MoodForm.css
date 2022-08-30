@@ -1,12 +1,11 @@
 #mood-form {
-  width: 45%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 form {
-  width: 60%;
+  width: 100%;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -46,8 +45,8 @@ form {
 #date-time-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
 }
 
 #text-container,
@@ -89,28 +88,4 @@ form {
 #send-button-icon {
   font-family: whatsapp-emoticons;
   font-size: 1.5rem;
-}
-
-@media screen and (orientation: portrait) {
-  #mood-form {
-    width: 100%;
-    align-items: center;
-  }
-
-  form {
-    width: 80%;
-  }
-
-  #date-time-container {
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  #close-button {
-    width: 1rem;
-  }
-
-  #send-button {
-    font-size: 2rem;
-  }
 }
