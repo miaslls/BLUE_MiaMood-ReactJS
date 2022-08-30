@@ -2,7 +2,7 @@
 
 TODO: confirmation/error messages:
     - confirm delete
-    - validate form (create, no mood selected)
+    - validate form (create, no mood selected) ✔
 
 FIXME: MOODLIST date title ✔
 

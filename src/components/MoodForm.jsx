@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { MoodService } from 'services/MoodService';
 
 import closeIcon from 'assets/ICON/icon-close.svg';
+import alertIcon from 'assets/ICON/alert-icon-caution.svg';
 
 //  📌📌 ----- SubmitButton
 
@@ -59,11 +60,26 @@ function MoodForm({
     setActiveMood({ [moodType]: true, activeType: moodType });
   };
 
+  //----- 📌 handleKeyPress
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submitForm();
+    }
+  };
+
   // ----- 📌 submit
+
+  const [noTypeAlert, setNoTypeAlert] = useState(false);
 
   const submitForm = async () => {
     const { _id, type, text, date, time } = formState;
     const moodBody = { type, text, date, time };
+
+    if (!type) {
+      setNoTypeAlert(true);
+    }
 
     if (type && date && time) {
       const response = _id
@@ -78,10 +94,19 @@ function MoodForm({
     }
   };
 
-  // 📌📌📌 RETURN
+  // ----- 📌📌🚨 FORM RETURN
 
   return (
     <section id="mood-form">
+      {noTypeAlert && (
+        <div id="alert-no-type">
+          <div id="no-type-icon">
+            <img src={alertIcon} alt="" />
+          </div>
+          <div id="no-type-text">select mood!</div>
+        </div>
+      )}
+
       {/* ----- 📌 TYPE input */}
 
       <form autoComplete="off">
@@ -98,7 +123,10 @@ function MoodForm({
             <div
               key={`form-mood-type-${index + 1}`}
               className={`form-mood-icon clickable ${activeMood[index + 1] ? 'active-mood' : null}`}
-              onClick={() => setMoodType(index + 1)}
+              onClick={() => {
+                setMoodType(index + 1);
+                setNoTypeAlert(false);
+              }}
             >
               {icon}
             </div>
@@ -139,6 +167,7 @@ function MoodForm({
             placeholder="optional! this is example text..."
             defaultValue={getTextInput()}
             onChange={(e) => handleChange(e, 'text')}
+            onKeyPress={(e) => handleKeyPress(e)}
           />
         </div>
 
