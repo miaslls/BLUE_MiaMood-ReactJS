@@ -3,7 +3,6 @@ import 'assets/CSS/MoodForm.css';
 import { useState, useEffect } from 'react';
 import { MoodService } from 'services/MoodService';
 
-import markerStroke from 'assets/IMG/marker-stroke.svg';
 import closeIcon from 'assets/ICON/icon-close.svg';
 
 //  📌📌 ----- SubmitButton
@@ -19,7 +18,7 @@ function SubmitButton({ children, moodIcons, activeMood, submitForm, editType = 
   );
 }
 
-//  📌📌📌 ----- FORM
+//  ----- 📌📌📌🚨 function FORM
 
 function MoodForm({
   moodIcons,
@@ -29,9 +28,7 @@ function MoodForm({
   activeMood,
   setActiveMood,
   getMoodlist,
-  setFormOpen,
-  closeForm,
-  setShowSearch,
+  closeModal,
 }) {
   // ----- 📌 input default value
 
@@ -75,8 +72,7 @@ function MoodForm({
 
       if (response.mood) {
         setFormState(emptyForm);
-        setFormOpen(false);
-        setShowSearch(false);
+        closeModal();
         getMoodlist();
       }
     }
@@ -86,11 +82,6 @@ function MoodForm({
 
   return (
     <section id="mood-form">
-      <h2 className="section-title">MoodForm</h2>
-      <div className="section-title-underline">
-        <img src={markerStroke} alt="" />
-      </div>
-
       {/* ----- 📌 TYPE input */}
 
       <form autoComplete="off">
@@ -154,11 +145,11 @@ function MoodForm({
         {/* ----- 📌📌 BUTTONS */}
 
         <div id="form-buttons-container">
-          <div className="form-button clickable" id="close-button" onClick={() => closeForm(false)}>
+          <div className="form-button clickable" id="close-button" onClick={() => closeModal()}>
             <img src={closeIcon} alt="" />
           </div>
 
-          {/* ----- 📌 submit */}
+          {/* ----- 📌 submitButton */}
 
           <div className="form-button" id="submit-button-container">
             <SubmitButton

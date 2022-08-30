@@ -2,9 +2,10 @@ import 'assets/CSS/Header.css';
 
 import { useState } from 'react';
 import { MoodService } from 'services/MoodService';
-import { getDateToday } from 'util/getDateTimeNow';
+import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 
 import Modal from 'components/Modal';
+import CreateMoodForm from 'components/MoodForm';
 
 import closeIcon from 'assets/ICON/icon-close.svg';
 import calendar from 'assets/ICON/nav-icon-calendar.svg';
@@ -15,6 +16,7 @@ import home from 'assets/ICON/nav-icon-home.svg';
 // 📌📌📌🚨 function HEADER
 
 function Header({
+  moodIcons,
   setMoodList,
   getMoodList,
   selectedMoodList,
@@ -40,9 +42,29 @@ function Header({
     setMoodListLoading(false);
   };
 
+  // ----- 📌📌 FORM
+
+  const emptyForm = {
+    _id: undefined,
+    type: undefined,
+    text: undefined,
+    date: getDateToday(),
+    time: getTimeNow(),
+  };
+
+  const [createFormState, setCreateFormState] = useState(emptyForm);
+  const [activeCreateMood, setActiveCreateMood] = useState({});
+
   // ----- 📌📌 MODAL
 
   const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const closeCreateModal = () => {
+    setShowCreateModal(false);
+    selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
+    setCreateFormState(emptyForm);
+    setActiveCreateMood({});
+  };
 
   // 📌📌🚨 HEADER RETURN
   return (
@@ -85,13 +107,19 @@ function Header({
         {/* ----- 📌📌 MODAL */}
 
         {showCreateModal && (
-          <Modal
-            closeModal={() => {
-              setShowCreateModal(false);
-              selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
-            }}
-          >
-            ADD
+          <Modal closeModal={closeCreateModal}>
+            {/* ----- 📌 FORM */}
+
+            <CreateMoodForm
+              moodIcons={moodIcons}
+              emptyForm={emptyForm}
+              formState={createFormState}
+              setFormState={setCreateFormState}
+              activeMood={activeCreateMood}
+              setActiveMood={setActiveCreateMood}
+              getMoodlist={getMoodList}
+              closeModal={() => closeCreateModal()}
+            />
           </Modal>
         )}
 

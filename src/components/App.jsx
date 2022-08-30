@@ -64,6 +64,7 @@ function App() {
       {/* ----- 📌 HEADER */}
 
       <Header
+        moodIcons={moodIcons}
         setMoodList={setMoodList}
         getMoodList={getMoodList}
         selectedMoodList={selectedMoodList}
