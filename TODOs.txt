@@ -1,9 +1,10 @@
 📌 FEATS
 
 
+TODO: show edit/delete ON MOUSE OVER (?) 
+
 TODO: STATISTICS quickAdd ✔
 TODO: FORM showSearch(false) ✔
-TODO: show edit/delete ON MOUSE OVER (?) ✔
 
 TODO: confirmation/error messages:✔
     - confirm delete✔
