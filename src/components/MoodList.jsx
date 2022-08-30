@@ -1,23 +1,14 @@
 import 'assets/CSS/MoodList.css';
+
 import MoodListItem from 'components/MoodListItem';
 
 import markerStroke from 'assets/IMG/marker-stroke.svg';
 import separator from 'assets/IMG/separator.svg';
 
-// 📌📌📌 function LIST
+// 📌📌📌🚨 component LIST
 
-function MoodList({
-  selectedMoodList,
-  moodList,
-  moodIcons,
-  getMoodList,
-  openEditForm,
-  closeForm,
-  searchDate,
-}) {
-  // ----- 📌 date TITLE
-
-  const getMoodsDateTitle = () => {
+function MoodList({ moodIcons, moodList, getMoodList, selectedMoodList, searchDate }) {
+  const getMoodListDateTitle = () => {
     let date;
 
     if (selectedMoodList === 'date' && searchDate) {
@@ -32,7 +23,7 @@ function MoodList({
     }).format(date);
   };
 
-  // 📌📌 LIST RETURN
+  // 📌📌🚨 LIST RETURN
 
   return (
     <section id="moodlist">
@@ -41,13 +32,14 @@ function MoodList({
       </div>
 
       <h2 className="section-title">
-        {selectedMoodList === 'all' ? 'AllMoods' : getMoodsDateTitle()}
+        {selectedMoodList === 'date' ? getMoodListDateTitle() : 'AllMoods'}
       </h2>
+
       <div className="section-title-underline">
         <img src={markerStroke} alt="" />
       </div>
 
-      {/* ----- 📌 ITEM */}
+      {/* ----- 📌📌 ITEM */}
 
       {moodList.length > 0 ? (
         <div id="moodlist-items-container">
@@ -57,11 +49,9 @@ function MoodList({
               mood={mood}
               index={index}
               moodList={array}
+              getMoodList={getMoodList}
               selectedMoodList={selectedMoodList}
               moodIcons={moodIcons}
-              getMoodList={getMoodList}
-              openEditForm={openEditForm}
-              closeForm={closeForm}
             />
           ))}
         </div>

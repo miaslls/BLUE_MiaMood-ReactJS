@@ -1,20 +1,19 @@
 import 'assets/CSS/MoodListItem.css';
 
-import { MoodService } from 'services/MoodService';
+import { useState, useEffect } from 'react';
+
+import Modal from 'components/Modal';
+import EditMoodForm from 'components/MoodForm';
+import ConfirmDelete from 'components/ConfirmDelete';
 
 import pencilIcon from 'assets/ICON/options-icon-edit.svg';
 import binIcon from 'assets/ICON/options-icon-delete.svg';
 
-function MoodListItem({
-  mood,
-  index,
-  moodList,
-  selectedMoodList,
-  moodIcons,
-  getMoodList,
-  openEditForm,
-  closeForm,
-}) {
+// ----- 📌📌📌🚨 component ITEM
+
+function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, moodIcons }) {
+  // ----- 📌 date/time formatting
+
   const moodDate = new Date(`${mood.date}T${mood.time}`);
 
   const titleDate = new Intl.DateTimeFormat('en-US', {
@@ -33,28 +32,102 @@ function MoodListItem({
     minute: '2-digit',
   }).format(moodDate);
 
-  // ----- 📌 delete
+  // ----- 📌📌 FORM
 
-  const deleteMood = async (id) => {
-    const response = await MoodService.deleteMood(id);
+  const [editFormState, setEditFormState] = useState({});
+  const [activeEditMood, setActiveEditMood] = useState({});
 
-    if (response.message === 'deleted') {
-      closeForm();
-      getMoodList();
+  // ----- 📌📌 MOOD OPTIONS
+
+  const [showMoodOptions, setShowMoodOptions] = useState();
+
+  const landscape = window.width > window.height;
+  const portrait = window.width < window.height;
+
+  useEffect(() => {
+    portrait ? setShowMoodOptions(true) : setShowMoodOptions(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (landscape) {
+      setShowMoodOptions(true);
     }
   };
+
+  const handleMouseLeave = () => {
+    if (landscape) {
+      setShowMoodOptions(false);
+    }
+  };
+
+  // ----- 📌 EDIT MODAL
+
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
+    setEditFormState({});
+    setActiveEditMood({});
+  };
+
+  // ----- 📌 DELETE MODAL
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // 📌📌🚨 ITEM RETURN
 
   return (
     <>
+      {/* ----- 📌 EDIT MODAL */}
+
+      {showEditModal && (
+        <Modal
+          closeModal={() => {
+            setShowEditModal(false);
+          }}
+        >
+          <EditMoodForm
+            moodIcons={moodIcons}
+            emptyForm={{}}
+            formState={editFormState}
+            setFormState={setEditFormState}
+            activeMood={activeEditMood}
+            setActiveMood={setActiveEditMood}
+            getMoodlist={getMoodList}
+            closeModal={closeEditModal}
+          />
+        </Modal>
+      )}
+
+      {/* ----- 📌 DELETE MODAL */}
+
+      {showDeleteModal && (
+        <Modal closeModal={() => setShowDeleteModal(false)}>
+          <ConfirmDelete
+            moodIcons={moodIcons}
+            getMoodList={getMoodList}
+            mood={mood}
+            postDate={postDate}
+            postTime={postTime}
+            closeModal={() => setShowDeleteModal(false)}
+          />
+        </Modal>
+      )}
+
+      {/* ----- 📌 titleDate */}
+
       {selectedMoodList === 'all' && (index === 0 || mood.date !== moodList[index - 1].date) && (
         <div className="moodlist-date-title">{titleDate}</div>
       )}
 
       {/* ----- 📌 mood */}
 
-      <div className="moodlist-item">
+      <div
+        className="moodlist-item"
+        onMouseEnter={() => handleMouseEnter()}
+        onMouseLeave={() => handleMouseLeave()}
+      >
         <div className="mood-icon">{moodIcons[mood.type - 1]}</div>
         <div className="mood-text-container">
           <div className="mood-text-top-row">{mood.text}</div>
@@ -65,28 +138,24 @@ function MoodListItem({
 
             {/* ----- 📌 edit/delete */}
 
-            <div className="mood-options-container">
-              <div className="mood-options-button clickable">
-                <img
-                  src={pencilIcon}
-                  alt="edit button"
+            {showMoodOptions && (
+              <div className="mood-options-container">
+                <div
+                  className="mood-options-button clickable"
                   onClick={() => {
-                    closeForm();
-                    openEditForm(mood);
+                    setEditFormState(mood);
+                    setActiveEditMood({ [mood.type]: true, activeType: mood.type });
+                    setShowEditModal(true);
                   }}
-                />
-              </div>
+                >
+                  <img src={pencilIcon} alt="edit button" />
+                </div>
 
-              <div className="mood-options-button clickable">
-                <img
-                  src={binIcon}
-                  alt="delete button"
-                  onClick={() => {
-                    deleteMood(mood._id);
-                  }}
-                />
+                <div className="mood-options-button clickable">
+                  <img src={binIcon} alt="delete button" onClick={() => setShowDeleteModal(true)} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

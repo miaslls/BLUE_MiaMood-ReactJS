@@ -58,7 +58,6 @@
 @media screen and (orientation: portrait) {
   #statistics {
     width: 100%;
-    padding: 0 1rem;
     align-items: center;
   }
 

@@ -7,9 +7,9 @@ import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 import markerStroke from 'assets/IMG/marker-stroke.svg';
 import arrow from 'assets/IMG/statistics-arrow.svg';
 
-// ----- 📌📌📌🚨 function COUNTER
+// ----- 📌📌📌🚨 component COUNTER
 
-function MoodTypeCounter({ moodCount, icon, index, getMoodList, setSelectedMoodList }) {
+function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
   // ----- 📌 quickAdd
 
   const quickAdd = async (moodType) => {
@@ -31,103 +31,75 @@ function MoodTypeCounter({ moodCount, icon, index, getMoodList, setSelectedMoodL
 
   return (
     <div className="statistics-mood">
-      <div
-        className="statistics-mood-icon clickable"
-        onClick={() => {
-          setSelectedMoodList('today');
-          quickAdd(index + 1);
-        }}
-      >
+      <div className="statistics-mood-icon clickable" onClick={() => quickAdd(index + 1)}>
         {icon}
       </div>
-      {moodCount[index + 1] > 0 && (
-        <div className="statistics-mood-counter">{moodCount[index + 1]}</div>
+      {moodCount[index].count > 0 && (
+        <div className="statistics-mood-counter">{moodCount[index].count}</div>
       )}
     </div>
   );
 }
 
-// ----- 📌📌📌🚨 function STATISTICS
+// ----- 📌📌📌🚨 component STATISTICS
 
-function Statistics({ moodIcons, list, getMoodList, setSelectedMoodList }) {
-  const [moodCount, setMoodCount] = useState({});
+function Statistics({ moodIcons, moodList, getMoodList }) {
+  const initialCount = [
+    { countType: 1, count: 0 },
+    { countType: 2, count: 0 },
+    { countType: 3, count: 0 },
+    { countType: 4, count: 0 },
+    { countType: 5, count: 0 },
+    { countType: 6, count: 0 },
+  ];
+
+  const [moodCount, setMoodCount] = useState(initialCount);
 
   // ----- 📌 count
-  // ----- 🚨 this 🔻 is CRAP and should be refactored
 
   const countMoodsByType = (list) => {
-    const count1 = list.filter((mood) => {
-      if (mood.type === 1) {
-        return true;
-      }
-      return false;
-    }).length;
+    const count = [...initialCount];
 
-    const count2 = list.filter((mood) => {
-      if (mood.type === 2) {
-        return true;
-      }
-      return false;
-    }).length;
-
-    const count3 = list.filter((mood) => {
-      if (mood.type === 3) {
-        return true;
-      }
-      return false;
-    }).length;
-
-    const count4 = list.filter((mood) => {
-      if (mood.type === 4) {
-        return true;
-      }
-      return false;
-    }).length;
-
-    const count5 = list.filter((mood) => {
-      if (mood.type === 5) {
-        return true;
-      }
-      return false;
-    }).length;
-
-    const count6 = list.filter((mood) => {
-      if (mood.type === 6) {
-        return true;
-      }
-      return false;
-    }).length;
+    count.forEach((type) => {
+      type.count = list.filter((mood) => {
+        if (mood.type === type.countType) {
+          return true;
+        }
+        return false;
+      }).length;
+    });
 
     // ----- 📌 average
 
-    const moodSum = count1 * 1 + count2 * 2 + count3 * 3 + count4 * 4 + count5 * 5;
+    let countSum = 0;
 
-    let moodAverage = moodSum / list.length;
+    count.forEach((type) => {
+      if (type.countType <= 5) {
+        countSum += type.count * type.countType;
+      }
+    });
+
+    let countAverage = countSum / list.length;
 
     // add ❤
-    moodAverage += count6 * 0.1;
+    countAverage += count[5].count * 0.1;
 
-    moodAverage > 5 ? (moodAverage = 5) : (moodAverage = Math.round(moodAverage));
+    countAverage > 5 ? (countAverage = 5) : (countAverage = Math.round(countAverage));
 
-    // ----- 📌 set
+    //     // ----- 📌 set
 
-    setMoodCount({
-      1: count1,
-      2: count2,
-      3: count3,
-      4: count4,
-      5: count5,
-      6: count6,
-      total: list.length,
-      average: moodAverage,
-    });
+    count.total = list.length;
+    count.average = countAverage;
+
+    setMoodCount(count);
   };
 
   // ----- 📌 update
 
   useEffect(() => {
-    countMoodsByType(list);
-  }, [list]);
+    countMoodsByType(moodList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [moodList]);
 
   // 📌📌🚨 STATISTICS RETURN
 
@@ -161,11 +133,10 @@ function Statistics({ moodIcons, list, getMoodList, setSelectedMoodList }) {
           {moodIcons.map((icon, index) => (
             <MoodTypeCounter
               key={`statistics-mood-type-${index + 1}`}
+              getMoodList={getMoodList}
               moodCount={moodCount}
               icon={icon}
               index={index}
-              getMoodList={getMoodList}
-              setSelectedMoodList={setSelectedMoodList}
             />
           ))}
         </div>

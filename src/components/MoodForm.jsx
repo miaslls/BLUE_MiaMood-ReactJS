@@ -3,8 +3,8 @@ import 'assets/CSS/MoodForm.css';
 import { useState, useEffect } from 'react';
 import { MoodService } from 'services/MoodService';
 
-import markerStroke from 'assets/IMG/marker-stroke.svg';
 import closeIcon from 'assets/ICON/icon-close.svg';
+import alertIcon from 'assets/ICON/alert-icon-caution.svg';
 
 //  📌📌 ----- SubmitButton
 
@@ -19,7 +19,7 @@ function SubmitButton({ children, moodIcons, activeMood, submitForm, editType = 
   );
 }
 
-//  📌📌📌 ----- FORM
+//  ----- 📌📌📌🚨 component FORM
 
 function MoodForm({
   moodIcons,
@@ -29,9 +29,7 @@ function MoodForm({
   activeMood,
   setActiveMood,
   getMoodlist,
-  setFormOpen,
-  closeForm,
-  setShowSearch,
+  closeModal,
 }) {
   // ----- 📌 input default value
 
@@ -62,11 +60,26 @@ function MoodForm({
     setActiveMood({ [moodType]: true, activeType: moodType });
   };
 
+  //----- 📌 handleKeyPress
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submitForm();
+    }
+  };
+
   // ----- 📌 submit
+
+  const [noTypeAlert, setNoTypeAlert] = useState(false);
 
   const submitForm = async () => {
     const { _id, type, text, date, time } = formState;
     const moodBody = { type, text, date, time };
+
+    if (!type) {
+      setNoTypeAlert(true);
+    }
 
     if (type && date && time) {
       const response = _id
@@ -75,21 +88,24 @@ function MoodForm({
 
       if (response.mood) {
         setFormState(emptyForm);
-        setFormOpen(false);
-        setShowSearch(false);
+        closeModal();
         getMoodlist();
       }
     }
   };
 
-  // 📌📌📌 RETURN
+  // ----- 📌📌🚨 FORM RETURN
 
   return (
     <section id="mood-form">
-      <h2 className="section-title">MoodForm</h2>
-      <div className="section-title-underline">
-        <img src={markerStroke} alt="" />
-      </div>
+      {noTypeAlert && (
+        <div id="alert-no-type">
+          <div id="no-type-icon">
+            <img src={alertIcon} alt="" />
+          </div>
+          <div id="no-type-text">select mood!</div>
+        </div>
+      )}
 
       {/* ----- 📌 TYPE input */}
 
@@ -107,7 +123,10 @@ function MoodForm({
             <div
               key={`form-mood-type-${index + 1}`}
               className={`form-mood-icon clickable ${activeMood[index + 1] ? 'active-mood' : null}`}
-              onClick={() => setMoodType(index + 1)}
+              onClick={() => {
+                setMoodType(index + 1);
+                setNoTypeAlert(false);
+              }}
             >
               {icon}
             </div>
@@ -148,17 +167,18 @@ function MoodForm({
             placeholder="optional! this is example text..."
             defaultValue={getTextInput()}
             onChange={(e) => handleChange(e, 'text')}
+            onKeyPress={(e) => handleKeyPress(e)}
           />
         </div>
 
         {/* ----- 📌📌 BUTTONS */}
 
         <div id="form-buttons-container">
-          <div className="form-button clickable" id="close-button" onClick={() => closeForm(false)}>
+          <div className="form-button clickable" id="close-button" onClick={() => closeModal()}>
             <img src={closeIcon} alt="" />
           </div>
 
-          {/* ----- 📌 submit */}
+          {/* ----- 📌 submitButton */}
 
           <div className="form-button" id="submit-button-container">
             <SubmitButton

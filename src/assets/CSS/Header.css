@@ -66,12 +66,15 @@ nav {
   height: 100%;
 }
 
+.nav-icon-selected {
+  transform: scale(1.2);
+}
+
 @media screen and (orientation: portrait) {
   header {
     width: 100%;
     margin-bottom: 1.5rem;
     flex-direction: column;
-    padding: 0 10%;
   }
 
   #page-title {
