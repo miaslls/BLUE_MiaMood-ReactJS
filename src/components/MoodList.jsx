@@ -7,7 +7,7 @@ import separator from 'assets/IMG/separator.svg';
 
 // 📌📌📌🚨 function LIST
 
-function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
+function MoodList({ moodIcons, moodList, getMoodList, selectedMoodList, searchDate }) {
   const getMoodListDateTitle = () => {
     let date;
 
@@ -39,7 +39,7 @@ function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
         <img src={markerStroke} alt="" />
       </div>
 
-      {/* ----- 📌 ITEM */}
+      {/* ----- 📌📌 ITEM */}
 
       {moodList.length > 0 ? (
         <div id="moodlist-items-container">
@@ -49,6 +49,7 @@ function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
               mood={mood}
               index={index}
               moodList={array}
+              getMoodList={getMoodList}
               selectedMoodList={selectedMoodList}
               moodIcons={moodIcons}
             />

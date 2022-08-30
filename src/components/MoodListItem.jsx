@@ -3,13 +3,14 @@ import 'assets/CSS/MoodListItem.css';
 import { useState } from 'react';
 
 import Modal from 'components/Modal';
+import EditMoodForm from 'components/MoodForm';
 
 import pencilIcon from 'assets/ICON/options-icon-edit.svg';
 import binIcon from 'assets/ICON/options-icon-delete.svg';
 
 // ----- 📌📌📌🚨 function ITEM
 
-function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
+function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, moodIcons }) {
   // ----- 📌 date/time formatting
 
   const moodDate = new Date(`${mood.date}T${mood.time}`);
@@ -30,15 +31,26 @@ function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
     minute: '2-digit',
   }).format(moodDate);
 
+  // ----- 📌📌 FORM
+
+  const [editFormState, setEditFormState] = useState({});
+  const [activeEditMood, setActiveEditMood] = useState({});
+
   // ----- 📌 MODAL
 
   const [showEditModal, setShowEditModal] = useState(false);
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
+    setEditFormState({});
+    setActiveEditMood({});
+  };
 
   // 📌📌🚨 ITEM RETURN
 
   return (
     <>
-      {/* ----- 📌 MODAL */}
+      {/* ----- 📌 MODAL / FORM */}
 
       {showEditModal && (
         <Modal
@@ -46,7 +58,16 @@ function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
             setShowEditModal(false);
           }}
         >
-          EDIT
+          <EditMoodForm
+            moodIcons={moodIcons}
+            emptyForm={{}}
+            formState={editFormState}
+            setFormState={setEditFormState}
+            activeMood={activeEditMood}
+            setActiveMood={setActiveEditMood}
+            getMoodlist={getMoodList}
+            closeModal={closeEditModal}
+          />
         </Modal>
       )}
 
@@ -73,6 +94,8 @@ function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
               <div
                 className="mood-options-button clickable"
                 onClick={() => {
+                  setEditFormState(mood);
+                  setActiveEditMood({ [mood.type]: true, activeType: mood.type });
                   setShowEditModal(true);
                 }}
               >

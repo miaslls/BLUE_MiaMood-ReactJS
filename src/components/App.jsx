@@ -84,6 +84,7 @@ function App() {
           <MoodList
             moodIcons={moodIcons}
             moodList={moodList}
+            getMoodList={getMoodList}
             selectedMoodList={selectedMoodList}
             searchDate={searchDate}
           />

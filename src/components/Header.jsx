@@ -104,12 +104,10 @@ function Header({
           </div>
         )}
 
-        {/* ----- 📌📌 MODAL */}
+        {/* ----- 📌 MODAL / FORM */}
 
         {showCreateModal && (
           <Modal closeModal={closeCreateModal}>
-            {/* ----- 📌 FORM */}
-
             <CreateMoodForm
               moodIcons={moodIcons}
               emptyForm={emptyForm}
@@ -118,7 +116,7 @@ function Header({
               activeMood={activeCreateMood}
               setActiveMood={setActiveCreateMood}
               getMoodlist={getMoodList}
-              closeModal={() => closeCreateModal()}
+              closeModal={closeCreateModal}
             />
           </Modal>
         )}
