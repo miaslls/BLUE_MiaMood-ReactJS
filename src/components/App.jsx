@@ -13,6 +13,8 @@ const moodIcons = ['<', '*', '2', '.', '"', 'A'];
 // 📌📌📌 function APP
 
 function App() {
+  // ----- 📌📌 LIST
+
   const [moodList, setMoodList] = useState([]);
   const [selectedMoodList, setSelectedMoodList] = useState('date');
   const [moodListLoading, setMoodListLoading] = useState('false');
@@ -24,9 +26,16 @@ function App() {
 
     let response;
 
-    selectedMoodList === 'date'
-      ? (response = await MoodService.getTodayMoods())
-      : (response = await MoodService.getAllMoods());
+    switch (selectedMoodList) {
+      case 'date':
+        response = await MoodService.getTodayMoods();
+        break;
+      case 'all':
+        response = await MoodService.getAllMoods();
+        break;
+      default:
+        response = { moods: [] };
+    }
 
     setMoodList(response.moods);
     setMoodListLoading(false);
@@ -42,11 +51,26 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMoodList]);
 
+  // ----- 📌📌 SEARCH
+
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchDate, setSearchDate] = useState();
+
+  console.log(showSearch); // 🦋
+
   return (
     <div id="outer-container">
       {/* ----- 📌 HEADER */}
 
-      <Header setSelectedMoodList={setSelectedMoodList} />
+      <Header
+        setMoodList={setMoodList}
+        getMoodList={getMoodList}
+        setSelectedMoodList={setSelectedMoodList}
+        setMoodListLoading={setMoodListLoading}
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
+        setSearchDate={setSearchDate}
+      />
 
       <main>
         {/* ----- 📌 MOODLIST */}
@@ -54,7 +78,12 @@ function App() {
         {moodListLoading && <Loading />}
 
         {!moodListLoading && (
-          <MoodList moodIcons={moodIcons} moodList={moodList} selectedMoodList={selectedMoodList} />
+          <MoodList
+            moodIcons={moodIcons}
+            moodList={moodList}
+            selectedMoodList={selectedMoodList}
+            searchDate={searchDate}
+          />
         )}
       </main>
     </div>

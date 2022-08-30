@@ -7,7 +7,22 @@ import separator from 'assets/IMG/separator.svg';
 
 // 📌📌📌 function LIST
 
-function MoodList({ moodIcons, moodList, selectedMoodList }) {
+function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
+  const getMoodListDateTitle = () => {
+    let date;
+
+    if (selectedMoodList === 'date' && searchDate) {
+      date = new Date(`${searchDate}T00:00:00`);
+    } else {
+      date = new Date();
+    }
+
+    return new Intl.DateTimeFormat('en-US', {
+      day: '2-digit',
+      month: 'long',
+    }).format(date);
+  };
+
   // 📌📌 LIST RETURN
 
   return (
@@ -17,7 +32,9 @@ function MoodList({ moodIcons, moodList, selectedMoodList }) {
       </div>
 
       {/* 🚨🔻 */}
-      <h2 className="section-title">{selectedMoodList === 'all' ? 'AllMoods' : 'DATE ❗❗❗'}</h2>
+      <h2 className="section-title">
+        {selectedMoodList === 'date' ? getMoodListDateTitle() : 'AllMoods'}
+      </h2>
 
       <div className="section-title-underline">
         <img src={markerStroke} alt="" />
