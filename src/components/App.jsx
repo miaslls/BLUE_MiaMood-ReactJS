@@ -8,6 +8,7 @@ import Header from 'components/Header';
 import MoodList from 'components/MoodList';
 import Loading from 'components/Loading';
 import Statistics from 'components/Statistics';
+import Modal from 'components/Modal';
 
 const moodIcons = ['<', '*', '2', '.', '"', 'A'];
 
@@ -57,6 +58,10 @@ function App() {
   const [showSearch, setShowSearch] = useState(false);
   const [searchDate, setSearchDate] = useState();
 
+  // ----- 📌📌 MODAL
+
+  const [showModal, setShowModal] = useState(true);
+
   // 📌📌🚨 APP RETURN
 
   return (
@@ -90,6 +95,10 @@ function App() {
         {/* ----- 📌 STATISTICS */}
 
         <Statistics moodIcons={moodIcons} moodList={moodList} />
+
+        {/* ----- 📌 MODAL */}
+
+        {showModal && <Modal closeModal={() => setShowModal(false)}>CHILD</Modal>}
       </main>
     </div>
   );
