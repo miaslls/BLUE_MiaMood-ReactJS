@@ -3,6 +3,8 @@ import 'assets/CSS/MoodListItem.css';
 import pencilIcon from 'assets/ICON/options-icon-edit.svg';
 import binIcon from 'assets/ICON/options-icon-delete.svg';
 
+// ----- 📌📌📌🚨 function ITEM
+
 function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
   // ----- 📌 date/time formatting
 

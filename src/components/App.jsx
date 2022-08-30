@@ -7,10 +7,11 @@ import { MoodService } from 'services/MoodService';
 import Header from 'components/Header';
 import MoodList from 'components/MoodList';
 import Loading from 'components/Loading';
+import Statistics from 'components/Statistics';
 
 const moodIcons = ['<', '*', '2', '.', '"', 'A'];
 
-// 📌📌📌 function APP
+// 📌📌📌🚨 function APP
 
 function App() {
   // ----- 📌📌 LIST
@@ -56,7 +57,7 @@ function App() {
   const [showSearch, setShowSearch] = useState(false);
   const [searchDate, setSearchDate] = useState();
 
-  console.log(showSearch); // 🦋
+  // 📌📌🚨 APP RETURN
 
   return (
     <div id="outer-container">
@@ -85,6 +86,10 @@ function App() {
             searchDate={searchDate}
           />
         )}
+
+        {/* ----- 📌 STATISTICS */}
+
+        <Statistics moodIcons={moodIcons} moodList={moodList} />
       </main>
     </div>
   );

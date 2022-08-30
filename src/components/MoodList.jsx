@@ -5,7 +5,7 @@ import MoodListItem from 'components/MoodListItem';
 import markerStroke from 'assets/IMG/marker-stroke.svg';
 import separator from 'assets/IMG/separator.svg';
 
-// 📌📌📌 function LIST
+// 📌📌📌🚨 function LIST
 
 function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
   const getMoodListDateTitle = () => {
@@ -23,7 +23,7 @@ function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
     }).format(date);
   };
 
-  // 📌📌 LIST RETURN
+  // 📌📌🚨 LIST RETURN
 
   return (
     <section id="moodlist">
@@ -31,7 +31,6 @@ function MoodList({ moodIcons, moodList, selectedMoodList, searchDate }) {
         <img src={separator} alt="" />
       </div>
 
-      {/* 🚨🔻 */}
       <h2 className="section-title">
         {selectedMoodList === 'date' ? getMoodListDateTitle() : 'AllMoods'}
       </h2>

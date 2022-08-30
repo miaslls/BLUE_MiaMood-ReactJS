@@ -10,7 +10,7 @@ import add from 'assets/ICON/nav-icon-add.svg';
 import list from 'assets/ICON/nav-icon-list.svg';
 import home from 'assets/ICON/nav-icon-home.svg';
 
-// 📌📌📌 function HEADER
+// 📌📌📌🚨 function HEADER
 
 function Header({
   setMoodList,
@@ -35,7 +35,7 @@ function Header({
     setMoodListLoading(false);
   };
 
-  // 📌📌 HEADER RETURN
+  // 📌📌🚨 HEADER RETURN
   return (
     <header>
       <div id="page-title">
