@@ -26,7 +26,7 @@ function Header({
   setShowSearch,
   setSearchDate,
 }) {
-  const [selectedNavIcon, setSelectedNavIcon] = useState();
+  const [selectedNavIcon, setSelectedNavIcon] = useState('home');
 
   // ----- 📌📌 SEARCH
 

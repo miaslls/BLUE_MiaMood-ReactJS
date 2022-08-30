@@ -92,7 +92,9 @@ function App() {
 
         {/* ----- 📌 STATISTICS */}
 
-        {!moodListLoading && <Statistics moodIcons={moodIcons} moodList={moodList} />}
+        {!moodListLoading && (
+          <Statistics moodIcons={moodIcons} moodList={moodList} getMoodList={getMoodList} />
+        )}
       </main>
     </div>
   );

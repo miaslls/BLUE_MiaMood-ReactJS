@@ -1,20 +1,39 @@
 import 'assets/CSS/Statistics.css';
 
 import { useState, useEffect } from 'react';
+import { MoodService } from 'services/MoodService';
+import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 
 import markerStroke from 'assets/IMG/marker-stroke.svg';
 import arrow from 'assets/IMG/statistics-arrow.svg';
 
 // ----- 📌📌📌🚨 function COUNTER
 
-function MoodTypeCounter({ moodCount, icon, index }) {
-  // TODO: quickAdd
+function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
+  // ----- 📌 quickAdd
+
+  const quickAdd = async (moodType) => {
+    const moodBody = {
+      type: moodType,
+      text: '',
+      date: getDateToday(),
+      time: getTimeNow(),
+    };
+
+    const response = await MoodService.createMood(moodBody);
+
+    if (response.mood) {
+      getMoodList();
+    }
+  };
 
   // ----- 📌📌🚨 COUNTER RETURN
 
   return (
     <div className="statistics-mood">
-      <div className="statistics-mood-icon clickable">{icon}</div>
+      <div className="statistics-mood-icon clickable" onClick={() => quickAdd(index + 1)}>
+        {icon}
+      </div>
       {moodCount[index].count > 0 && (
         <div className="statistics-mood-counter">{moodCount[index].count}</div>
       )}
@@ -24,7 +43,7 @@ function MoodTypeCounter({ moodCount, icon, index }) {
 
 // ----- 📌📌📌🚨 function STATISTICS
 
-function Statistics({ moodIcons, moodList }) {
+function Statistics({ moodIcons, moodList, getMoodList }) {
   const initialCount = [
     { countType: 1, count: 0 },
     { countType: 2, count: 0 },
@@ -114,6 +133,7 @@ function Statistics({ moodIcons, moodList }) {
           {moodIcons.map((icon, index) => (
             <MoodTypeCounter
               key={`statistics-mood-type-${index + 1}`}
+              getMoodList={getMoodList}
               moodCount={moodCount}
               icon={icon}
               index={index}

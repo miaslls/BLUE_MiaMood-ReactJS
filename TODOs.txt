@@ -4,11 +4,10 @@ TODO: confirmation/error messages:
     - confirm delete
     - validate form (create, no mood selected)
 
-TODO: STATISTICS quickAdd
-
-TODO: FORM showSearch ✔
-
 FIXME: MOODLIST date title ✔
+
+TODO: STATISTICS quickAdd ✔
+TODO: FORM showSearch ✔
 
 -----
 
