@@ -1,22 +1,24 @@
+📌 FEATS
 
 
-TODO: confirmation/error messages:
-    - confirm delete
+TODO: STATISTICS quickAdd ✔
+TODO: FORM showSearch(false) ✔
+TODO: show edit/delete ON MOUSE OVER (?) ✔
+
+TODO: confirmation/error messages:✔
+    - confirm delete✔
     - validate form (create, no mood selected) ✔
 
 FIXME: MOODLIST date title ✔
 
-TODO: STATISTICS quickAdd ✔
-TODO: FORM showSearch ✔
-
 -----
 
-📌 MOBILE
+📌 MOBILE LAYOUT
 
 FIXME: edit input ✔
+FIXME: STATISTICS - quick add ✔
 
 FIXME: CSS - spacing: ✔
     - separator (between statistics/moodlist/...) ✔
     - spacing after moodlist name ✔
 
-FIXME: STATISTICS - quick add ✔

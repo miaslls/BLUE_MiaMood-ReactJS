@@ -5,17 +5,20 @@
 
 body {
   width: 100vw;
-  min-height: 100vh;
-  padding-top: 5%;
+  padding: 10%;
   overflow-x: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   background: #efe3f8;
   background: linear-gradient(120deg, #efe3f8 0%, #d3b5e9 35%, #9975b4 100%);
   font-family: six-hands-marker, sans-serif;
   font-weight: 400;
   color: #000000;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 a {
@@ -62,7 +65,7 @@ main {
 
 @media screen and (orientation: landscape) {
   #outer-container {
-    width: 1000px;
+    width: 80%;
   }
 
   main {
@@ -72,16 +75,12 @@ main {
 }
 
 @media screen and (orientation: portrait) {
-  body {
-    padding-top: 3rem;
-  }
-
   h2 {
     font-size: 1.5rem;
   }
 
   #outer-container {
-    width: 350px;
+    width: 100%;
     flex-direction: column;
   }
 
