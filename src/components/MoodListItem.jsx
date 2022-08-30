@@ -1,5 +1,9 @@
 import 'assets/CSS/MoodListItem.css';
 
+import { useState } from 'react';
+
+import Modal from 'components/Modal';
+
 import pencilIcon from 'assets/ICON/options-icon-edit.svg';
 import binIcon from 'assets/ICON/options-icon-delete.svg';
 
@@ -26,10 +30,28 @@ function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
     minute: '2-digit',
   }).format(moodDate);
 
+  // ----- 📌 MODAL
+
+  const [showEditModal, setShowEditModal] = useState(false);
+
   // 📌📌🚨 ITEM RETURN
 
   return (
     <>
+      {/* ----- 📌 MODAL */}
+
+      {showEditModal && (
+        <Modal
+          closeModal={() => {
+            setShowEditModal(false);
+          }}
+        >
+          EDIT
+        </Modal>
+      )}
+
+      {/* ----- 📌 titleDate */}
+
       {selectedMoodList === 'all' && (index === 0 || mood.date !== moodList[index - 1].date) && (
         <div className="moodlist-date-title">{titleDate}</div>
       )}
@@ -48,7 +70,12 @@ function MoodListItem({ mood, index, moodList, selectedMoodList, moodIcons }) {
             {/* ----- 📌 edit/delete */}
 
             <div className="mood-options-container">
-              <div className="mood-options-button clickable">
+              <div
+                className="mood-options-button clickable"
+                onClick={() => {
+                  setShowEditModal(true);
+                }}
+              >
                 <img src={pencilIcon} alt="edit button" />
               </div>
 

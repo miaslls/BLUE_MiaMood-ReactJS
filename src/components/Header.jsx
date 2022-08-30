@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { MoodService } from 'services/MoodService';
 import { getDateToday } from 'util/getDateTimeNow';
 
+import Modal from 'components/Modal';
+
 import closeIcon from 'assets/ICON/icon-close.svg';
 import calendar from 'assets/ICON/nav-icon-calendar.svg';
 import add from 'assets/ICON/nav-icon-add.svg';
@@ -15,6 +17,7 @@ import home from 'assets/ICON/nav-icon-home.svg';
 function Header({
   setMoodList,
   getMoodList,
+  selectedMoodList,
   setSelectedMoodList,
   setMoodListLoading,
   showSearch,
@@ -22,6 +25,8 @@ function Header({
   setSearchDate,
 }) {
   const [selectedNavIcon, setSelectedNavIcon] = useState();
+
+  // ----- 📌📌 SEARCH
 
   const handleSearch = async (date) => {
     setMoodListLoading(true);
@@ -35,6 +40,10 @@ function Header({
     setMoodListLoading(false);
   };
 
+  // ----- 📌📌 MODAL
+
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
   // 📌📌🚨 HEADER RETURN
   return (
     <header>
@@ -43,7 +52,7 @@ function Header({
       </div>
 
       <nav>
-        {/* ----- 📌 SEARCH */}
+        {/* ----- 📌📌 SEARCH */}
 
         {showSearch && (
           <div id="search-date-container">
@@ -72,6 +81,21 @@ function Header({
             </div>
           </div>
         )}
+
+        {/* ----- 📌📌 MODAL */}
+
+        {showCreateModal && (
+          <Modal
+            closeModal={() => {
+              setShowCreateModal(false);
+              selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
+            }}
+          >
+            ADD
+          </Modal>
+        )}
+
+        {/* ----- 📌📌 NAV ICONS */}
 
         <div id="nav-icon-container">
           {/* ----- 📌 icon HOME */}
@@ -127,6 +151,7 @@ function Header({
               setSelectedNavIcon('add');
               setShowSearch(false);
               setSearchDate();
+              setShowCreateModal(true);
             }}
           >
             <img src={add} alt="" />

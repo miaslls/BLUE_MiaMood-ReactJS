@@ -6,6 +6,8 @@ TODO: confirmation/error messages:
 
 TODO: STATISTICS quickAdd
 
+TODO: FORM showSearch
+
 FIXME: MOODLIST date title ✔
 
 -----

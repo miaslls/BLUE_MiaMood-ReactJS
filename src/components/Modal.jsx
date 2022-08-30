@@ -18,7 +18,7 @@ function Modal({ children, closeModal }) {
 
   return (
     <Overlay overlayClick={closeModal}>
-      <div className="modal-container" onClick={handleClick}>
+      <div className="modal-container" onClick={(e) => handleClick(e, false)}>
         <div className="modal-close-icon" onClick={(e) => handleClick(e, true)}>
           <img src={closeIcon} alt="close" />
         </div>
