@@ -6,7 +6,7 @@
 body {
   width: 100vw;
   min-height: 100vh;
-  padding: 10%;
+  padding: 5% 10%;
   overflow-x: hidden;
   background: #efe3f8;
   background: linear-gradient(120deg, #efe3f8 0%, #d3b5e9 35%, #9975b4 100%);
