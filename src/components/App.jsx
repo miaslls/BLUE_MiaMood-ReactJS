@@ -18,7 +18,20 @@ function App() {
 
   const [moodList, setMoodList] = useState([]);
   const [selectedMoodList, setSelectedMoodList] = useState('date');
-  const [moodListLoading, setMoodListLoading] = useState('false');
+  const [moodListLoading, setMoodListLoading] = useState(true);
+
+  useEffect(() => {
+    const onPageLoad = () => {
+      setMoodListLoading(false);
+    };
+
+    if (document.readyState === 'complete') {
+      onPageLoad();
+    } else {
+      window.addEventListener('load', onPageLoad);
+      return () => window.removeEventListener('load', onPageLoad);
+    }
+  }, []);
 
   // ----- 📌 getMoodList
 
