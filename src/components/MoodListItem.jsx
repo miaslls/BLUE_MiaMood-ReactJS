@@ -1,6 +1,7 @@
 import 'assets/CSS/MoodListItem.css';
 
 import { useState } from 'react';
+import { MoodService } from 'services/MoodService';
 
 import Modal from 'components/Modal';
 import EditMoodForm from 'components/MoodForm';
@@ -30,6 +31,16 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
     hour: '2-digit',
     minute: '2-digit',
   }).format(moodDate);
+
+  // ----- 📌 delete
+
+  const deleteMood = async (id) => {
+    const response = await MoodService.deleteMood(id);
+
+    if (response.message === 'deleted') {
+      getMoodList();
+    }
+  };
 
   // ----- 📌📌 FORM
 
@@ -103,7 +114,7 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
               </div>
 
               <div className="mood-options-button clickable">
-                <img src={binIcon} alt="delete button" />
+                <img src={binIcon} alt="delete button" onClick={() => deleteMood(mood._id)} />
               </div>
             </div>
           </div>
