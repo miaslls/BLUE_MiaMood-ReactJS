@@ -25,8 +25,12 @@
 
   #moodlist-separator {
     display: flex;
-    width: 50%;
+    width: 100%;
     margin: 3rem 0;
-    align-self: center;
+    justify-content: center;
+  }
+
+  #moodlist-separator img {
+    width: 40%;
   }
 }
