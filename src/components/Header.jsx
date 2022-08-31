@@ -22,12 +22,12 @@ function Header({
   selectedMoodList,
   setSelectedMoodList,
   setMoodListLoading,
+  selectedNavIcon,
+  setSelectedNavIcon,
   showSearch,
   setShowSearch,
   setSearchDate,
 }) {
-  const [selectedNavIcon, setSelectedNavIcon] = useState('home');
-
   // ----- 📌📌 SEARCH
 
   const handleSearch = async (date) => {
@@ -115,6 +115,9 @@ function Header({
               setFormState={setCreateFormState}
               activeMood={activeCreateMood}
               setActiveMood={setActiveCreateMood}
+              setSelectedNavIcon={setSelectedNavIcon}
+              setSearchDate={setSearchDate}
+              setShowSearch={setShowSearch}
               getMoodlist={getMoodList}
               closeModal={closeCreateModal}
             />
@@ -176,7 +179,7 @@ function Header({
             onClick={() => {
               setSelectedNavIcon('add');
               setShowSearch(false);
-              setSearchDate();
+              // setSearchDate();
               setShowCreateModal(true);
             }}
           >

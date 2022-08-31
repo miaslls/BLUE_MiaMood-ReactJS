@@ -9,7 +9,16 @@ import arrow from 'assets/IMG/statistics-arrow.svg';
 
 // ----- 📌📌📌🚨 component COUNTER
 
-function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
+function MoodTypeCounter({
+  moodCount,
+  icon,
+  index,
+  getMoodList,
+  selectedMoodList,
+  setSelectedNavIcon,
+  setSearchDate,
+  setShowSearch,
+}) {
   // ----- 📌 quickAdd
 
   const quickAdd = async (moodType) => {
@@ -23,6 +32,9 @@ function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
     const response = await MoodService.createMood(moodBody);
 
     if (response.mood) {
+      setShowSearch(false);
+      setSearchDate();
+      selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
       getMoodList();
     }
   };
@@ -43,7 +55,15 @@ function MoodTypeCounter({ getMoodList, moodCount, icon, index }) {
 
 // ----- 📌📌📌🚨 component STATISTICS
 
-function Statistics({ moodIcons, moodList, getMoodList }) {
+function Statistics({
+  moodIcons,
+  moodList,
+  getMoodList,
+  selectedMoodList,
+  setSelectedNavIcon,
+  setSearchDate,
+  setShowSearch,
+}) {
   const initialCount = [
     { countType: 1, count: 0 },
     { countType: 2, count: 0 },
@@ -133,10 +153,14 @@ function Statistics({ moodIcons, moodList, getMoodList }) {
           {moodIcons.map((icon, index) => (
             <MoodTypeCounter
               key={`statistics-mood-type-${index + 1}`}
-              getMoodList={getMoodList}
               moodCount={moodCount}
               icon={icon}
               index={index}
+              getMoodList={getMoodList}
+              selectedMoodList={selectedMoodList}
+              setSelectedNavIcon={setSelectedNavIcon}
+              setSearchDate={setSearchDate}
+              setShowSearch={setShowSearch}
             />
           ))}
         </div>

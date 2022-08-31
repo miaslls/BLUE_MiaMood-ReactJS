@@ -38,8 +38,12 @@
 }
 
 .mood-options-container {
-  display: flex;
+  display: none;
   gap: 0.15rem;
+}
+
+#mood-options-shown {
+  display: flex;
 }
 
 .mood-options-button {
@@ -61,6 +65,10 @@
 
   .mood-date-time {
     font-size: 1.1rem;
+  }
+
+  .mood-options-container {
+    display: flex;
   }
 
   .mood-options-button:hover {

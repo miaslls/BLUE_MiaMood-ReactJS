@@ -28,6 +28,9 @@ function MoodForm({
   setFormState,
   activeMood,
   setActiveMood,
+  setSelectedNavIcon,
+  setSearchDate,
+  setShowSearch,
   getMoodlist,
   closeModal,
 }) {
@@ -69,7 +72,7 @@ function MoodForm({
     }
   };
 
-  // ----- 📌 submit
+  // ----- 📌 submitForm
 
   const [noTypeAlert, setNoTypeAlert] = useState(false);
 
@@ -88,6 +91,9 @@ function MoodForm({
 
       if (response.mood) {
         setFormState(emptyForm);
+        setSelectedNavIcon('home');
+        setShowSearch(false);
+        setSearchDate();
         closeModal();
         getMoodlist();
       }

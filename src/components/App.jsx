@@ -2,7 +2,6 @@ import 'assets/CSS/App.css';
 
 import { useState, useEffect } from 'react';
 import { MoodService } from 'services/MoodService';
-// import { getDateToday, getTimeNow } from 'util/getDateTimeNow';
 
 import Header from 'components/Header';
 import MoodList from 'components/MoodList';
@@ -18,20 +17,7 @@ function App() {
 
   const [moodList, setMoodList] = useState([]);
   const [selectedMoodList, setSelectedMoodList] = useState('date');
-  const [moodListLoading, setMoodListLoading] = useState(true);
-
-  useEffect(() => {
-    const onPageLoad = () => {
-      setMoodListLoading(false);
-    };
-
-    if (document.readyState === 'complete') {
-      onPageLoad();
-    } else {
-      window.addEventListener('load', onPageLoad);
-      return () => window.removeEventListener('load', onPageLoad);
-    }
-  }, []);
+  const [moodListLoading, setMoodListLoading] = useState();
 
   // ----- 📌 getMoodList
 
@@ -65,7 +51,11 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMoodList]);
 
-  // ----- 📌📌 SEARCH
+  // ----- 📌📌 HEADER
+
+  const [selectedNavIcon, setSelectedNavIcon] = useState('home'); // ❗❗❗
+
+  // ----- 📌search
 
   const [showSearch, setShowSearch] = useState(false);
   const [searchDate, setSearchDate] = useState();
@@ -83,6 +73,8 @@ function App() {
         selectedMoodList={selectedMoodList}
         setSelectedMoodList={setSelectedMoodList}
         setMoodListLoading={setMoodListLoading}
+        selectedNavIcon={selectedNavIcon}
+        setSelectedNavIcon={setSelectedNavIcon}
         showSearch={showSearch}
         setShowSearch={setShowSearch}
         setSearchDate={setSearchDate}
@@ -99,14 +91,25 @@ function App() {
             moodList={moodList}
             getMoodList={getMoodList}
             selectedMoodList={selectedMoodList}
+            setSelectedNavIcon={setSelectedNavIcon}
             searchDate={searchDate}
+            setSearchDate={setSearchDate}
+            setShowSearch={setShowSearch}
           />
         )}
 
         {/* ----- 📌 STATISTICS */}
 
         {!moodListLoading && (
-          <Statistics moodIcons={moodIcons} moodList={moodList} getMoodList={getMoodList} />
+          <Statistics
+            moodIcons={moodIcons}
+            moodList={moodList}
+            getMoodList={getMoodList}
+            selectedMoodList={selectedMoodList}
+            setSelectedNavIcon={setSelectedNavIcon}
+            setSearchDate={setSearchDate}
+            setShowSearch={setShowSearch}
+          />
         )}
       </main>
     </div>

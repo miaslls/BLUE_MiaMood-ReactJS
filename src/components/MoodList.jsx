@@ -7,7 +7,16 @@ import separator from 'assets/IMG/separator.svg';
 
 // 📌📌📌🚨 component LIST
 
-function MoodList({ moodIcons, moodList, getMoodList, selectedMoodList, searchDate }) {
+function MoodList({
+  moodIcons,
+  moodList,
+  getMoodList,
+  selectedMoodList,
+  setSelectedNavIcon,
+  searchDate,
+  setSearchDate,
+  setShowSearch,
+}) {
   const getMoodListDateTitle = () => {
     let date;
 
@@ -51,6 +60,9 @@ function MoodList({ moodIcons, moodList, getMoodList, selectedMoodList, searchDa
               moodList={array}
               getMoodList={getMoodList}
               selectedMoodList={selectedMoodList}
+              setSelectedNavIcon={setSelectedNavIcon}
+              setSearchDate={setSearchDate}
+              setShowSearch={setShowSearch}
               moodIcons={moodIcons}
             />
           ))}

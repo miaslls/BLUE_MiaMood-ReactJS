@@ -11,7 +11,17 @@ import binIcon from 'assets/ICON/options-icon-delete.svg';
 
 // ----- 📌📌📌🚨 component ITEM
 
-function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, moodIcons }) {
+function MoodListItem({
+  mood,
+  index,
+  moodList,
+  getMoodList,
+  selectedMoodList,
+  setSelectedNavIcon,
+  setSearchDate,
+  setShowSearch,
+  moodIcons,
+}) {
   // ----- 📌 date/time formatting
 
   const moodDate = new Date(`${mood.date}T${mood.time}`);
@@ -51,6 +61,10 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  // ----- 📌 show OPTIONS
+
+  const [showMoodOptions, setShowMoodOptions] = useState(false);
+
   // 📌📌🚨 ITEM RETURN
 
   return (
@@ -70,6 +84,9 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
             setFormState={setEditFormState}
             activeMood={activeEditMood}
             setActiveMood={setActiveEditMood}
+            setSelectedNavIcon={setSelectedNavIcon}
+            setSearchDate={setSearchDate}
+            setShowSearch={setShowSearch}
             getMoodlist={getMoodList}
             closeModal={closeEditModal}
           />
@@ -86,6 +103,10 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
             mood={mood}
             postDate={postDate}
             postTime={postTime}
+            selectedMoodList={selectedMoodList}
+            setSelectedNavIcon={setSelectedNavIcon}
+            setSearchDate={setSearchDate}
+            setShowSearch={setShowSearch}
             closeModal={() => setShowDeleteModal(false)}
           />
         </Modal>
@@ -99,7 +120,11 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
 
       {/* ----- 📌 mood */}
 
-      <div className="moodlist-item">
+      <div
+        className="moodlist-item"
+        onMouseEnter={() => setShowMoodOptions(true)}
+        onMouseLeave={() => setShowMoodOptions(false)}
+      >
         <div className="mood-icon">{moodIcons[mood.type - 1]}</div>
         <div className="mood-text-container">
           <div className="mood-text-top-row">{mood.text}</div>
@@ -110,7 +135,7 @@ function MoodListItem({ mood, index, moodList, getMoodList, selectedMoodList, mo
 
             {/* ----- 📌 edit/delete */}
 
-            <div className="mood-options-container">
+            <div className="mood-options-container" id={showMoodOptions && 'mood-options-shown'}>
               <div
                 className="mood-options-button clickable"
                 onClick={() => {

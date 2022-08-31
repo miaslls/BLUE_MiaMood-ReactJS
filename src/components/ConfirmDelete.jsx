@@ -7,13 +7,27 @@ import cancelIcon from 'assets/ICON/icon-cancel.svg';
 
 // ----- 📌📌📌🚨 component CONFIRM DELETE
 
-function ConfirmDelete({ moodIcons, getMoodList, mood, postDate, postTime, closeModal }) {
+function ConfirmDelete({
+  moodIcons,
+  getMoodList,
+  mood,
+  postDate,
+  postTime,
+  selectedMoodList,
+  setSelectedNavIcon,
+  setSearchDate,
+  setShowSearch,
+  closeModal,
+}) {
   // ----- 📌 delete
 
   const deleteMood = async (id) => {
     const response = await MoodService.deleteMood(id);
 
     if (response.message === 'deleted') {
+      setShowSearch(false);
+      setSearchDate();
+      selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
       getMoodList();
       closeModal();
     }
