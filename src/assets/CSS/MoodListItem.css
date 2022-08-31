@@ -1,10 +1,10 @@
 .moodlist-item {
   width: 100%;
-  margin-top: 3%;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 3%;
+  gap: 1rem;
 }
 
 .moodlist-date-title {
@@ -29,7 +29,6 @@
 
 .mood-text--bottom-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
