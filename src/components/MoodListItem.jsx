@@ -144,11 +144,14 @@ function MoodListItem({
                   setShowEditModal(true);
                 }}
               >
-                <img src={pencilIcon} alt="edit button" />
+                <img src={pencilIcon} alt="edit button" id="edit-mood-icon" />
               </div>
 
-              <div className="mood-options-button clickable">
-                <img src={binIcon} alt="delete button" onClick={() => setShowDeleteModal(true)} />
+              <div
+                className="mood-options-button clickable"
+                onClick={() => setShowDeleteModal(true)}
+              >
+                <img src={binIcon} alt="delete button" id="delete-mood-icon" />
               </div>
             </div>
           </div>
