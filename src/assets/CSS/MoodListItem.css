@@ -29,6 +29,7 @@
 
 .mood-text--bottom-row {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -61,10 +62,6 @@
 @media screen and (orientation: portrait) {
   .mood-title {
     font-size: 0.9rem;
-  }
-
-  .mood-date-time {
-    font-size: 1.1rem;
   }
 
   .mood-options-container {
