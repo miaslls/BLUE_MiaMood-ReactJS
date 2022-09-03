@@ -11,6 +11,7 @@ TODO: STATISTICS quickAdd ✔
 TODO: FORM showSearch(false) ✔
 TODO: reposition mood options ✔
 TODO: show edit/delete ON MOUSE OVER (?) ✔
+TODO: 🐞 🔺 If you used to conditionally omit it with id={condition && value}, pass id={condition ? value : undefined} instead.✔
 
 TODO: confirmation/error messages:✔
     - confirm delete✔

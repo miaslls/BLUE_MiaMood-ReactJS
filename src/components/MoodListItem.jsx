@@ -137,7 +137,10 @@ function MoodListItem({
 
         {/* ----- 📌 edit/delete */}
 
-        <div className="mood-options-container" id={showMoodOptions && 'mood-options-shown'}>
+        <div
+          className="mood-options-container"
+          id={showMoodOptions ? 'mood-options-shown' : undefined}
+        >
           <div
             className="mood-options-button clickable"
             onClick={() => {
