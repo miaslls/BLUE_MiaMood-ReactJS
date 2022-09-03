@@ -132,28 +132,25 @@ function MoodListItem({
             <div className="mood-date-time">
               {postDate} @ {postTime}
             </div>
+          </div>
+        </div>
 
-            {/* ----- 📌 edit/delete */}
+        {/* ----- 📌 edit/delete */}
 
-            <div className="mood-options-container" id={showMoodOptions && 'mood-options-shown'}>
-              <div
-                className="mood-options-button clickable"
-                onClick={() => {
-                  setEditFormState(mood);
-                  setActiveEditMood({ [mood.type]: true, activeType: mood.type });
-                  setShowEditModal(true);
-                }}
-              >
-                <img src={pencilIcon} alt="edit button" id="edit-mood-icon" />
-              </div>
+        <div className="mood-options-container" id={showMoodOptions && 'mood-options-shown'}>
+          <div
+            className="mood-options-button clickable"
+            onClick={() => {
+              setEditFormState(mood);
+              setActiveEditMood({ [mood.type]: true, activeType: mood.type });
+              setShowEditModal(true);
+            }}
+          >
+            <img src={pencilIcon} alt="edit button" id="edit-mood-icon" />
+          </div>
 
-              <div
-                className="mood-options-button clickable"
-                onClick={() => setShowDeleteModal(true)}
-              >
-                <img src={binIcon} alt="delete button" id="delete-mood-icon" />
-              </div>
-            </div>
+          <div className="mood-options-button clickable" onClick={() => setShowDeleteModal(true)}>
+            <img src={binIcon} alt="delete button" id="delete-mood-icon" />
           </div>
         </div>
       </div>

@@ -1,10 +1,16 @@
 📌 FEATS
 
+TODO: diminish number of useStates
 
-TODO: show edit/delete ON MOUSE OVER (?) 
+TODO: handle HOME (getToday) after search
+
+TODO: default text for noInputText 
+
 
 TODO: STATISTICS quickAdd ✔
 TODO: FORM showSearch(false) ✔
+TODO: reposition mood options ✔
+TODO: show edit/delete ON MOUSE OVER (?) ✔
 
 TODO: confirmation/error messages:✔
     - confirm delete✔

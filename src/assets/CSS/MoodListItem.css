@@ -20,7 +20,7 @@
 }
 
 .mood-text-container {
-  width: 100%;
+  width: calc(100% - 6rem);
 }
 
 .mood-text-top-row {
