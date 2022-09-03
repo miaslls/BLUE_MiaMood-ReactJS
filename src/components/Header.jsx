@@ -19,9 +19,11 @@ function Header({
   moodIcons,
   setMoodList,
   getMoodList,
-  selectedMoodList,
-  setSelectedMoodList,
-  setMoodListLoading,
+  // selectedMoodList,
+  // setSelectedMoodList,
+  // setMoodListLoading,
+  moodListStates,
+  setMoodListStates,
   selectedNavIcon,
   setSelectedNavIcon,
   showSearch,
@@ -29,9 +31,10 @@ function Header({
   setSearchDate,
 }) {
   // ----- 📌📌 SEARCH
+  // 👁‍🗨
 
   const handleSearch = async (date) => {
-    setMoodListLoading(true);
+    setMoodListStates({ ...moodListStates, loading: true });
 
     setSearchDate(date);
     const [year, month, day] = date.split('-');
@@ -39,7 +42,7 @@ function Header({
     const response = await MoodService.getMoodsByDate(year, month, day);
 
     setMoodList(response.moods);
-    setMoodListLoading(false);
+    setMoodListStates({ ...moodListStates, loading: false });
   };
 
   // ----- 📌📌 FORM
@@ -61,7 +64,7 @@ function Header({
 
   const closeCreateModal = () => {
     setShowCreateModal(false);
-    selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
+    moodListStates.selected === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
     setCreateFormState(emptyForm);
     setActiveCreateMood({});
   };
@@ -134,7 +137,8 @@ function Header({
             id="nav-icon-home"
             onClick={() => {
               setSelectedNavIcon('home');
-              setSelectedMoodList('date');
+              // setSelectedMoodList('date');
+              setMoodListStates({ ...moodListStates, selected: 'date' });
               setShowSearch(false);
               setSearchDate();
             }}
@@ -149,7 +153,8 @@ function Header({
             id="nav-icon-search"
             onClick={() => {
               setSelectedNavIcon('search');
-              setSelectedMoodList('date');
+              // setSelectedMoodList('date');
+              setMoodListStates({ ...moodListStates, selected: 'date' });
               setShowSearch(true);
             }}
           >
@@ -163,7 +168,8 @@ function Header({
             id="nav-icon-all"
             onClick={() => {
               setSelectedNavIcon('list');
-              setSelectedMoodList('all');
+              // setSelectedMoodList('all');
+              setMoodListStates({ ...moodListStates, selected: 'all' });
               setShowSearch(false);
               setSearchDate();
             }}
@@ -179,7 +185,7 @@ function Header({
             onClick={() => {
               setSelectedNavIcon('add');
               setShowSearch(false);
-              // setSearchDate();
+              setSearchDate();
               setShowCreateModal(true);
             }}
           >
