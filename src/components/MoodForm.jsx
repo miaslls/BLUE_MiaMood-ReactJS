@@ -21,16 +21,7 @@ function SubmitButton({ children, moodIcons, activeMood, submitForm, editType = 
 
 //  ----- 📌📌📌🚨 component FORM
 
-function MoodForm({
-  moodIcons,
-  emptyForm,
-  formState,
-  setFormState,
-  activeMood,
-  setActiveMood,
-  getMoodlist,
-  closeModal,
-}) {
+function MoodForm({ moodIcons, emptyForm, formState, setFormState, getMoodlist, closeModal }) {
   // ----- 📌 input default value
 
   const [defaultInputValues, setDefaultInputValues] = useState({});
@@ -56,8 +47,11 @@ function MoodForm({
   };
 
   const setMoodType = (moodType) => {
-    setFormState({ ...formState, type: moodType });
-    setActiveMood({ [moodType]: true, activeType: moodType });
+    setFormState({
+      ...formState,
+      type: moodType,
+      activeMood: { [moodType]: true, activeType: moodType },
+    });
   };
 
   //----- 📌 handleKeyPress
@@ -122,7 +116,9 @@ function MoodForm({
           {moodIcons.map((icon, index) => (
             <div
               key={`form-mood-type-${index + 1}`}
-              className={`form-mood-icon clickable ${activeMood[index + 1] ? 'active-mood' : null}`}
+              className={`form-mood-icon clickable ${
+                formState.activeMood[index + 1] ? 'active-mood' : undefined
+              }`}
               onClick={() => {
                 setMoodType(index + 1);
                 setNoTypeAlert(false);
@@ -183,7 +179,7 @@ function MoodForm({
           <div className="form-button" id="submit-button-container">
             <SubmitButton
               moodIcons={moodIcons}
-              activeMood={activeMood}
+              activeMood={formState.activeMood}
               submitForm={submitForm}
               editType={formState.type}
             >

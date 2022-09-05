@@ -1,13 +1,5 @@
 📌 FEATS
 
-TODO: diminish number of useStates
-    - list ✔
-    - header
-    - forms
-        -create
-        -edit
-
-TODO: handle HOME (getToday) after search
 
 TODO: default text for noInputText 
 
@@ -18,12 +10,20 @@ TODO: STATISTICS quickAdd ✔
 TODO: FORM showSearch(false) ✔
 TODO: reposition mood options ✔
 TODO: show edit/delete ON MOUSE OVER (?) ✔
+TODO: handle HOME (getToday) after search ✔
 TODO: 🐞 🔺 If you used to conditionally omit it with id={condition && value}, pass id={condition ? value : undefined} instead.✔
 
 TODO: confirmation/error messages:✔
     - confirm delete✔
     - validate form (create, no mood selected) ✔
 
+TODO: diminish number of useStates ✔
+    - list ✔
+    - header ✔
+    - forms ✔
+        -create ✔
+        -edit ✔
+        
 FIXME: MOODLIST date title ✔
 
 -----

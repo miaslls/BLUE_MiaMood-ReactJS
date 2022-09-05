@@ -43,7 +43,6 @@ function MoodListItem({
   // ----- 📌📌 FORM
 
   const [editFormState, setEditFormState] = useState({});
-  const [activeEditMood, setActiveEditMood] = useState({});
 
   // ----- 📌 EDIT MODAL
 
@@ -52,7 +51,6 @@ function MoodListItem({
   const closeEditModal = () => {
     setShowEditModal(false);
     setEditFormState({});
-    setActiveEditMood({});
   };
 
   // ----- 📌 DELETE MODAL
@@ -76,8 +74,6 @@ function MoodListItem({
             emptyForm={{}}
             formState={editFormState}
             setFormState={setEditFormState}
-            activeMood={activeEditMood}
-            setActiveMood={setActiveEditMood}
             getMoodlist={getMoodList}
             closeModal={closeEditModal}
           />
@@ -133,8 +129,10 @@ function MoodListItem({
           <div
             className="mood-options-button clickable"
             onClick={() => {
-              setEditFormState(mood);
-              setActiveEditMood({ [mood.type]: true, activeType: mood.type });
+              setEditFormState({
+                ...mood,
+                activeMood: { [mood.type]: true, activeType: mood.type },
+              });
               setShowEditModal(true);
             }}
           >

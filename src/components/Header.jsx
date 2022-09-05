@@ -41,10 +41,10 @@ function Header({
     text: undefined,
     date: getDateToday(),
     time: getTimeNow(),
+    activeMood: {},
   };
 
   const [createFormState, setCreateFormState] = useState(emptyForm);
-  const [activeCreateMood, setActiveCreateMood] = useState({});
 
   // ----- 📌📌 MODAL
 
@@ -59,7 +59,6 @@ function Header({
 
     setShowCreateModal(false);
     setCreateFormState(emptyForm);
-    setActiveCreateMood({});
   };
 
   // 📌📌🚨 HEADER RETURN
@@ -107,8 +106,6 @@ function Header({
               emptyForm={emptyForm}
               formState={createFormState}
               setFormState={setCreateFormState}
-              activeMood={activeCreateMood}
-              setActiveMood={setActiveCreateMood}
               getMoodlist={getMoodList}
               closeModal={closeCreateModal}
             />
