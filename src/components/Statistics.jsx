@@ -15,9 +15,7 @@ function MoodTypeCounter({
   index,
   getMoodList,
   selectedMoodList,
-  setSelectedNavIcon,
-  setSearchDate,
-  setShowSearch,
+  setHeaderStates,
 }) {
   // ----- 📌 quickAdd
 
@@ -32,9 +30,12 @@ function MoodTypeCounter({
     const response = await MoodService.createMood(moodBody);
 
     if (response.mood) {
-      setShowSearch(false);
-      setSearchDate();
-      selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
+      let selectedIcon;
+
+      selectedMoodList === 'date' ? (selectedIcon = 'home') : (selectedIcon = 'list');
+
+      setHeaderStates({ selectedIcon: selectedIcon, showSearch: false, searchDate: undefined });
+
       getMoodList();
     }
   };
@@ -60,9 +61,8 @@ function Statistics({
   moodList,
   getMoodList,
   selectedMoodList,
-  setSelectedNavIcon,
-  setSearchDate,
-  setShowSearch,
+  headerStates,
+  setHeaderStates,
 }) {
   const initialCount = [
     { countType: 1, count: 0 },
@@ -158,9 +158,8 @@ function Statistics({
               index={index}
               getMoodList={getMoodList}
               selectedMoodList={selectedMoodList}
-              setSelectedNavIcon={setSelectedNavIcon}
-              setSearchDate={setSearchDate}
-              setShowSearch={setShowSearch}
+              headerStates={headerStates}
+              setHeaderStates={setHeaderStates}
             />
           ))}
         </div>

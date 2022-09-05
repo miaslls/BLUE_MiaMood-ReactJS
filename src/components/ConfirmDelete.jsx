@@ -14,9 +14,7 @@ function ConfirmDelete({
   postDate,
   postTime,
   selectedMoodList,
-  setSelectedNavIcon,
-  setSearchDate,
-  setShowSearch,
+  setHeaderStates,
   closeModal,
 }) {
   // ----- 📌 delete
@@ -25,9 +23,12 @@ function ConfirmDelete({
     const response = await MoodService.deleteMood(id);
 
     if (response.message === 'deleted') {
-      setShowSearch(false);
-      setSearchDate();
-      selectedMoodList === 'date' ? setSelectedNavIcon('home') : setSelectedNavIcon('list');
+      let selectedIcon;
+
+      selectedMoodList === 'date' ? (selectedIcon = 'home') : (selectedIcon = 'list');
+
+      setHeaderStates({ selectedIcon: selectedIcon, showSearch: false, searchDate: undefined });
+
       getMoodList();
       closeModal();
     }

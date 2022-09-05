@@ -17,9 +17,7 @@ function MoodListItem({
   moodList,
   getMoodList,
   selectedMoodList,
-  setSelectedNavIcon,
-  setSearchDate,
-  setShowSearch,
+  setHeaderStates,
   moodIcons,
 }) {
   // ----- 📌 date/time formatting
@@ -72,11 +70,7 @@ function MoodListItem({
       {/* ----- 📌 EDIT MODAL */}
 
       {showEditModal && (
-        <Modal
-          closeModal={() => {
-            setShowEditModal(false);
-          }}
-        >
+        <Modal closeModal={closeEditModal}>
           <EditMoodForm
             moodIcons={moodIcons}
             emptyForm={{}}
@@ -84,9 +78,6 @@ function MoodListItem({
             setFormState={setEditFormState}
             activeMood={activeEditMood}
             setActiveMood={setActiveEditMood}
-            setSelectedNavIcon={setSelectedNavIcon}
-            setSearchDate={setSearchDate}
-            setShowSearch={setShowSearch}
             getMoodlist={getMoodList}
             closeModal={closeEditModal}
           />
@@ -104,9 +95,7 @@ function MoodListItem({
             postDate={postDate}
             postTime={postTime}
             selectedMoodList={selectedMoodList}
-            setSelectedNavIcon={setSelectedNavIcon}
-            setSearchDate={setSearchDate}
-            setShowSearch={setShowSearch}
+            setHeaderStates={setHeaderStates}
             closeModal={() => setShowDeleteModal(false)}
           />
         </Modal>

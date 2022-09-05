@@ -12,16 +12,14 @@ function MoodList({
   moodList,
   getMoodList,
   selectedMoodList,
-  setSelectedNavIcon,
-  searchDate,
-  setSearchDate,
-  setShowSearch,
+  headerStates,
+  setHeaderStates,
 }) {
   const getMoodListDateTitle = () => {
     let date;
 
-    if (selectedMoodList === 'date' && searchDate) {
-      date = new Date(`${searchDate}T00:00:00`);
+    if (selectedMoodList === 'date' && headerStates.searchDate) {
+      date = new Date(`${headerStates.searchDate}T00:00:00`);
     } else {
       date = new Date();
     }
@@ -60,9 +58,7 @@ function MoodList({
               moodList={array}
               getMoodList={getMoodList}
               selectedMoodList={selectedMoodList}
-              setSelectedNavIcon={setSelectedNavIcon}
-              setSearchDate={setSearchDate}
-              setShowSearch={setShowSearch}
+              setHeaderStates={setHeaderStates}
               moodIcons={moodIcons}
             />
           ))}

@@ -19,14 +19,13 @@ function App() {
   const [moodListStates, setMoodListStates] = useState({
     loading: false,
     selected: 'date',
-    full: [],
+    all: [],
     today: [],
   });
 
   const [moodList, setMoodList] = useState([]);
 
   // ----- 📌 getMoodList
-  // 👁‍🗨
 
   const getMoodList = async () => {
     setMoodListStates({ ...moodListStates, loading: true });
@@ -49,7 +48,6 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 👁‍🗨
   useEffect(() => {
     moodListStates.selected === 'date'
       ? setMoodList(moodListStates.today)
@@ -60,12 +58,11 @@ function App() {
 
   // ----- 📌📌 HEADER
 
-  const [selectedNavIcon, setSelectedNavIcon] = useState('home');
-
-  // ----- 📌search
-
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchDate, setSearchDate] = useState();
+  const [headerStates, setHeaderStates] = useState({
+    selectedIcon: 'home',
+    showSearch: false,
+    searchDate: undefined,
+  });
 
   // 📌📌🚨 APP RETURN
 
@@ -79,11 +76,8 @@ function App() {
         getMoodList={getMoodList}
         moodListStates={moodListStates}
         setMoodListStates={setMoodListStates}
-        selectedNavIcon={selectedNavIcon}
-        setSelectedNavIcon={setSelectedNavIcon}
-        showSearch={showSearch}
-        setShowSearch={setShowSearch}
-        setSearchDate={setSearchDate}
+        headerStates={headerStates}
+        setHeaderStates={setHeaderStates}
       />
 
       <main>
@@ -97,10 +91,8 @@ function App() {
             moodList={moodList}
             getMoodList={getMoodList}
             selectedMoodList={moodListStates.selected}
-            setSelectedNavIcon={setSelectedNavIcon}
-            searchDate={searchDate}
-            setSearchDate={setSearchDate}
-            setShowSearch={setShowSearch}
+            headerStates={headerStates}
+            setHeaderStates={setHeaderStates}
           />
         )}
 
@@ -112,9 +104,7 @@ function App() {
             moodList={moodList}
             getMoodList={getMoodList}
             selectedMoodList={moodListStates.selected}
-            setSelectedNavIcon={setSelectedNavIcon}
-            setSearchDate={setSearchDate}
-            setShowSearch={setShowSearch}
+            setHeaderStates={setHeaderStates}
           />
         )}
       </main>

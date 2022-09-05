@@ -28,9 +28,6 @@ function MoodForm({
   setFormState,
   activeMood,
   setActiveMood,
-  setSelectedNavIcon,
-  setSearchDate,
-  setShowSearch,
   getMoodlist,
   closeModal,
 }) {
@@ -91,9 +88,6 @@ function MoodForm({
 
       if (response.mood) {
         setFormState(emptyForm);
-        setSelectedNavIcon('home');
-        setShowSearch(false);
-        setSearchDate();
         closeModal();
         getMoodlist();
       }
