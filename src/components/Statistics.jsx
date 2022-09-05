@@ -102,7 +102,7 @@ function Statistics({
     let countAverage = countSum / list.length;
 
     // add ❤
-    countAverage += count[5].count * 0.1;
+    countAverage += count[5].count * 0.5;
 
     countAverage > 5 ? (countAverage = 5) : (countAverage = Math.round(countAverage));
 
