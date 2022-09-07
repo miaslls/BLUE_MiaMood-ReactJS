@@ -162,6 +162,7 @@ function MoodForm({ moodIcons, emptyForm, formState, setFormState, getMoodlist, 
             name="text"
             placeholder="optional! this is example text..."
             defaultValue={getTextInput()}
+            autoFocus="true"
             onChange={(e) => handleChange(e, 'text')}
             onKeyPress={(e) => handleKeyPress(e)}
           />
