@@ -2,7 +2,7 @@
 
 (⚠ API currently down)
 
-<img src="https://i.ibb.co/YhqBJkq/Mia-Mood-React.gif" alt="demo" width="200px"/>
+![demo](https://i.ibb.co/YhqBJkq/Mia-Mood-React.gif "demo")
 
 ## **MOOD TRACKER** | Rastreador de Humor
 
