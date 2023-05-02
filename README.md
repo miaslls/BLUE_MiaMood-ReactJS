@@ -1,7 +1,5 @@
 # <img src="./public/favicon.svg" alt="logo" width="30px"/> [MiaMood](https://miamood.vercel.app/)
 
-(⚠ API currently down)
-
 ![demo](https://i.ibb.co/YhqBJkq/Mia-Mood-React.gif "demo")
 
 ## **MOOD TRACKER** | Rastreador de Humor
@@ -10,4 +8,5 @@ Um rastreador de humor é uma ferramenta usada para manter um registro do humor 
 
 ---
 
-## 🏠 \[home\] [miamood.vercel.app](https://miamood.vercel.app/)
+### \[demo\] [miamood-02.vercel.app](https://miamood-02.vercel.app)
+### \[backend\] [miaslls/BLUE_MiaMood-Express-Mongoose](https://github.com/miaslls/BLUE_MiaMood-Express-Mongoose)
