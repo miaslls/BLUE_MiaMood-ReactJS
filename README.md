@@ -1,4 +1,4 @@
-# <img src="./public/favicon.svg" alt="logo" width="30px"/> [MiaMood](https://miamood.vercel.app/)
+# <img src="./public/favicon.svg" alt="logo" width="30px"/> [MiaMood](https://miamood-02.vercel.app/)
 
 ![demo](https://i.ibb.co/YhqBJkq/Mia-Mood-React.gif 'demo')
 
