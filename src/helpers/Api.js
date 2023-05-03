@@ -7,6 +7,6 @@ const MoodContext = {
 };
 
 export const Api = {
-  baseUrl: 'https://miamood-02.onrender.com',
+  baseUrl: 'https://miamood-02.fly.dev',
   ...MoodContext,
 };

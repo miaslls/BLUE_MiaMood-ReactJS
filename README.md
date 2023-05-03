@@ -1,8 +1,6 @@
 # <img src="./public/favicon.svg" alt="logo" width="30px"/> [MiaMood](https://miamood.vercel.app/)
 
-(⚠ API currently down)
-
-![demo](https://i.ibb.co/YhqBJkq/Mia-Mood-React.gif "demo")
+![demo](https://i.ibb.co/YhqBJkq/Mia-Mood-React.gif 'demo')
 
 ## **MOOD TRACKER** | Rastreador de Humor
 
