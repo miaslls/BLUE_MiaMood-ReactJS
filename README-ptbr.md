@@ -25,6 +25,32 @@ O MiaMood é uma atualização do [MiaMood-MoodTracker](https://github.com/miasl
 
 - [MiaMood-server](https://github.com/miaslls/MiaMood-server#readme)
 
+## ⚙️ Instalação
+
+Clone the project
+
+```bash
+> git clone https://github.com/miaslls/MiaMood.git
+```
+
+Go to the project directory
+
+```bash
+> cd MiaMood
+```
+
+Install dependencies
+
+```bash
+> npm install
+```
+
+Run the project
+
+```bash
+> npm run start
+```
+
 ## 👩‍💻 Autoria
 
 - [@miaslls](https://www.github.com/miaslls)
