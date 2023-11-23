@@ -6,7 +6,6 @@ To view this page in <img src="assets/img/flag-en.png" width="14" alt="English">
 # <img src="assets/img/logo.png" width="22" alt="Project logo"> MiaMood
 
 ![Static Badge: Personal](https://img.shields.io/badge/personal-mediumpurple)
-![Static Badge: Version - 2.0.0](https://img.shields.io/badge/version-2.0.0-green)
 ![Static Badge: React](https://img.shields.io/badge/React-5a5a5a?logo=react)
 
 O MiaMood é uma atualização do [MiaMood-MoodTracker](https://github.com/miaslls/MiaMood-MoodTracker#readme), com um sistema de estatísticas de humor aprimorado. A pesquisa por data facilita a recuperação de registros específicos, e um modal de cadastro/atualização de humor otimiza a interação do usuário. Esta versão representa uma notável evolução tecnológica em relação à anterior, oferecendo uma ferramenta mais abrangente para o acompanhamento da saúde emocional.
