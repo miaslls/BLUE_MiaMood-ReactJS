@@ -6,7 +6,6 @@ Para visualizar essa página em <img src="assets/img/flag-pt-br.png" width="14" 
 # <img src="assets/img/logo.png" width="22" alt="Project logo"> MiaMood
 
 ![Static Badge: Personal](https://img.shields.io/badge/personal-mediumpurple)
-![Static Badge: Version - 2.0.0](https://img.shields.io/badge/version-2.0.0-green)
 ![Static Badge: React](https://img.shields.io/badge/React-5a5a5a?logo=react)
 
 MiaMood is an upgraded version of [MiaMood-MoodTracker](https://github.com/miaslls/MiaMood-MoodTracker#readme), featuring an enhanced mood statistics system. Date-based search simplifies the retrieval of specific records, and a mood registration/update modal optimizes user interaction. This version represents a notable technological evolution compared to the previous one, providing a more comprehensive tool for emotional health tracking.
