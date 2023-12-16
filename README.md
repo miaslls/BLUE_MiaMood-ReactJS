@@ -12,7 +12,7 @@ MiaMood is an upgraded version of [MiaMood-MoodTracker](https://github.com/miasl
 
 ## 🔗 Demo
 
-- [miamood-02.vercel.app](https://miamood-02.vercel.app/)
+- [miamood-02.camilasalles.dev](https://miamood-02.camilasalles.dev/)
 
 ## 🖼️ Screenshots
 
